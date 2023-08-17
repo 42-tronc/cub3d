@@ -6,7 +6,7 @@
 #    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/01/17 15:48:31 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/08/16 16:15:41 by croy             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ FG_LIGHT_BLUE 		:= \033[94m
 FG_LIGHT_MAGENTA 	:= \033[95m
 FG_LIGHT_CYAN 		:= \033[96m
 FG_WHITE 			:= \033[97m
+FG_ORANGE 			:= \033[38:5:208m
 
 BG_BLACK 			:= \033[40m
 BG_RED 				:= \033[41m
@@ -67,37 +68,49 @@ RESET		:= \033[0m
 
 
 # ---------- BASIC VARIABLES ----------
-CFLAGS := -Wall -Wextra -Werror
-FSANITIZE = -fsanitize=address
+CFLAGS := -Wall -Wextra -Werror -g3 -Ilibft/header/ -Iheader/
+FSANITIZE = -fsanitize=address -g3
 RM := rm -rf
-
-OBJ_DIR := obj/
-OBJ = $(SRC:%.c=$(OBJ_DIR)%.o)
 
 LIBFT_DIR := libft/
 LIBFT_NAME := $(LIBFT_DIR)libft.a
+USER := $(shell whoami)
 
 
 # --------- PROJECT VARIABLES ---------
-NAME := foobar
-HEADER := foobar.h
-SRC := foobar.c
+NAME := cub3D
+HEADER := header/cub3d.h
 
+# MINILIBX_DIR := minilibx-linux/
+# MINILIBX_NAME := $(MINILIBX_DIR)libmlx.a
+# MINILIBX_FLAGS := -L$(MINILIBX_DIR) -lmlx -lXext -lX11 -lm -lz
+
+SRC_FOLDER := src/
+OBJ_DIR := obj/
+SRC = $(addprefix $(SRC_FOLDER), $(SRC_UTILS))
+OBJ = $(subst $(SRC_FOLDER),$(OBJ_DIR),$(SRC:.c=.o))
+
+DIR_UTILS := $(SRC_FOLDER)utils/
+SRC_UTILS := cub3d.c
 
 # -------------- RECIPES --------------
-all: makefolder rsc $(NAME)
+all: rsc
+	make $(NAME)
 
 $(NAME): $(LIBFT_NAME) $(OBJ)
+	@echo -e "\n$(BOLD)Hello $(FG_ORANGE)$(USER)$(RESET)"
 	${CC} ${CFLAGS} -o $(NAME) $(OBJ) $(LIBFT_NAME)
 	@echo -e "$(BG_LIGHT_GREEN)Compiled:\t$(RESET) $(FG_WHITE)$(UNDERLINE)$(NAME)$(RESET) has been created."
 
-$(OBJ_DIR)%.o : %.c $(HEADER)
+$(OBJ_DIR)%.o : $(DIR_UTILS)%.c $(HEADER) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -o $@ -c $<
+
+$(LIBFT_NAME) : rsc
 
 rsc:
 	@$(MAKE) -sC $(LIBFT_DIR)
 
-makefolder :
+$(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
 
 clean:
@@ -122,9 +135,7 @@ run :
 	make re
 	./$(NAME) $(ARG)
 
-#test: all
-#	${CC} -o test.out tests.c $(NAME)
-#	@./test.out | cat -e
-#	$(RM) test.out
+norm :
+	norminette ./src ./header ./libft
 
 .PHONY: all rsc makefolder clean fclean re debug test
