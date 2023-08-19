@@ -2,8 +2,9 @@ name: Makefile CI
 
 on:
   pull_request:
-    branches:
-      - master
+    branches: [ "master" ]
+  push:
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -11,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          submodules: 'recursive'
-          token: ${{ secrets.ORG_GH_TOKEN }}  # Add this line to pass the token to the checkout action
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+        token: ${{ secrets.ORG_GH_TOKEN }}
 
-      - name: Build project
-        run: make
+    - name: Build project
+      run: make

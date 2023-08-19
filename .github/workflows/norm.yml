@@ -3,17 +3,22 @@ name: Norminette CI
 on:
   pull_request:
     branches: [ "master" ]
+  push:
+    branches: [ "master" ]
 
 jobs:
   build:
-
+    name: Norminette CI
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+        token: ${{ secrets.ORG_GH_TOKEN }}
 
     - name: Norminette check
       uses: alexandregv/norminette-action@v3
       with:
         flags: '.'
-
