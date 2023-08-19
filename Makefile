@@ -68,8 +68,10 @@ RESET		:= \033[0m
 
 
 # ---------- BASIC VARIABLES ----------
-CFLAGS := -Wall -Wextra -Werror -g3 -Ilibft/header/ -Iheader/
-FSANITIZE = -fsanitize=address -g3
+CFLAGS := -Wall -Wextra -Werror -Ilibft/header/ -Iheader/ -O2 -g3
+AR := ar
+ARFLAGS := -rcs
+FSANITIZE = -fsanitize=address
 RM := rm -rf
 
 LIBFT_DIR := libft/
