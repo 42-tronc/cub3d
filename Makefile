@@ -134,4 +134,4 @@ debug: fclean $(NAME)
 norm :
 	norminette ./src ./header ./libft | grep -v OK
 
-.PHONY: all rsc makefolder clean fclean re debug norm
+.PHONY: all rsc clean fclean re debug norm
