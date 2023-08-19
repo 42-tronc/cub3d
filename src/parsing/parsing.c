@@ -6,13 +6,8 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/08/19 20:08:08 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/08/19 21:40:06 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	print_aha(void)
-{
-	printf("aha\n");
-}
