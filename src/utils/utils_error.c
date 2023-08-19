@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   utils_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/08/19 20:09:43 by croy             ###   ########lyon.fr   */
+/*   Created: 2023/08/19 21:31:48 by croy              #+#    #+#             */
+/*   Updated: 2023/08/19 21:38:51 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	print_error(int code, char *src)
 {
-	(void) ac;
-	(void) av;
+	char	*error[1];
 
-	printf("We're in boys\n");
-	return (0);
+	error[E_MALLOC] = "malloc failed to allocate a memory space";
+	printf(RED BOLD"Error: %s%s in %s%s\n", NO_BOLD, error[code], src, RESET);
 }

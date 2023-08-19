@@ -6,7 +6,7 @@
 #    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/08/19 20:46:09 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/08/19 21:40:59 by croy             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,11 +87,14 @@ MLX_FLAGS := -lm -lz -lXext -lX11 -I${MLX_DIR}
 
 SRC_FOLDER := src/
 OBJ_DIR := obj/
-SRC = $(addprefix $(SRC_FOLDER), $(SRC_UTILS) $(SCR_PARSING))
+SRC = $(addprefix $(SRC_FOLDER), $(SRC_MAIN) $(SRC_UTILS) $(SCR_PARSING))
 OBJ = $(subst $(SRC_FOLDER),$(OBJ_DIR),$(SRC:.c=.o))
 
+DIR_MAIN := $(SRC_FOLDER)
+SRC_MAIN := cub3d.c
+
 DIR_UTILS := $(SRC_FOLDER)utils/
-SRC_UTILS := cub3d.c
+SRC_UTILS := utils_error.c
 
 DIR_PARSING := $(SRC_FOLDER)parsing/
 SCR_PARSING := parsing.c
@@ -106,6 +109,9 @@ $(NAME): $(LIBFT_NAME) $(MLX_NAME) $(OBJ)
 	$(AR) $(ARFLAGS) $(LIBFT_NAME) $(MLX_NAME) $(OBJ)
 	$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) $(LIBFT_NAME) $(MLX_NAME)
 	@echo -e "$(BG_LIGHT_GREEN)Compiled:\t$(RESET) $(FG_WHITE)$(UNDERLINE)$(NAME)$(RESET) has been created."
+
+$(OBJ_DIR)%.o : $(DIR_MAIN)%.c $(HEADER) | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(OBJ_DIR)%.o : $(DIR_UTILS)%.c $(HEADER) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -o $@ -c $<
