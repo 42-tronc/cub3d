@@ -6,21 +6,17 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/08/16 15:14:07 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/08/19 20:09:43 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "cub3d.h"
 
-int	print_lol(void)
+int	main(int ac, char **av)
 {
-	printf("lol\n");
-	return (0);
-}
+	(void) ac;
+	(void) av;
 
-int	main()
-{
-	printf("Hello World\n");
-	print_lol();
+	printf("We're in boys\n");
 	return (0);
 }
