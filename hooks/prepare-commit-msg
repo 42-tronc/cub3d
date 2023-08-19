@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Available prefixes and their corresponding emojis
-prefixes=("fix" "add" "update" "remove" "test" "docs" "chore" "style")
+prefixes=("fix" "add" "update" "remove" "test" "docs" "chore" "ww")
 emojis=("🐛" "🎉" "🔄" "❌" "🧪" "📚" "🧹" "🎨")
 
 # Extract the current commit message
