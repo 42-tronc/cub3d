@@ -136,6 +136,6 @@ run :
 	./$(NAME) $(ARG)
 
 norm :
-	norminette ./src ./header ./libft
+	norminette ./src ./header ./libft | grep -v OK
 
-.PHONY: all rsc makefolder clean fclean re debug test
+.PHONY: all rsc makefolder clean fclean re debug norm
