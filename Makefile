@@ -6,7 +6,7 @@
 #    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/08/16 16:15:41 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/08/19 20:46:09 by croy             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,34 +81,45 @@ USER := $(shell whoami)
 NAME := cub3D
 HEADER := header/cub3d.h
 
-# MINILIBX_DIR := minilibx-linux/
-# MINILIBX_NAME := $(MINILIBX_DIR)libmlx.a
-# MINILIBX_FLAGS := -L$(MINILIBX_DIR) -lmlx -lXext -lX11 -lm -lz
+MLX_DIR := minilibx/
+MLX_NAME := $(MLX_DIR)libmlx.a
+MLX_FLAGS := -lm -lz -lXext -lX11 -I${MLX_DIR}
 
 SRC_FOLDER := src/
 OBJ_DIR := obj/
-SRC = $(addprefix $(SRC_FOLDER), $(SRC_UTILS))
+SRC = $(addprefix $(SRC_FOLDER), $(SRC_UTILS) $(SCR_PARSING))
 OBJ = $(subst $(SRC_FOLDER),$(OBJ_DIR),$(SRC:.c=.o))
 
 DIR_UTILS := $(SRC_FOLDER)utils/
 SRC_UTILS := cub3d.c
 
+DIR_PARSING := $(SRC_FOLDER)parsing/
+SCR_PARSING := parsing.c
+
+
 # -------------- RECIPES --------------
 all: rsc
 	make $(NAME)
 
-$(NAME): $(LIBFT_NAME) $(OBJ)
+$(NAME): $(LIBFT_NAME) $(MLX_NAME) $(OBJ)
 	@echo -e "\n$(BOLD)Hello $(FG_ORANGE)$(USER)$(RESET)"
-	${CC} ${CFLAGS} -o $(NAME) $(OBJ) $(LIBFT_NAME)
+	$(AR) $(ARFLAGS) $(LIBFT_NAME) $(MLX_NAME) $(OBJ)
+	$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) $(LIBFT_NAME) $(MLX_NAME)
 	@echo -e "$(BG_LIGHT_GREEN)Compiled:\t$(RESET) $(FG_WHITE)$(UNDERLINE)$(NAME)$(RESET) has been created."
 
 $(OBJ_DIR)%.o : $(DIR_UTILS)%.c $(HEADER) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-$(LIBFT_NAME) : rsc
+$(OBJ_DIR)%.o : $(DIR_PARSING)%.c $(HEADER) | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -o $@ -c $<
 
-rsc:
+$(LIBFT_NAME):
 	@$(MAKE) -sC $(LIBFT_DIR)
+
+$(MLX_NAME) :
+	@$(MAKE) -sC $(MLX_DIR)
+
+rsc: $(LIBFT_NAME) $(MLX_NAME)
 
 $(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
@@ -117,6 +128,7 @@ clean:
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_DIR)
 	@$(MAKE) $@ -sC $(LIBFT_DIR)
+	@$(MAKE) $@ -sC $(MLX_DIR)
 	@echo -e "$(FG_RED)Clean:\t\t $(FG_LIGHT_GRAY)$(ITALIC)$(NAME) object files$(RESET) have been deleted"
 
 fclean: clean
