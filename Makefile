@@ -128,12 +128,8 @@ re: fclean
 	@$(MAKE) rsc
 	@$(MAKE) all
 
-debug: makefolder rsc $(LIBFT_NAME) $(OBJ)
-	${CC} $(FSANITIZE) ${CFLAGS} -o $(NAME) $(OBJ) $(LIBFT_NAME)
-
-run :
-	make re
-	./$(NAME) $(ARG)
+debug: CFLAGS += $(FSANITIZE)
+debug: fclean $(NAME)
 
 norm :
 	norminette ./src ./header ./libft | grep -v OK
