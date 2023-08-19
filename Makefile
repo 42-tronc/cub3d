@@ -14,6 +14,7 @@
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail -c # strict bash mode
 MAKEFLAGS += --warn-undefined-variables # warn about Make variables that don’t exist
+MAKEFLAGS += --no-print-directory # don’t print the directory name before executing a recipe
 .DELETE_ON_ERROR:
 
 
