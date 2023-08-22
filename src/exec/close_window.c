@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/08/22 09:10:58 by lboulatr         ###   ########.fr       */
+/*   Created: 2023/08/22 07:41:53 by lboulatr          #+#    #+#             */
+/*   Updated: 2023/08/22 11:28:47 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "exec.h"
 
-int	main(int ac, char **av)
+int	close_window(t_exec *exec, int status)
 {
-	(void) ac;
-	(void) av;
-
-	printf("We're in boys\n");
-
-	char		*map =  "1111111111111\n1000000000111\n10000N0000011\n1000111000011\n1000000000001\n1111111111111";
-	
-	if (exec_manager(map) != EXIT_SUCCESS)
-		return (EXIT_FAILURE);
-	
-	return (0);
+	mlx_clear_window(exec->mlx_ptr, exec->window);
+	mlx_destroy_window(exec->mlx_ptr, exec->window);
+	mlx_destroy_display(exec->mlx_ptr);
+	free(exec->mlx_ptr);
+	close_fd();
+	if (status == SUCCESS)
+		exit(EXIT_SUCCESS);
+	exit(EXIT_FAILURE);
 }

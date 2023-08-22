@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/08/22 09:10:58 by lboulatr         ###   ########.fr       */
+/*   Created: 2023/08/22 07:53:26 by lboulatr          #+#    #+#             */
+/*   Updated: 2023/08/22 12:19:16 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "exec.h"
 
-int	main(int ac, char **av)
+void	put_pixel(t_data *data, int x, int y, int color)
 {
-	(void) ac;
-	(void) av;
+	char	*dst;
 
-	printf("We're in boys\n");
-
-	char		*map =  "1111111111111\n1000000000111\n10000N0000011\n1000111000011\n1000000000001\n1111111111111";
-	
-	if (exec_manager(map) != EXIT_SUCCESS)
-		return (EXIT_FAILURE);
-	
-	return (0);
+	if (!(x <= 0 && x > WIDTH) && !(y <= 0 && y > HEIGHT))
+	{
+		dst = data->addr + (y * data->line_length + x * \
+				(data->bits_per_pixel / 8));
+		*(unsigned int *) dst = color;
+	}
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
+#    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/08/19 21:40:59 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/08/22 12:28:26 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,26 +79,37 @@ USER := $(shell whoami)
 
 # --------- PROJECT VARIABLES ---------
 NAME := cub3D
-HEADER := header/cub3d.h
+HEADER := header/cub3d.h \
+			header/exec.h \
 
 MLX_DIR := minilibx/
-MLX_NAME := $(MLX_DIR)libmlx.a
+MLX_NAME := $(MLX_DIR)libexec.a
 MLX_FLAGS := -lm -lz -lXext -lX11 -I${MLX_DIR}
 
 SRC_FOLDER := src/
 OBJ_DIR := obj/
-SRC = $(addprefix $(SRC_FOLDER), $(SRC_MAIN) $(SRC_UTILS) $(SCR_PARSING))
+SRC = $(addprefix $(SRC_FOLDER), $(SRC_MAIN) $(SRC_UTILS) $(SCR_PARSING) $(SCR_EXEC))
 OBJ = $(subst $(SRC_FOLDER),$(OBJ_DIR),$(SRC:.c=.o))
 
 DIR_MAIN := $(SRC_FOLDER)
 SRC_MAIN := cub3d.c
 
 DIR_UTILS := $(SRC_FOLDER)utils/
-SRC_UTILS := utils_error.c
+SRC_UTILS := utils_error.c \
+				close_fd.c \
 
 DIR_PARSING := $(SRC_FOLDER)parsing/
 SCR_PARSING := parsing.c
 
+DIR_EXEC := $(SRC_FOLDER)exec/
+SCR_EXEC := close_window.c \
+			exec_errors.c \
+			exec_manager.c \
+			init_mlx.c \
+			keys.c \
+			put_pixel.c \
+			minimap.c \
+			refresh_window.c \
 
 # -------------- RECIPES --------------
 all: rsc
@@ -117,6 +128,9 @@ $(OBJ_DIR)%.o : $(DIR_UTILS)%.c $(HEADER) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(OBJ_DIR)%.o : $(DIR_PARSING)%.c $(HEADER) | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+$(OBJ_DIR)%.o : $(DIR_EXEC)%.c $(HEADER) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(LIBFT_NAME):

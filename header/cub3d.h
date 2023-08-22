@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/08/19 21:37:24 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/08/22 08:55:52 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdlib.h> // for malloc, free, exit
 # include <string.h> // for strerror
 # include <unistd.h> // for close, read, write
+# include "exec.h"
 
 // ========= @defines =========
 # define RED		"\e[31m"
@@ -38,5 +39,6 @@ typedef enum e_error_code {
 //	===== @functions =====
 // utils_error.c
 void	print_error(int code, char *src);
+void	close_fd(void);
 
 #endif

@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   exec_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/08/22 09:10:58 by lboulatr         ###   ########.fr       */
+/*   Created: 2023/08/22 07:42:36 by lboulatr          #+#    #+#             */
+/*   Updated: 2023/08/22 08:52:53 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "exec.h"
 
-int	main(int ac, char **av)
+void	display_error(char *str)
 {
-	(void) ac;
-	(void) av;
+	ft_putstr_fd(str, STDERR_FILENO);
+}
 
-	printf("We're in boys\n");
+void	free_mlx(t_exec *exec)
+{
+	mlx_destroy_display(exec->mlx_ptr);
+	free(exec->mlx_ptr);
+}
 
-	char		*map =  "1111111111111\n1000000000111\n10000N0000011\n1000111000011\n1000000000001\n1111111111111";
-	
-	if (exec_manager(map) != EXIT_SUCCESS)
-		return (EXIT_FAILURE);
-	
-	return (0);
+void	free_window(t_exec *exec)
+{
+	mlx_clear_window(exec->mlx_ptr, exec->window);
+	mlx_destroy_window(exec->mlx_ptr, exec->window);
 }
