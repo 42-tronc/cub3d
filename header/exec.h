@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/22 12:41:56 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/08/22 14:39:43 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define KEY_S	        115
 # define KEY_D	        100
 
-# define SIZE_MAP       100
+# define SIZE_MAP       125
 # define HEIGHT         1080
 # define WIDTH          1920
 # define MAP_WALL		0x0f056b
@@ -41,26 +41,33 @@
 
 typedef struct	s_data
 {
-	void	        *img;
-	char	        *addr;
-	int		        bits_per_pixel;
-	int		        line_length;
-	int		        endian;
+	void	        	*img;
+	char	        	*addr;
+	int		        	bits_per_pixel;
+	int		        	line_length;
+	int		        	endian;
 }				t_data;
 
 typedef struct	s_vector_int
 {
-	int		        x;
-	int		        y;
+	int		        	x;
+	int		        	y;
 }				t_vector_int;
+
+typedef struct	s_vector_float
+{
+	float				x;
+	float				y;
+}				t_vector_float;
 
 typedef struct  s_exec
 {
-    void            *mlx_ptr;
-    void            *window;
-    char            **map;
-    t_data          minimap;
-	t_vector_int	player_pos;
+    void            	*mlx_ptr;
+    void            	*window;
+    char            	**map;
+    t_data          	minimap;
+	t_vector_int		player_pos;
+	t_vector_float		player_pos_fl;
 }               t_exec;
 
 // ========== Exec ==========
