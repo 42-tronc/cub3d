@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.c                                          :+:      :+:    :+:   */
+/*   exec_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 07:54:28 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/22 11:31:27 by lboulatr         ###   ########.fr       */
+/*   Created: 2023/08/23 09:56:47 by lboulatr          #+#    #+#             */
+/*   Updated: 2023/08/23 09:58:49 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exec.h"
+#include "cub3d.h"
 
 int	minimap(t_exec *exec)
 {
@@ -50,10 +50,10 @@ void	draw_squares(t_data *minimap, int color, int x, int y)
 
 	i = x * SIZE_MAP;
 	j = y * SIZE_MAP;
-	while (i < (x * SIZE_MAP) + SIZE_MAP)
+	while (i < (x * SIZE_MAP) + SIZE_MAP - 1)
 	{
 		j = y * SIZE_MAP;
-		while (j < (y * SIZE_MAP) + SIZE_MAP)
+		while (j < (y * SIZE_MAP) + SIZE_MAP - 1)
 		{
 			put_pixel(minimap, j, i, color);
 			j++;
@@ -62,41 +62,19 @@ void	draw_squares(t_data *minimap, int color, int x, int y)
 	}
 }
 
-void	draw_player_pos(t_data *minimap, char **map)
+void	draw_sight(t_exec *exec, float x, float y)
 {
-	int	x;
-	int	y;
+	float	i;
+	float	j;
 
-	x = 0;
-	y = 0;
-	while (map[x])
-	{
-		y = 0;
-		while (map[x][y])
-		{
-			if (ft_strchr("NSWE", map[x][y]))
-				draw_player(minimap, x, y);
-			y++;
-		}
-		x++;
-	}
-}
-
-void	draw_player(t_data *minimap, int x, int y)
-{
-	int	i;
-	int	j;
-	int	cut;
-
-	i = x * SIZE_MAP;
-	j = y * SIZE_MAP;
-	cut = SIZE_MAP / 4;
-	while ((i + cut) < (x * SIZE_MAP) + SIZE_MAP)
+	i = (x * SIZE_MAP);
+	j = (y * SIZE_MAP);
+	while (i < (x * SIZE_MAP) + SIZE_MAP - (SIZE_MAP * 0.60))
 	{
 		j = y * SIZE_MAP;
-		while ((j + cut) < (y * SIZE_MAP) + SIZE_MAP)
+		while (j < (y * SIZE_MAP) + SIZE_MAP - (SIZE_MAP * 0.95))
 		{
-			put_pixel(minimap, j, i, MAP_PLAYER);
+			put_pixel(&exec->minimap, j + (SIZE_MAP / 7), i - (SIZE_MAP / 4), RED_HEX);
 			j++;
 		}
 		i++;

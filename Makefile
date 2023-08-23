@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/08/22 12:28:26 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/08/23 10:00:22 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,8 +108,9 @@ SCR_EXEC := close_window.c \
 			init_mlx.c \
 			keys.c \
 			put_pixel.c \
-			minimap.c \
 			refresh_window.c \
+			exec_print.c \
+			print_player_minimap.c \
 
 # -------------- RECIPES --------------
 all: rsc

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:43:05 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/22 14:36:10 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/08/23 09:09:07 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,25 @@ int	keys(int key_code, t_exec *exec)
 
 static void	move_w(t_exec *exec)
 {
-	if (exec->player_pos.x > 0)
-		exec->player_pos.x--;
-	draw_player(&exec->minimap, exec->player_pos.x, exec->player_pos.y);
+	exec->player_pos_fl.x -= SIZE_FLOAT;
+	draw_player(&exec->minimap, exec->player_pos_fl.x, exec->player_pos_fl.y);
+
 }
 
 static void	move_a(t_exec *exec)
 {
-	if (exec->player_pos.y > 0)
-		exec->player_pos.y--;
-	draw_player(&exec->minimap, exec->player_pos.x, exec->player_pos.y);
+	exec->player_pos_fl.y -= SIZE_FLOAT;
+	draw_player(&exec->minimap, exec->player_pos_fl.x, exec->player_pos_fl.y);
 }
 
 static void	move_s(t_exec *exec)
 {
-	exec->player_pos.x++;
-	draw_player(&exec->minimap, exec->player_pos.x, exec->player_pos.y);
+	exec->player_pos_fl.x += SIZE_FLOAT;
+	draw_player(&exec->minimap, exec->player_pos_fl.x, exec->player_pos_fl.y);
 }
 
 static void	move_d(t_exec *exec)
 {
-	exec->player_pos.y++;
-	draw_player(&exec->minimap, exec->player_pos.x, exec->player_pos.y);
+	exec->player_pos_fl.y += SIZE_FLOAT;
+	draw_player(&exec->minimap, exec->player_pos_fl.x, exec->player_pos_fl.y);
 }

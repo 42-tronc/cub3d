@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/22 14:39:43 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/08/23 09:27:39 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
-
 # include "cub3d.h"
 
 # define SUCCESS	    EXIT_SUCCESS
@@ -30,7 +29,9 @@
 # define KEY_S	        115
 # define KEY_D	        100
 
-# define SIZE_MAP       125
+# define SIZE_MAP       160
+# define SIZE_PLAYER	1.5
+# define SIZE_FLOAT		0.15
 # define HEIGHT         1080
 # define WIDTH          1920
 # define MAP_WALL		0x0f056b
@@ -38,6 +39,7 @@
 # define MAP_PLAYER		0x00ff7f
 # define RED_HEX        0xff0000
 # define MALLOC_ERR     "Error during a malloc.\n"
+# define PI				3.1415926535
 
 typedef struct	s_data
 {
@@ -58,6 +60,9 @@ typedef struct	s_vector_float
 {
 	float				x;
 	float				y;
+	float				dx;
+	float				dy;
+	float				angle;
 }				t_vector_float;
 
 typedef struct  s_exec
@@ -81,7 +86,10 @@ int         minimap(t_exec *exec);
 void        draw_minimap(t_exec *exec);
 void        draw_squares(t_data *minimap, int color, int x, int y);
 void        draw_player_pos(t_data *img, char **map);
-void        draw_player(t_data *minimap, int x, int y);
+void		draw_player(t_data *minimap, float x, float y);
+void		draw_sight(t_exec *exec, float x, float y);
+
+
 int         refresh_window(t_exec *exec);
 
 // ========== Utils ===========

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:39:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/22 12:55:04 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/08/23 08:34:32 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static void get_player_pos(t_exec *exec, char **map)
 		{
 			if (ft_strchr("NSEW", map[i][j]))
 			{
+				exec->player_pos_fl.x = (float)i;
+				exec->player_pos_fl.y = (float)j;
 				exec->player_pos.x = i;
 				exec->player_pos.y = j;
 				return ;

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/08/22 08:55:52 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/08/23 08:15:32 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdlib.h> // for malloc, free, exit
 # include <string.h> // for strerror
 # include <unistd.h> // for close, read, write
+# include <math.h>
 # include "exec.h"
 
 // ========= @defines =========
