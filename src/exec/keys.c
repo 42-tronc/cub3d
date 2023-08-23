@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:43:05 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/23 09:09:07 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:17:54 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	keys(int key_code, t_exec *exec)
 	else if (key_code == KEY_D)
 		move_d(exec);
 	else if (key_code == LEFT_ARROW)
-		printf("LEFT\n");
+		left_rotation(exec);
 	else if (key_code == RIGHT_ARROW)
-		printf("RIGHT\n");
+		right_rotation(exec);
 	return (SUCCESS);
 }
 
@@ -40,7 +40,6 @@ static void	move_w(t_exec *exec)
 {
 	exec->player_pos_fl.x -= SIZE_FLOAT;
 	draw_player(&exec->minimap, exec->player_pos_fl.x, exec->player_pos_fl.y);
-
 }
 
 static void	move_a(t_exec *exec)

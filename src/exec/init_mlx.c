@@ -6,13 +6,14 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:39:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/23 08:34:32 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:12:16 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
-static void get_player_pos(t_exec *exec, char **map);
+static int	init_minimap(t_exec *exec);
+static void	get_player_pos(t_exec *exec, char **map);
 
 int	init_mlx(t_exec *exec)
 {
@@ -29,6 +30,14 @@ int	init_mlx(t_exec *exec)
 		display_error("Error during window init.\n");
 		return (FAILURE);
 	}
+	if (init_minimap(exec) != SUCCESS)
+		return (FAILURE);
+	get_player_pos(exec, exec->map);
+	return (SUCCESS);
+}
+
+static int	init_minimap(t_exec *exec)
+{
 	exec->minimap.img = mlx_new_image(exec->mlx_ptr, WIDTH, HEIGHT);
 	if (!exec->minimap.img)
 		return (FAILURE);
@@ -36,14 +45,11 @@ int	init_mlx(t_exec *exec)
 			&exec->minimap.bits_per_pixel, &exec->minimap.line_length, \
 			&exec->minimap.endian);
 	if (!exec->minimap.addr)
-	{
 		return (FAILURE);
-	}
-	get_player_pos(exec, exec->map);
 	return (SUCCESS);
 }
 
-static void get_player_pos(t_exec *exec, char **map)
+static void	get_player_pos(t_exec *exec, char **map)
 {
 	int		i;
 	int		j;
@@ -59,8 +65,9 @@ static void get_player_pos(t_exec *exec, char **map)
 			{
 				exec->player_pos_fl.x = (float)i;
 				exec->player_pos_fl.y = (float)j;
-				exec->player_pos.x = i;
-				exec->player_pos.y = j;
+				exec->player_pos_fl.dx = (float)i;
+				exec->player_pos_fl.dy = (float)j;
+				exec->player_pos_fl.angle = 1;
 				return ;
 			}
 			j++;

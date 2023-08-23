@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/23 09:27:39 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:00:08 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define KEY_S	        115
 # define KEY_D	        100
 
-# define SIZE_MAP       160
+# define SIZE_MAP       125
 # define SIZE_PLAYER	1.5
 # define SIZE_FLOAT		0.15
 # define HEIGHT         1080
@@ -88,9 +88,11 @@ void        draw_squares(t_data *minimap, int color, int x, int y);
 void        draw_player_pos(t_data *img, char **map);
 void		draw_player(t_data *minimap, float x, float y);
 void		draw_sight(t_exec *exec, float x, float y);
-
-
 int         refresh_window(t_exec *exec);
+
+// ========== Rotation ==========
+void    left_rotation(t_exec *exec);
+void    right_rotation(t_exec *exec);
 
 // ========== Utils ===========
 void	    put_pixel(t_data *data, int x, int y, int color);

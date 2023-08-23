@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_print.c                                       :+:      :+:    :+:   */
+/*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:56:47 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/23 09:58:49 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:11:25 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void	draw_sight(t_exec *exec, float x, float y)
 		j = y * SIZE_MAP;
 		while (j < (y * SIZE_MAP) + SIZE_MAP - (SIZE_MAP * 0.95))
 		{
-			put_pixel(&exec->minimap, j + (SIZE_MAP / 7), i - (SIZE_MAP / 4), RED_HEX);
+			put_pixel(&exec->minimap, j + (SIZE_MAP / 7), \
+				i - (SIZE_MAP / 4), RED_HEX);
 			j++;
 		}
 		i++;
