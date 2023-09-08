@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:37:26 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/22 12:21:20 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/08 08:46:09 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	exec_manager(char *map)
 		return (FAILURE);
 	if (minimap(&exec) != SUCCESS)
 		return (FAILURE);
-	mlx_hook(exec.window, 2, 1L << 0, keys, &exec);
+	mlx_hook(exec.window, 2, 1L << 0, moves, &exec);
 	mlx_hook(exec.window, 17, 1L << 17, close_window, &exec);
 	mlx_loop_hook(exec.mlx_ptr, refresh_window, &exec);
 	mlx_loop(exec.mlx_ptr);

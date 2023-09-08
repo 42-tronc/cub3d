@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_minimap.c                                     :+:      :+:    :+:   */
+/*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:56:47 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/23 13:11:25 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/08 12:37:33 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	minimap(t_exec *exec)
 {
 	draw_minimap(exec);
-	draw_player_pos(&exec->minimap, exec->map);
 	mlx_put_image_to_window(exec->mlx_ptr, exec->window, \
 			exec->minimap.img, 0, 0);
 	return (SUCCESS);
@@ -56,26 +55,6 @@ void	draw_squares(t_data *minimap, int color, int x, int y)
 		while (j < (y * SIZE_MAP) + SIZE_MAP - 1)
 		{
 			put_pixel(minimap, j, i, color);
-			j++;
-		}
-		i++;
-	}
-}
-
-void	draw_sight(t_exec *exec, float x, float y)
-{
-	float	i;
-	float	j;
-
-	i = (x * SIZE_MAP);
-	j = (y * SIZE_MAP);
-	while (i < (x * SIZE_MAP) + SIZE_MAP - (SIZE_MAP * 0.60))
-	{
-		j = y * SIZE_MAP;
-		while (j < (y * SIZE_MAP) + SIZE_MAP - (SIZE_MAP * 0.95))
-		{
-			put_pixel(&exec->minimap, j + (SIZE_MAP / 7), \
-				i - (SIZE_MAP / 4), RED_HEX);
 			j++;
 		}
 		i++;

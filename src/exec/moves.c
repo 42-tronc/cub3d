@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.c                                             :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:43:05 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/23 13:17:54 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/08 14:54:33 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	move_a(t_exec *exec);
 static void	move_s(t_exec *exec);
 static void	move_d(t_exec *exec);
 
-int	keys(int key_code, t_exec *exec)
+int	moves(int key_code, t_exec *exec)
 {
 	if (key_code == KEY_ESC)
 		close_window(exec, SUCCESS);
@@ -38,24 +38,22 @@ int	keys(int key_code, t_exec *exec)
 
 static void	move_w(t_exec *exec)
 {
-	exec->player_pos_fl.x -= SIZE_FLOAT;
-	draw_player(&exec->minimap, exec->player_pos_fl.x, exec->player_pos_fl.y);
+	exec->player_pos.x += exec->player_pos.dx / (SIZE_MAP / 5);
+	exec->player_pos.y += exec->player_pos.dy / (SIZE_MAP / 5);
 }
 
 static void	move_a(t_exec *exec)
 {
-	exec->player_pos_fl.y -= SIZE_FLOAT;
-	draw_player(&exec->minimap, exec->player_pos_fl.x, exec->player_pos_fl.y);
+	exec->player_pos.y -= SIZE_FLOAT;
 }
 
 static void	move_s(t_exec *exec)
 {
-	exec->player_pos_fl.x += SIZE_FLOAT;
-	draw_player(&exec->minimap, exec->player_pos_fl.x, exec->player_pos_fl.y);
+	exec->player_pos.x -= exec->player_pos.dx / (SIZE_MAP / 5);
+	exec->player_pos.y -= exec->player_pos.dy / (SIZE_MAP / 5);
 }
 
 static void	move_d(t_exec *exec)
 {
-	exec->player_pos_fl.y += SIZE_FLOAT;
-	draw_player(&exec->minimap, exec->player_pos_fl.x, exec->player_pos_fl.y);
+	exec->player_pos.y += SIZE_FLOAT;
 }

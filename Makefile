@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/08/23 12:50:25 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/09/08 11:29:02 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,11 +106,12 @@ SCR_EXEC := close_window.c \
 			exec_errors.c \
 			exec_manager.c \
 			init_mlx.c \
-			keys.c \
+			moves.c \
 			put_pixel.c \
 			refresh_window.c \
-			draw_minimap.c \
+			minimap.c \
 			draw_player_minimap.c \
+			draw_sight.c\
 			rotation.c \
 
 # -------------- RECIPES --------------

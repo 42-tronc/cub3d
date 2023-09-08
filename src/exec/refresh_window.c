@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:05:16 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/23 13:18:47 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/08 09:08:44 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ int	refresh_window(t_exec *exec)
 	if (!exec->minimap.addr)
 		return (FAILURE);
 	draw_minimap(exec);
-	draw_player(&exec->minimap, exec->player_pos_fl.x, exec->player_pos_fl.y);
-	draw_sight(exec, exec->player_pos_fl.x, exec->player_pos_fl.y);
-	draw_sight(exec, exec->player_pos_fl.dx, exec->player_pos_fl.dy);
+	draw_player(&exec->minimap, exec->player_pos.x, exec->player_pos.y);
+	draw_sight(exec, exec->player_pos.x, exec->player_pos.y);	
 	mlx_put_image_to_window(exec->mlx_ptr, exec->window, \
 			exec->minimap.img, 0, 0);
+	
+	//printf("x: %f, y: %f\n", exec->player_pos.x, exec->player_pos.y);
 	return (SUCCESS);
 }

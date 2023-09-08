@@ -1,54 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_player_minimap.c                             :+:      :+:    :+:   */
+/*   draw_player_minimap.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:58:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/23 12:29:36 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:32:05 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_player_pos(t_data *minimap, char **map)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (map[x])
-	{
-		y = 0;
-		while (map[x][y])
-		{
-			if (ft_strchr("NSWE", map[x][y]))
-				draw_player(minimap, x, y);
-			y++;
-		}
-		x++;
-	}
-}
-
 void	draw_player(t_data *minimap, float x, float y)
 {
-	float	i;
-	float	j;
-	float	cut;
+	float				cut;
+	t_vector_float		pos;
 
-	i = x * SIZE_MAP;
-	j = y * SIZE_MAP;
+	pos.x = x * SIZE_MAP;
+	pos.y = y * SIZE_MAP;
 	cut = SIZE_MAP / SIZE_PLAYER;
-	while ((i + cut) < (x * SIZE_MAP) + SIZE_MAP)
+	while ((pos.x + cut) < (x * SIZE_MAP) + SIZE_MAP)
 	{
-		j = y * SIZE_MAP;
-		while ((j + cut) < (y * SIZE_MAP) + SIZE_MAP)
+		pos.y = y * SIZE_MAP;
+		while ((pos.y + cut) < (y * SIZE_MAP) + SIZE_MAP)
 		{
-			put_pixel(minimap, j, i, MAP_PLAYER);
-			j++;
+			put_pixel(minimap, pos.y, pos.x, MAP_PLAYER);
+			pos.y++;
 		}
-		i++;
+		pos.x++;
 	}
 }

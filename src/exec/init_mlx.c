@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:39:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/08/23 13:12:16 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/08 15:41:06 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ static void	get_player_pos(t_exec *exec, char **map)
 		{
 			if (ft_strchr("NSEW", map[i][j]))
 			{
-				exec->player_pos_fl.x = (float)i;
-				exec->player_pos_fl.y = (float)j;
-				exec->player_pos_fl.dx = (float)i;
-				exec->player_pos_fl.dy = (float)j;
-				exec->player_pos_fl.angle = 1;
+				exec->player_pos.x = (float)i;
+				exec->player_pos.y = (float)j;
+				exec->player_pos.dx = (float)i;
+				exec->player_pos.dy = (float)j;
+				exec->player_pos.angle = PI;
 				return ;
 			}
 			j++;
