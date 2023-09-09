@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:39:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 12:46:37 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 14:00:03 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	init_mlx(t_exec *exec)
 	if (!exec->mlx_ptr)
 	{
 		free_map(exec->map);
-		display_error("Error during Minilib init.\n");
+		display_error("during Minilib init.\n");
 		return (FAILURE);
 	}
 	exec->window = mlx_new_window(exec->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
@@ -28,7 +28,7 @@ int	init_mlx(t_exec *exec)
 	{
 		free_map(exec->map);
 		free_mlx(exec);
-		display_error("Error during window init.\n");
+		display_error("during window init.\n");
 		return (FAILURE);
 	}
 	if (init_minimap(exec) != SUCCESS)
@@ -36,7 +36,7 @@ int	init_mlx(t_exec *exec)
 		free_map(exec->map);
 		free_window(exec);
 		free_mlx(exec);
-		display_error("Error during minimap init.\n");
+		display_error("during minimap init.\n");
 		return (FAILURE);
 	}
 	get_player_pos(exec, exec->map);

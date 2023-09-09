@@ -6,23 +6,23 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:56:47 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 12:43:02 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 13:38:25 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static void	launcher_minimap(t_exec *exec);
 static void	draw_squares(t_data *minimap, int color, int x, int y);
 
-int	minimap(t_exec *exec)
+void	draw_minimap(t_exec *exec)
 {
-	draw_minimap(exec);
+	launcher_minimap(exec);
 	mlx_put_image_to_window(exec->mlx_ptr, exec->window, \
 			exec->minimap.img, 0, 0);
-	return (SUCCESS);
 }
 
-void	draw_minimap(t_exec *exec)
+static void	launcher_minimap(t_exec *exec)
 {
 	int	x;
 	int	y;

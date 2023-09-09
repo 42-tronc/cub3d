@@ -6,13 +6,13 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:58:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 12:17:37 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 13:39:53 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_player(t_data *minimap, float x, float y)
+void	draw_player_minimap(t_data *minimap, float x, float y)
 {
 	float				cut;
 	t_vector_float		pos;

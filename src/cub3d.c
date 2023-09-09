@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/09/09 11:17:15 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 13:53:00 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ int	main(int ac, char **av)
 	char		*map =  "1111111111111\n1000000000111\n10000S0000011\n1000111000011\n1000000000001\n1111111111111";
 	
 	if (exec_manager(map) != EXIT_SUCCESS)
-	{
-		display_error("Error during the execution of the program.\n");
 		return (EXIT_FAILURE);
-	}
-	return (0);
+	return (EXIT_SUCCESS);
 }

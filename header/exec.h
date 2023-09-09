@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 13:01:56 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 13:46:11 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,11 @@ int				exec_manager(char *map);
 int				init_mlx(t_exec *exec);
 int				close_window(t_exec *exec, int status);
 int				moves(int key_code, t_exec *exec);
-int				minimap(t_exec *exec);
 void			get_player_pos(t_exec *exec, char **map);
 
 // ========== Draw ==========
 void			draw_minimap(t_exec *exec);
-void			draw_player(t_data *minimap, float x, float y);
+void			draw_player_minimap(t_data *minimap, float x, float y);
 void			draw_sight(t_exec *exec, float x, float y);
 int				refresh_window(t_exec *exec);
 
