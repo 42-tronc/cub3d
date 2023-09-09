@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/09/08 11:29:02 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/09/09 10:10:18 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,7 @@ SCR_EXEC := close_window.c \
 			moves.c \
 			put_pixel.c \
 			refresh_window.c \
-			minimap.c \
+			draw_minimap.c \
 			draw_player_minimap.c \
 			draw_sight.c\
 			rotation.c \

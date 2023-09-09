@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:28:28 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/08 15:55:23 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 09:31:25 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ static float    center_player(float fl);
 void draw_sight(t_exec *exec, float x, float y) 
 {
     t_vector_float		rot;
+    
+    // printf("d x: %f\n", exec->player_pos.dx);
+    // printf("d y: %f\n", exec->player_pos.dy);
+    //printf("angle y: %f\n", exec->player_pos.angle);
 
     rot.x = (x * SIZE_MAP) + center_player(x);
     rot.y = (y * SIZE_MAP) + center_player(y);

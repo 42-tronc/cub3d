@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/08 15:53:37 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/08 16:13:41 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define PI				3.1415926535
 # define P2				PI / 2
 # define P3				(3 * PI) / 2
-# define DR				0.0174533
+# define RAD			0.0174533
 
 typedef struct	s_data
 {

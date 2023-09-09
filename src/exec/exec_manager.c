@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:37:26 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/08 08:46:09 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 10:34:05 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int	exec_manager(char *map)
 {
-	t_exec	exec;
+	int			i;
+	t_exec		exec;
 
+	i = 0;
 	exec.map = ft_split(map, '\n');
 	if (!exec.map)
 	{

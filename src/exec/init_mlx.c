@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:39:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/08 15:41:06 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 09:27:10 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	init_minimap(t_exec *exec);
 static void	get_player_pos(t_exec *exec, char **map);
+static void	get_player_orientation(t_exec *exec, char orientation);
 
 int	init_mlx(t_exec *exec)
 {
@@ -65,13 +66,36 @@ static void	get_player_pos(t_exec *exec, char **map)
 			{
 				exec->player_pos.x = (float)i;
 				exec->player_pos.y = (float)j;
-				exec->player_pos.dx = (float)i;
-				exec->player_pos.dy = (float)j;
+				get_player_orientation(exec, map[i][j]);
 				exec->player_pos.angle = PI;
 				return ;
 			}
 			j++;
 		}
 		i++;
+	}
+}
+
+static void get_player_orientation(t_exec *exec, char orientation)
+{
+	if (orientation == 'N')
+	{
+		exec->player_pos.dx = -2;
+		exec->player_pos.dy = -0;
+	}
+	else if (orientation == 'S')
+	{
+		exec->player_pos.dx = 2;
+		exec->player_pos.dy = 0;
+	}
+	else if (orientation == 'E')
+	{
+		exec->player_pos.dx = 0;
+		exec->player_pos.dy = 2;
+	}
+	else if (orientation == 'W')
+	{
+		exec->player_pos.dx = 0;
+		exec->player_pos.dy = -2;
 	}
 }
