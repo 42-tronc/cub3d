@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/09/09 10:10:18 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/09/09 11:05:52 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,6 +97,7 @@ SRC_MAIN := cub3d.c
 DIR_UTILS := $(SRC_FOLDER)utils/
 SRC_UTILS := utils_error.c \
 				close_fd.c \
+				free_map.c \
 
 DIR_PARSING := $(SRC_FOLDER)parsing/
 SCR_PARSING := parsing.c
@@ -113,6 +114,7 @@ SCR_EXEC := close_window.c \
 			draw_player_minimap.c \
 			draw_sight.c\
 			rotation.c \
+			get_player_pos.c \
 
 # -------------- RECIPES --------------
 all: rsc

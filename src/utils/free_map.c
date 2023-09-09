@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   free_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/09/09 11:00:05 by lboulatr         ###   ########.fr       */
+/*   Created: 2023/09/09 10:48:16 by lboulatr          #+#    #+#             */
+/*   Updated: 2023/09/09 10:54:29 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	free_map(char **map)
 {
-	(void) ac;
-	(void) av;
+	int			i;
 
-	printf("We're in boys\n");
-
-	char		*map =  "1111111111111\n1000000000111\n10000S0000011\n1000111000011\n1000000000001\n1111111111111";
-	
-	if (exec_manager(map) != EXIT_SUCCESS)
+	i = 0;
+	while (map[i])
 	{
-		display_error("Error during the execution of the program.\n");
-		return (EXIT_FAILURE);
+		free(map[i]);
+		i++;
 	}
-	
-	return (0);
+	free(map);
 }

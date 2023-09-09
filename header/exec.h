@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/08 16:13:41 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 11:06:04 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int         init_mlx(t_exec *exec);
 int         close_window(t_exec *exec, int status);
 int         moves(int key_code, t_exec *exec);
 int         minimap(t_exec *exec);
+void		get_player_pos(t_exec *exec, char **map);
 
 // ========== Draw ==========
 void        draw_minimap(t_exec *exec);
@@ -97,6 +98,7 @@ void    	right_rotation(t_exec *exec);
 
 // ========== Utils ===========
 void	    put_pixel(t_data *data, int x, int y, int color);
+void		free_map(char **map);
 
 // ========== Errors ==========
 void	    display_error(char *str);
