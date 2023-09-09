@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 13:46:11 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 14:37:38 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define KEY_D	        100
 
 # define SIZE_MAP       125
-# define SIZE_PLAYER	1.5
 # define SIZE_FLOAT		0.15
+# define SIZE_CUT		4
 # define HEIGHT         1080
 # define WIDTH          1920
 # define MAP_WALL		0x0f056b
