@@ -6,13 +6,13 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:04:52 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 11:05:19 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 12:17:56 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void get_player_orientation(t_exec *exec, char orientation);
+static void	get_player_orientation(t_exec *exec, char orientation);
 
 void	get_player_pos(t_exec *exec, char **map)
 {
@@ -40,7 +40,7 @@ void	get_player_pos(t_exec *exec, char **map)
 	}
 }
 
-static void get_player_orientation(t_exec *exec, char orientation)
+static void	get_player_orientation(t_exec *exec, char orientation)
 {
 	if (orientation == 'N')
 	{

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:43:05 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 10:20:15 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 12:12:57 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,32 +48,32 @@ static void	move_s(t_exec *exec)
 	exec->player_pos.y -= exec->player_pos.dy / (SIZE_MAP / 15);
 }
 
-static void move_a(t_exec *exec)
+static void	move_a(t_exec *exec)
 {
-    double 		angle;
-    double 		side_angle;
-    double 		move_x;
-    double 		move_y;
+	double		angle;
+	double		side_angle;
+	double		move_x;
+	double		move_y;
 
 	angle = atan2(exec->player_pos.dy, exec->player_pos.dx);
 	side_angle = angle + P2;
 	move_x = SIZE_FLOAT * cos(side_angle);
 	move_y = SIZE_FLOAT * sin(side_angle);
-    exec->player_pos.x += move_x / (SIZE_MAP / 30);
-    exec->player_pos.y += move_y / (SIZE_MAP / 30);
+	exec->player_pos.x += move_x / (SIZE_MAP / 30);
+	exec->player_pos.y += move_y / (SIZE_MAP / 30);
 }
 
-static void move_d(t_exec *exec)
+static void	move_d(t_exec *exec)
 {
-    double 		angle;
-    double 		side_angle;
-    double 		move_x;
-    double 		move_y;
+	double		angle;
+	double		side_angle;
+	double		move_x;
+	double		move_y;
 
 	angle = atan2(exec->player_pos.dy, exec->player_pos.dx);
 	side_angle = angle + P2;
 	move_x = SIZE_FLOAT * cos(side_angle);
 	move_y = SIZE_FLOAT * sin(side_angle);
-    exec->player_pos.x -= move_x / (SIZE_MAP / 30);
-    exec->player_pos.y -= move_y / (SIZE_MAP / 30);
+	exec->player_pos.x -= move_x / (SIZE_MAP / 30);
+	exec->player_pos.y -= move_y / (SIZE_MAP / 30);
 }

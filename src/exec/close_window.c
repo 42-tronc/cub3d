@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:41:53 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 10:48:01 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 11:19:30 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,3 @@ int	close_window(t_exec *exec, int status)
 		exit(EXIT_SUCCESS);
 	exit(EXIT_FAILURE);
 }
-
-
-
