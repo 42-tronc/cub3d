@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 11:06:04 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 13:01:56 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,24 @@
 # define RED_HEX        0xff0000
 # define MALLOC_ERR     "Error during a malloc.\n"
 # define PI				3.1415926535
-# define P2				PI / 2
-# define P3				(3 * PI) / 2
 # define RAD			0.0174533
 
-typedef struct	s_data
+typedef struct s_data
 {
-	void	        	*img;
-	char	        	*addr;
-	int		        	bits_per_pixel;
-	int		        	line_length;
-	int		        	endian;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
 }				t_data;
 
-typedef struct	s_vector_int
+typedef struct s_vector_int
 {
-	int					x;
-	int					y;
+	int				x;
+	int				y;
 }				t_vector_int;
 
-typedef struct	s_vector_float
+typedef struct s_vector_float
 {
 	float				x;
 	float				y;
@@ -68,41 +66,40 @@ typedef struct	s_vector_float
 	float				angle;
 }				t_vector_float;
 
-typedef struct  s_exec
+typedef struct s_exec
 {
-    void            	*mlx_ptr;
-    void            	*window;
-    char            	**map;
-    t_data          	minimap;
-	t_vector_float		player_pos;
-}               t_exec;
+	void			*mlx_ptr;
+	void			*window;
+	char			**map;
+	t_data			minimap;
+	t_vector_float	player_pos;
+}				t_exec;
 
 // ========== Exec ==========
-int         exec_manager(char *map);
-int         init_mlx(t_exec *exec);
-int         close_window(t_exec *exec, int status);
-int         moves(int key_code, t_exec *exec);
-int         minimap(t_exec *exec);
-void		get_player_pos(t_exec *exec, char **map);
+int				exec_manager(char *map);
+int				init_mlx(t_exec *exec);
+int				close_window(t_exec *exec, int status);
+int				moves(int key_code, t_exec *exec);
+int				minimap(t_exec *exec);
+void			get_player_pos(t_exec *exec, char **map);
 
 // ========== Draw ==========
-void        draw_minimap(t_exec *exec);
-void        draw_squares(t_data *minimap, int color, int x, int y);
-void		draw_player(t_data *minimap, float x, float y);
-void		draw_sight(t_exec *exec, float x, float y);
-int         refresh_window(t_exec *exec);
+void			draw_minimap(t_exec *exec);
+void			draw_player(t_data *minimap, float x, float y);
+void			draw_sight(t_exec *exec, float x, float y);
+int				refresh_window(t_exec *exec);
 
 // ========== Rotation ==========
-void    	left_rotation(t_exec *exec);
-void    	right_rotation(t_exec *exec);
+void			left_rotation(t_exec *exec);
+void			right_rotation(t_exec *exec);
 
 // ========== Utils ===========
-void	    put_pixel(t_data *data, int x, int y, int color);
-void		free_map(char **map);
+void			put_pixel(t_data *data, int x, int y, int color);
+void			free_map(char **map);
 
 // ========== Errors ==========
-void	    display_error(char *str);
-void	    free_mlx(t_exec *exec);
-void	    free_window(t_exec *exec);
+void			display_error(char *str);
+void			free_mlx(t_exec *exec);
+void			free_window(t_exec *exec);
 
 #endif

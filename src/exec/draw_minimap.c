@@ -6,11 +6,13 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:56:47 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 11:14:45 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 12:43:02 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	draw_squares(t_data *minimap, int color, int x, int y);
 
 int	minimap(t_exec *exec)
 {
@@ -42,7 +44,7 @@ void	draw_minimap(t_exec *exec)
 	}
 }
 
-void	draw_squares(t_data *minimap, int color, int x, int y)
+static void	draw_squares(t_data *minimap, int color, int x, int y)
 {
 	int	i;
 	int	j;

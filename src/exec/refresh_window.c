@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:05:16 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 11:20:16 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 12:49:38 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	refresh_window(t_exec *exec)
 		return (FAILURE);
 	exec->minimap.addr = mlx_get_data_addr(exec->minimap.img, \
 			&exec->minimap.bits_per_pixel, &exec->minimap.line_length, \
-			&exec->minimap.endian);
+				&exec->minimap.endian);
 	if (!exec->minimap.addr)
 		return (FAILURE);
 	draw_minimap(exec);

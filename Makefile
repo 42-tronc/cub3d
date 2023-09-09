@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/09/09 11:05:52 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/09/09 12:38:11 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,8 +104,9 @@ SCR_PARSING := parsing.c
 
 DIR_EXEC := $(SRC_FOLDER)exec/
 SCR_EXEC := close_window.c \
-			exec_errors.c \
+			exec_error.c \
 			exec_manager.c \
+			exec_free.c \
 			init_mlx.c \
 			moves.c \
 			put_pixel.c \

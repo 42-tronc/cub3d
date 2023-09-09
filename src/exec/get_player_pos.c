@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:04:52 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 12:17:56 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/09/09 12:44:45 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	get_player_pos(t_exec *exec, char **map)
 			{
 				exec->player_pos.x = (float)i;
 				exec->player_pos.y = (float)j;
-				get_player_orientation(exec, map[i][j]);
 				exec->player_pos.angle = PI;
+				get_player_orientation(exec, map[i][j]);
 				return ;
 			}
 			j++;
