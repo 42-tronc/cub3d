@@ -40,7 +40,7 @@ static int	check_extension(char *path, char *ext)
 		return (EXIT_FAILURE);
 	}
 	else // REMOVE
-		printf("\e[92;1mExtension OK: %s\e[0m\n", file); // REMOVE
+		printf("\e[92;1mExtension: \e[0m%s\n", file); // REMOVE
 	return (EXIT_SUCCESS);
 }
 
