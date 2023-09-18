@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/09/18 12:38:25 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/18 12:51:23 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,13 @@ typedef struct s_data
 
 typedef enum e_error_code {
 	E_MALLOC,
+	E_EXT,
 }	t_error_code;
 
 //	===== @functions =====
+// parsing.c
+int	map_parsing(t_data *data, char *map);
+
 // utils_error.c
 void	print_error(int code, char *src);
 
