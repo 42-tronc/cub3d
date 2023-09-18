@@ -14,9 +14,11 @@
 
 int	main(int ac, char **av)
 {
-	(void) ac;
-	(void) av;
 
-	printf("We're in boys\n");
+	if (ac > 2 || ac < 2)
+	{
+		printf("We need one map\n");
+		return (1);
+	}
 	return (0);
 }
