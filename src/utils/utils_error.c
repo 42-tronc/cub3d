@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 21:31:48 by croy              #+#    #+#             */
-/*   Updated: 2023/09/18 12:51:01 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/18 13:36:49 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,8 @@ void	print_error(int code, char *src)
 
 	error[E_MALLOC] = "malloc failed to allocate a memory space";
 	error[E_EXT] = "file doesn't have the right extension";
-	printf(RED BOLD"Error: %s%s in %s%s\n", NO_BOLD, error[code], src, RESET);
+	if (src && ft_strlen(src))
+		printf(RED BOLD"Error: %s%s in %s%s\n", NO_BOLD, error[code], src, RESET);
+	else
+		printf(RED BOLD"Error: %s%s%s\n", NO_BOLD, error[code], RESET);
 }
