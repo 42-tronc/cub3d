@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/08/19 21:37:24 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/18 12:38:25 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@
 # define RESET		"\e[0m"
 # define BOLD		"\e[1m"
 # define NO_BOLD	"\e[22m"
+
+typedef struct s_data
+{
+
+}	t_data;
 
 typedef enum e_error_code {
 	E_MALLOC,
