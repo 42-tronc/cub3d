@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/18 12:59:30 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/18 13:41:39 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,22 @@ static int	check_extension(char *path, char *ext)
 	return (EXIT_SUCCESS);
 }
 
+static int	check_file(char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		perror(RED "Error" RESET);
+		return (EXIT_FAILURE);
+	}
+	else // REMOVE
+		printf("\e[92;1mFile: \e[0m%s\n", path); // REMOVE
+	close(fd);
+	return (EXIT_SUCCESS);
+}
+
 /**
  * @brief Parse and check the map file
  *
@@ -56,6 +72,8 @@ int	map_parsing(t_data *data, char *map)
 	(void) data;
 	// printf("map: %s\n", map);
 	if (check_extension(map, ".cub") == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (check_file(map))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
