@@ -6,11 +6,12 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/18 13:41:39 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/18 14:24:51 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#pragma GCC diagnostic ignored "-Wunused-function"
 
 /**
  * @brief Check if the file has the right extension
@@ -44,6 +45,22 @@ static int	check_extension(char *path, char *ext)
 	return (EXIT_SUCCESS);
 }
 
+static char	*read_map(int fd)
+{
+	int		char_read;
+	char	buffer[BUFFER_SIZE];
+	char	*file;
+
+	char_read = 1;
+	file = NULL;
+	while (char_read)
+	{
+		char_read = read(fd, buffer, BUFFER_SIZE);
+
+	}
+	return (file);
+}
+
 static int	check_file(char *path)
 {
 	int	fd;
@@ -55,7 +72,11 @@ static int	check_file(char *path)
 		return (EXIT_FAILURE);
 	}
 	else // REMOVE
+	{
 		printf("\e[92;1mFile: \e[0m%s\n", path); // REMOVE
+		// printf("\e[92;1mFile content:\e[0m\n%s\n", read_map(fd)); // REMOVE
+		read_map(fd);
+	}
 	close(fd);
 	return (EXIT_SUCCESS);
 }
@@ -73,7 +94,7 @@ int	map_parsing(t_data *data, char *map)
 	// printf("map: %s\n", map);
 	if (check_extension(map, ".cub") == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (check_file(map))
+	if (check_file(map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
