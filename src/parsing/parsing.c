@@ -11,7 +11,9 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#pragma GCC diagnostic ignored "-Wunused-function"
+// #pragma GCC diagnostic ignored "-Wunused-function"
+// #pragma GCC diagnostic ignored "-Wunused-variable"
+// #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 
 /**
  * @brief Check if the file has the right extension
@@ -45,7 +47,7 @@ static int	check_extension(char *path, char *ext)
 	return (EXIT_SUCCESS);
 }
 
-static char	*read_map(int fd)
+static char	*read_file(int fd)
 {
 	int		char_read;
 	char	buffer[BUFFER_SIZE];
@@ -63,7 +65,7 @@ static char	*read_map(int fd)
 		else
 			file = ft_strjoin(file, buffer);
 		if (!file && char_read)
-			return (print_error(E_MALLOC, "read_map"), NULL);
+			return (print_error(E_MALLOC, "read_file"), NULL);
 	}
 	return (file);
 }
@@ -81,7 +83,7 @@ static int	check_file(t_data *data, char *path)
 	else // REMOVE
 	{
 		printf("\e[92;1mFile: \e[0m%s\n", path); // REMOVE
-		data->file = read_map(fd);
+		data->file = read_file(fd);
 		if (!data->file)
 			return (EXIT_FAILURE);
 		else // REMOVE
