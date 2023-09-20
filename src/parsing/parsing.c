@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/18 14:24:51 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/20 14:27:13 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,14 @@ static char	*read_map(int fd)
 	while (char_read)
 	{
 		char_read = read(fd, buffer, BUFFER_SIZE);
-
+		// maybe protect if char_read < 0
+		buffer[char_read] = '\0';
+		if (!file)
+			file = ft_strdup(buffer);
+		else
+			file = ft_strjoin(file, buffer);
+		if (!file && char_read)
+			return (NULL);
 	}
 	return (file);
 }
