@@ -6,7 +6,7 @@
 #    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/08/19 21:40:59 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/09/20 11:28:12 by croy             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -125,7 +125,9 @@ $(LIBFT_NAME):
 $(MLX_NAME) :
 	@$(MAKE) -sC $(MLX_DIR)
 
-rsc: $(LIBFT_NAME) $(MLX_NAME)
+rsc:
+	@$(MAKE) -sC $(LIBFT_DIR)
+	@$(MAKE) -sC $(MLX_DIR)
 
 $(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
