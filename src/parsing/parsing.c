@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/20 14:27:13 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/20 14:31:31 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ static char	*read_map(int fd)
 		else
 			file = ft_strjoin(file, buffer);
 		if (!file && char_read)
-			return (NULL);
+			return (print_error(E_MALLOC, "read_map"), NULL);
 	}
 	return (file);
 }
 
-static int	check_file(char *path)
+static int	check_file(t_data *data, char *path)
 {
 	int	fd;
 
@@ -81,8 +81,11 @@ static int	check_file(char *path)
 	else // REMOVE
 	{
 		printf("\e[92;1mFile: \e[0m%s\n", path); // REMOVE
-		// printf("\e[92;1mFile content:\e[0m\n%s\n", read_map(fd)); // REMOVE
-		read_map(fd);
+		data->file = read_map(fd);
+		if (!data->file)
+			return (EXIT_FAILURE);
+		else // REMOVE
+			printf("\e[92;1mFile size: \e[0m%ld\n", ft_strlen(data->file)); // REMOVE
 	}
 	close(fd);
 	return (EXIT_SUCCESS);
@@ -101,7 +104,7 @@ int	map_parsing(t_data *data, char *map)
 	// printf("map: %s\n", map);
 	if (check_extension(map, ".cub") == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (check_file(map) == EXIT_FAILURE)
+	if (check_file(data, map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
