@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maplepy <maplepy@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/09/21 15:06:40 by maplepy          ###   ########lyon.fr   */
+/*   Updated: 2023/09/21 16:16:10 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	map_parsing(t_data *data, char *map);
 void	print_error(int code, char *src);
 
 // utils_free.c
+void	free_tab(char **tab);
+void	free_if_alloc(char *string);
 void	free_data(t_data *data);
 
 #endif
