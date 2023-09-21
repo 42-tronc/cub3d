@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/09/21 12:29:26 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/21 12:48:07 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,8 @@ int	map_parsing(t_data *data, char *map);
 
 // utils_error.c
 void	print_error(int code, char *src);
+
+// utils_free.c
+void	free_data(t_data *data);
 
 #endif
