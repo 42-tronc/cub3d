@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/09/18 14:08:45 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/21 12:29:26 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_data
 
 typedef enum e_error_code {
 	E_MALLOC,
+	E_MISSING,
 	E_EXT,
 }	t_error_code;
 
