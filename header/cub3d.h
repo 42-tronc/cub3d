@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/09/21 16:16:10 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/21 19:18:37 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,30 @@
 # define BOLD		"\e[1m"
 # define NO_BOLD	"\e[22m"
 
+typedef struct s_texture
+{
+	int		fd;
+	char	*path;
+}	t_texture;
+
 typedef struct s_data
 {
-	char	*file;
-	char	**split_file;
+	char		*file;
+	char		**split_file;
+	t_texture	north;
+	t_texture	south;
+	t_texture	west;
+	t_texture	east;
+	unsigned	floor;
+	unsigned	ceiling;
 }	t_data;
 
 typedef enum e_error_code {
 	E_MALLOC,
 	E_MISSING,
 	E_EXT,
+	E_PROPERTY,
+	E_DUP_PROP,
 }	t_error_code;
 
 //	===== @functions =====

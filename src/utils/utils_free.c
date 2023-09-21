@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:45:07 by croy              #+#    #+#             */
-/*   Updated: 2023/09/21 15:30:10 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/21 19:56:54 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,19 @@ void	free_if_alloc(char *string)
 	}
 }
 
+void	close_fd(int fd)
+{
+	if (fd > 0)
+		close(fd);
+}
+
 void	free_data(t_data *data)
 {
 	free_if_alloc(data->file);
 	free_tab(data->split_file);
+	close_fd(data->north.fd);
+	close_fd(data->south.fd);
+	close_fd(data->east.fd);
+	close_fd(data->west.fd);
 	free(data);
 }
