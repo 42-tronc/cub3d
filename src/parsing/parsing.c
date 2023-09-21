@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/21 12:47:16 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/21 15:29:17 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,18 @@ static int	check_file(t_data *data, char *path)
 	return (EXIT_SUCCESS);
 }
 
+static int	cleanup_file(t_data *data)
+{
+	data->split_file = ft_split(data->file, '\n');
+	if (!data->split_file)
+		return (print_error(E_MALLOC, "cleanup_file"), EXIT_FAILURE);
+	printf("\e[92;1mFile split:\n\e[0m"); // REMOVE
+	for (int i = 0; data->split_file[i]; i++) // REMOVE
+		printf("%s\n", data->split_file[i]); // REMOVE
+	printf("--------------------\n");
+	return (EXIT_SUCCESS);
+}
+
 /**
  * @brief Parse and check the map file
  *
@@ -107,6 +119,8 @@ int	map_parsing(t_data *data, char *map)
 	if (check_extension(map, ".cub") == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (check_file(data, map) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (cleanup_file(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
