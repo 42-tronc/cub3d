@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:45:07 by croy              #+#    #+#             */
-/*   Updated: 2023/09/21 19:56:54 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/22 14:46:07 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,13 @@ void	free_data(t_data *data)
 {
 	free_if_alloc(data->file);
 	free_tab(data->split_file);
+	free_if_alloc(data->north.path);
 	close_fd(data->north.fd);
+	free_if_alloc(data->south.path);
 	close_fd(data->south.fd);
+	free_if_alloc(data->west.path);
 	close_fd(data->east.fd);
+	free_if_alloc(data->east.path);
 	close_fd(data->west.fd);
 	free(data);
 }
