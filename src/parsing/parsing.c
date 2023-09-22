@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/22 17:12:57 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/22 17:18:04 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,23 @@ static int	get_map_properties(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+static void	get_map_size(t_data *data)
+{
+	size_t	i;
+	size_t	map_width;
+
+	i = 6;
+	map_width = 0;
+	data->map->height = ft_arrlen(data->split_file + 6);
+	while (data->split_file[i])
+	{
+		printf("Checking line: `%s`\n", data->split_file[i]); // REMOVE
+		if (ft_strlen(data->split_file[i]) > data->map->width)
+			data->map->width = ft_strlen(data->split_file[i]);
+		i++;
+	}
+}
+
 int	get_map(t_data *data)
 {
 	data->map = ft_calloc(1, sizeof(t_map));
@@ -238,6 +255,15 @@ int	get_map(t_data *data)
 	if (!data->split_file[6])
 		return (print_error(E_MAP_MISS, "get_map"), EXIT_FAILURE);
 
+	get_map_size(data);
+
+	// printf("\e[92;1mMap:\e[0m\n"); // REMOVE
+	// for (int i = 0; data->map->array[i]; i++) // REMOVE
+	// 	printf("%s\n", data->map->array[i]); // REMOVE
+	printf("\n\e[92;1mMap size:\e[0m\n"); // REMOVE
+	printf("\e[93;1mheight: \e[22m%ld\e[0m\n", data->map->height); // REMOVE
+	printf("\e[93;1mwidth: \e[22m%ld\e[0m\n", data->map->width); // REMOVE
+	// free_tab(data->map->array); // REMOVE
 	free(data->map); // REMOVE
 	return (EXIT_SUCCESS);
 }
