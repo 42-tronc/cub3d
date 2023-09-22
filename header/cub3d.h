@@ -39,14 +39,14 @@ typedef struct s_texture
 
 typedef struct s_data
 {
-	char		*file;
-	char		**split_file;
-	t_texture	north;
-	t_texture	south;
-	t_texture	west;
-	t_texture	east;
-	unsigned	floor;
-	unsigned	ceiling;
+	char			*file;
+	char			**split_file;
+	t_texture		north;
+	t_texture		south;
+	t_texture		west;
+	t_texture		east;
+	unsigned int	floor;
+	unsigned int	ceiling;
 }	t_data;
 
 typedef enum e_error_code {
