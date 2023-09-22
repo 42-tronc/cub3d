@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/22 15:06:18 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/22 15:09:09 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,8 @@ static int	get_map_properties(t_data *data)
 	while (data->split_file && i < 6)
 	{
 		lines = ft_split(data->split_file[i], ' ');
+		if (!lines)
+			return (print_error(E_MALLOC, "get_map_properties"), EXIT_FAILURE);
 		// printf("\e[93;1m`%s`\t`%s`\e[0m\n", lines[0], lines[1]); // REMOVE
 		if (ft_arrlen(lines) != 2 || ft_isdigit(lines[0][0]))
 			return (print_error(E_PROP_FMT, lines[0]), free_tab(lines), EXIT_FAILURE);
