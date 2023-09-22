@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/09/21 19:18:37 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/22 13:32:28 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ typedef enum e_error_code {
 	E_MALLOC,
 	E_MISSING,
 	E_EXT,
-	E_PROPERTY,
-	E_DUP_PROP,
+	E_PROP_FMT,
+	E_PROP_DUP,
+	E_PROP_VAR,
 }	t_error_code;
 
 //	===== @functions =====

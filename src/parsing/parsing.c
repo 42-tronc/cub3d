@@ -6,14 +6,14 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/22 13:18:15 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/22 13:53:06 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-// #pragma GCC diagnostic ignored "-Wunused-function"
-// #pragma GCC diagnostic ignored "-Wunused-variable"
-// #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
+#pragma GCC diagnostic ignored "-Wunused-function"
+#pragma GCC diagnostic ignored "-Wunused-variable"
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 
 /**
  * @brief Check if the file has the right extension
@@ -108,32 +108,41 @@ static int	cleanup_file(t_data *data)
 static int	set_texture(t_texture *texture, char *path)
 {
 	if (texture->fd > 0)
-		return (print_error(E_DUP_PROP, path), EXIT_FAILURE);
+		return (print_error(E_PROP_DUP, path), EXIT_FAILURE);
 	texture->path = path;
 	texture->fd = open(path, O_RDONLY);
 	if (texture->fd == -1)
 		return (perror(RED "Error" RESET), EXIT_FAILURE);
-	printf("\e[92;1mTexture: \e[0m%s\n", path); // REMOVE
+	// printf("\e[92;1mTexture: \e[0m%s\n", texture->path); // REMOVE
+	// printf("\e[92;1mTexture fd: \e[0m%d\n", texture->fd); // REMOVE
 	return (EXIT_SUCCESS);
 }
 
 static	int	get_texture(t_data *data, char **lines)
 {
-	if (!ft_strncmp(lines[0], "NO", 3))
-		return (set_texture(&data->north, lines[1]));
-	else if (!ft_strncmp(lines[0], "SO", 3))
-		return (set_texture(&data->south, lines[1]));
-	else if (!ft_strncmp(lines[0], "WE", 3))
-		return (set_texture(&data->west, lines[1]));
-	else if (!ft_strncmp(lines[0], "EA", 3))
-		return (set_texture(&data->east, lines[1]));
-	else if (!ft_strncmp(lines[0], "F", 2))
-		return (EXIT_SUCCESS);
-	else if (!ft_strncmp(lines[0], "C", 2))
-		return (EXIT_SUCCESS);
+	int	exit_code;
+
+	exit_code = EXIT_SUCCESS;
+	if (!ft_strcmp(lines[0], "NO"))
+		exit_code = set_texture(&data->north, lines[1]);
+	else if (!ft_strcmp(lines[0], "SO"))
+		exit_code = set_texture(&data->south, lines[1]);
+	else if (!ft_strcmp(lines[0], "WE"))
+		exit_code = set_texture(&data->west, lines[1]);
+	else if (!ft_strcmp(lines[0], "EA"))
+		exit_code = set_texture(&data->east, lines[1]);
+	else if (!ft_strcmp(lines[0], "F"))
+		// exit_code = set_color(&data->floor, lines[1]); // IMPLEMENT
+		exit_code = EXIT_SUCCESS; // REMOVE
+	else if (!ft_strcmp(lines[0], "C"))
+		// exit_code = set_color(&data->ceiling, lines[1]); // IMPLEMENT
+		exit_code = EXIT_SUCCESS; // REMOVE
 	else
-		return (print_error(E_PROPERTY, "get_texture"), EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	{
+		exit_code = EXIT_FAILURE;
+		print_error(E_PROP_VAR, lines[0]);
+	}
+	return (exit_code);
 }
 
 static void	init_texture(t_data *data)
@@ -158,14 +167,19 @@ static int	get_map_properties(t_data *data)
 	while (data->split_file && i < 6)
 	{
 		lines = ft_split(data->split_file[i], ' ');
-		printf("\e[93;1m`%s`\t`%s`\e[0m\n", lines[0], lines[1]); // REMOVE
+		// printf("\e[93;1m`%s`\t`%s`\e[0m\n", lines[0], lines[1]); // REMOVE
 		if (ft_arrlen(lines) != 2 || ft_isdigit(lines[0][0]))
-			return (print_error(E_PROPERTY, lines[0]), free_tab(lines), EXIT_FAILURE);
+			return (print_error(E_PROP_FMT, lines[0]), free_tab(lines), EXIT_FAILURE);
 		if (get_texture(data, lines) == EXIT_FAILURE)
 			return (free_tab(lines), EXIT_FAILURE);
 		free_tab(lines);
 		i++;
 	}
+	printf("\e[92;1mTextures:\e[0m\n"); // REMOVE
+	printf("north: %s\n", data->north.path); // REMOVE
+	printf("south: %s\n", data->south.path); // REMOVE
+	printf("west: %s\n", data->west.path); // REMOVE
+	printf("east: %s\n", data->east.path); // REMOVE
 	return (EXIT_SUCCESS);
 }
 
