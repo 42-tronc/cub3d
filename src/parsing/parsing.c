@@ -118,6 +118,47 @@ static int	set_texture(t_texture *texture, char *path)
 	return (EXIT_SUCCESS);
 }
 
+static int ft_isonlydigit(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int	set_color(unsigned *color, char *input)
+{
+	int		i;
+	int		rgb[3];
+	char	**colors;
+
+	i = 0;
+	colors = ft_split(input, ',');
+	if (!colors)
+		return (print_error(E_MALLOC, "get_color"), EXIT_FAILURE);
+	if (ft_arrlen(colors) != 3)
+		return (print_error(E_PROP_FMT, input), free_tab(colors), EXIT_FAILURE);
+	while (colors[i])
+	{
+		if (!ft_isonlydigit(colors[i]))
+			return (print_error(E_PROP_FMT, input), free_tab(colors), EXIT_FAILURE);
+		rgb[i] = ft_atoi(colors[i]);
+		if (rgb[i] < 0 || rgb[i] > 255)
+			return (print_error(E_PROP_FMT, input), free_tab(colors), EXIT_FAILURE);
+		i++;
+	}
+	free_tab(colors);
+	printf("\e[92;1mRGB: \e[0m%d %d %d\n", rgb[0], rgb[1], rgb[2]); // REMOVE
+	*color = rgb[0] << 16 | rgb[1] << 8 | rgb[2]; // THIS IS WRONG
+	return (EXIT_SUCCESS);
+}
+
 static	int	get_texture(t_data *data, char **lines)
 {
 	int	exit_code;
@@ -132,11 +173,11 @@ static	int	get_texture(t_data *data, char **lines)
 	else if (!ft_strcmp(lines[0], "EA"))
 		exit_code = set_texture(&data->east, lines[1]);
 	else if (!ft_strcmp(lines[0], "F"))
-		// exit_code = set_color(&data->floor, lines[1]); // IMPLEMENT
-		exit_code = EXIT_SUCCESS; // REMOVE
+		exit_code = set_color(&data->floor, lines[1]); // IMPLEMENT
+		// exit_code = EXIT_SUCCESS; // REMOVE
 	else if (!ft_strcmp(lines[0], "C"))
-		// exit_code = set_color(&data->ceiling, lines[1]); // IMPLEMENT
-		exit_code = EXIT_SUCCESS; // REMOVE
+		exit_code = set_color(&data->ceiling, lines[1]); // IMPLEMENT
+		// exit_code = EXIT_SUCCESS; // REMOVE
 	else
 	{
 		exit_code = EXIT_FAILURE;
