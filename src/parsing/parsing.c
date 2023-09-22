@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/21 19:58:27 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/22 13:18:15 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ static int	cleanup_file(t_data *data)
 
 static int	set_texture(t_texture *texture, char *path)
 {
+	if (texture->fd > 0)
+		return (print_error(E_DUP_PROP, path), EXIT_FAILURE);
 	texture->path = path;
 	texture->fd = open(path, O_RDONLY);
 	if (texture->fd == -1)
