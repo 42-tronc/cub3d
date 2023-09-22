@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/22 17:34:21 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/22 17:39:55 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,9 @@ static void	get_map_size(t_data *data)
 
 static int	get_map(t_data *data)
 {
+	size_t	i;
+
+	i = 0;
 	if (!data->split_file[6])
 		return (print_error(E_MAP_MISS, NULL), EXIT_FAILURE);
 	data->map = ft_calloc(1, sizeof(t_map));
@@ -257,11 +260,23 @@ static int	get_map(t_data *data)
 	get_map_size(data);
 	if (data->map->width < 3 || data->map->height < 3)
 		return (print_error(E_MAP_FMT, NULL), EXIT_FAILURE);
+	data->map->array = ft_calloc(data->map->height + 1, sizeof(char *));
+	if (!data->map->array)
+		return (print_error(E_MALLOC, "get_map 2"), EXIT_FAILURE);
+	while (i < data->map->height)
+	{
+		data->map->array[i] = ft_strdup(data->split_file[i + 6]);
+		if (!data->map->array[i])
+			return (print_error(E_MALLOC, "get_map 3"), EXIT_FAILURE);
+		i++;
+	}
+
+	printf("\n\e[92;1mMap:\e[0m\n"); // REMOVE
+	for (int i = 0; data->map->array[i]; i++) // REMOVE
+		printf("%s\n", data->map->array[i]); // REMOVE
 	printf("\n\e[92;1mMap size:\e[0m\n"); // REMOVE
 	printf("\e[93;1mheight: \e[22m%ld\e[0m\n", data->map->height); // REMOVE
 	printf("\e[93;1mwidth: \e[22m%ld\e[0m\n", data->map->width); // REMOVE
-	// free_tab(data->map->array); // REMOVE
-	free(data->map); // REMOVE
 	return (EXIT_SUCCESS);
 }
 
@@ -286,5 +301,7 @@ int	map_parsing(t_data *data, char *map)
 		return (EXIT_FAILURE);
 	if (get_map(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
+	// if (check_map(data) == EXIT_FAILURE)
+	// 	return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
