@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/22 15:09:09 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/22 15:10:05 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,10 +178,10 @@ static int	get_map_properties(t_data *data)
 		i++;
 	}
 	printf("\e[92;1mTextures:\e[0m\n"); // REMOVE
-	printf("north: %s\n", data->north.path); // REMOVE
-	printf("south: %s\n", data->south.path); // REMOVE
-	printf("west: %s\n", data->west.path); // REMOVE
-	printf("east: %s\n", data->east.path); // REMOVE
+	printf("\e[93;1mnorth: \e[22m%s\e[0m\n", data->north.path); // REMOVE
+	printf("\e[93;1msouth: \e[22m%s\e[0m\n", data->south.path); // REMOVE
+	printf("\e[93;1mwest: \e[22m%s\e[0m\n", data->west.path); // REMOVE
+	printf("\e[93;1meast: \e[22m%s\e[0m\n", data->east.path); // REMOVE
 	return (EXIT_SUCCESS);
 }
 
