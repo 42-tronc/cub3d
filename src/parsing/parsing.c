@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/22 17:18:04 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/22 17:34:21 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,19 +247,16 @@ static void	get_map_size(t_data *data)
 	}
 }
 
-int	get_map(t_data *data)
+static int	get_map(t_data *data)
 {
+	if (!data->split_file[6])
+		return (print_error(E_MAP_MISS, NULL), EXIT_FAILURE);
 	data->map = ft_calloc(1, sizeof(t_map));
 	if (!data->map)
-		return (print_error(E_MALLOC, "get_map"), EXIT_FAILURE);
-	if (!data->split_file[6])
-		return (print_error(E_MAP_MISS, "get_map"), EXIT_FAILURE);
-
+		return (print_error(E_MALLOC, "get_map 1"), EXIT_FAILURE);
 	get_map_size(data);
-
-	// printf("\e[92;1mMap:\e[0m\n"); // REMOVE
-	// for (int i = 0; data->map->array[i]; i++) // REMOVE
-	// 	printf("%s\n", data->map->array[i]); // REMOVE
+	if (data->map->width < 3 || data->map->height < 3)
+		return (print_error(E_MAP_FMT, NULL), EXIT_FAILURE);
 	printf("\n\e[92;1mMap size:\e[0m\n"); // REMOVE
 	printf("\e[93;1mheight: \e[22m%ld\e[0m\n", data->map->height); // REMOVE
 	printf("\e[93;1mwidth: \e[22m%ld\e[0m\n", data->map->width); // REMOVE
