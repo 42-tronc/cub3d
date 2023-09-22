@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/22 15:59:14 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/22 17:06:49 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,18 @@ static int	get_map_properties(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+int	get_map(t_data *data)
+{
+	data->map = ft_calloc(1, sizeof(t_map));
+	if (!data->map)
+		return (print_error(E_MALLOC, "get_map"), EXIT_FAILURE);
+	if (!data->split_file[6])
+		return (print_error(E_MAP_MISS, "get_map"), EXIT_FAILURE);
+
+	free(data->map); // REMOVE
+	return (EXIT_SUCCESS);
+}
+
 /**
  * @brief Parse and check the map file
  *
@@ -248,6 +260,8 @@ int	map_parsing(t_data *data, char *map)
 	if (cleanup_file(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (get_map_properties(data) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (get_map(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
