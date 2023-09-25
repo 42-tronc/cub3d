@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/09/25 14:43:55 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/25 15:46:06 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ typedef struct s_map
 	size_t	height;
 }	t_map;
 
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	rotation;
+}	t_player;
+
 typedef struct s_data
 {
 	char			*file;
@@ -55,6 +62,7 @@ typedef struct s_data
 	unsigned int	floor;
 	unsigned int	ceiling;
 	t_map			*map;
+	t_player		*player;
 }	t_data;
 
 typedef enum e_error_code {
@@ -69,6 +77,11 @@ typedef enum e_error_code {
 	E_MAP_PLYR,
 	E_MAP_WALLS,
 }	t_error_code;
+
+# define NORTH	0
+# define EAST	90
+# define SOUTH	180
+# define WEST	270
 
 //	===== @functions =====
 // parsing.c

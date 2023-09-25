@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/25 15:46:30 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/25 15:48:02 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -437,6 +437,52 @@ static int	check_map_walls(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+static void translate_pos_to_deg(t_data *data, char pos)
+{
+	if (pos == 'N')
+		data->player->rotation = NORTH;
+	else if (pos == 'E')
+		data->player->rotation = EAST;
+	else if (pos == 'S')
+		data->player->rotation = SOUTH;
+	else if (pos == 'W')
+		data->player->rotation = WEST;
+}
+
+static int get_player_pos(t_data *data)
+{
+	size_t	i;
+	size_t	j;
+	char	c;
+
+	i = 0;
+	data->player = ft_calloc(1, sizeof(t_player));
+	if (!data->player)
+		return (print_error(E_MALLOC, "get_player_pos"), EXIT_FAILURE);
+	while (data->map->array[i])
+	{
+		j = 0;
+		while (data->map->array[i][j])
+		{
+			c = data->map->array[i][j];
+			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+			{
+				translate_pos_to_deg(data, c);
+				data->player->x = j;
+				data->player->y = i;
+				printf("\n\e[92;1mPlayer position:\e[0m\n"); // REMOVE
+				printf("\e[93;1mx: \e[22m%.2f\e[0m\n", data->player->x); // REMOVE
+				printf("\e[93;1my: \e[22m%.2f\e[0m\n", data->player->y); // REMOVE
+				printf("\e[93;1mrotation: \e[22m%.2f\e[0m\n", data->player->rotation); // REMOVE
+				return (EXIT_SUCCESS);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (EXIT_FAILURE);
+}
+
 /**
  * @brief Parse and check the map file
  *
@@ -461,6 +507,8 @@ int	map_parsing(t_data *data, char *map)
 	if (check_map(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (check_map_walls(data) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (get_player_pos(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	printf("\n\t\e[92;1m✅ Passed\e[0m\n"); // REMOVE
 	return (EXIT_SUCCESS);
