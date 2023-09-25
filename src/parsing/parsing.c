@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/22 17:39:55 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/25 12:53:00 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,6 +280,34 @@ static int	get_map(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+static int	check_map(t_data *data)
+{
+	int		player;
+	size_t	i;
+	size_t	j;
+	char	c;
+
+	i = 0;
+	player = 0;
+	while (data->map->array[i])
+	{
+		j = 0;
+		while (data->map->array[i][j])
+		{
+			c = data->map->array[i][j];
+			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+				player++;
+			else if (c != ' ' && c != '0' && c != '1')
+				return (print_error(E_MAP_FMT, data->map->array[i]), EXIT_FAILURE);
+			j++;
+		}
+		i++;
+	}
+	if (player != 1)
+		return (print_error(E_MAP_PLYR, NULL), EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
 /**
  * @brief Parse and check the map file
  *
@@ -301,7 +329,8 @@ int	map_parsing(t_data *data, char *map)
 		return (EXIT_FAILURE);
 	if (get_map(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	// if (check_map(data) == EXIT_FAILURE)
-	// 	return (EXIT_FAILURE);
+	if (check_map(data) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	printf("\n\t\e[92;1m✅ Passed\e[0m\n"); // REMOVE
 	return (EXIT_SUCCESS);
 }

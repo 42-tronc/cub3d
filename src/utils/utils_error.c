@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 21:31:48 by croy              #+#    #+#             */
-/*   Updated: 2023/09/22 17:21:58 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/24 13:59:58 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_error(int code, char *src)
 {
-	char	*error[8];
+	char	*error[9];
 
 	error[E_MALLOC] = "malloc failed to allocate a memory space";
 	error[E_MISSING] = "one map is required";
@@ -23,7 +23,8 @@ void	print_error(int code, char *src)
 	error[E_PROP_DUP] = "a property is defined twice";
 	error[E_PROP_VAR] = "a property type is unrecognized";
 	error[E_MAP_MISS] = "map is missing";
-	error[E_MAP_FMT] = "map has wrong format";
+	error[E_MAP_FMT] = "map's format is wrong";
+	error[E_MAP_PLYR] = "game is single player";
 	if (src && ft_strlen(src))
 		printf(RED BOLD"Error: %s%s in %s%s\n", NO_BOLD, error[code], src, RESET);
 	else
