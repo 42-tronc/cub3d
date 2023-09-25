@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/25 12:53:00 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/25 13:35:36 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ static int	check_extension(char *path, char *ext)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Read the file and store it in a string
+ *
+ * @param fd		file descriptor
+ * @return char*	pointer to the string containing the file
+ */
 static char	*read_file(int fd)
 {
 	int		char_read;
@@ -70,6 +76,13 @@ static char	*read_file(int fd)
 	return (file);
 }
 
+/**
+ * @brief Check if the file exists and store it in the t_data structure
+ *
+ * @param data	pointer to the main structure
+ * @param path	absolute or relative path to the map file
+ * @return int	EXIT_SUCCESS or EXIT_FAILURE
+ */
 static int	check_file(t_data *data, char *path)
 {
 	int	fd;
@@ -93,6 +106,12 @@ static int	check_file(t_data *data, char *path)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Split the file into lines and store them in the t_data structure
+ *
+ * @param data	pointer to the main structure
+ * @return int	EXIT_SUCCESS or EXIT_FAILURE
+ */
 static int	cleanup_file(t_data *data)
 {
 	data->split_file = ft_split(data->file, '\n');
@@ -105,6 +124,13 @@ static int	cleanup_file(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Store the texture's path and file descriptor in the t_texture structure
+ *
+ * @param texture	pointer to the t_texture structure to store the data in
+ * @param path		absolute or relative path to the texture file
+ * @return int		EXIT_SUCCESS or EXIT_FAILURE
+ */
 static int	set_texture(t_texture *texture, char *path)
 {
 	if (texture->fd > 0)
@@ -118,6 +144,12 @@ static int	set_texture(t_texture *texture, char *path)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Check if the string only contains digits
+ *
+ * @param str	string to check
+ * @return int	1 if the string only contains digits, 0 otherwise
+ */
 static int ft_isonlydigit(char *str)
 {
 	int	i;
@@ -132,6 +164,13 @@ static int ft_isonlydigit(char *str)
 	return (1);
 }
 
+/**
+ * @brief Convert the RGB floor and ceiling colors to hexadecimal
+ *
+ * @param color	pointer to the color converted to hexadecimal
+ * @param input	string containing the RGB values separated by commas
+ * @return int	EXIT_SUCCESS or EXIT_FAILURE
+ */
 static int	set_color(unsigned *color, char *input)
 {
 	int		i;
@@ -162,6 +201,13 @@ static int	set_color(unsigned *color, char *input)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Parse the map's properties and store them in the t_data structure
+ *
+ * @param data	pointer to the main structure
+ * @param lines	array containing the property's name and value
+ * @return int	EXIT_SUCCESS or EXIT_FAILURE
+ */
 static	int	get_texture(t_data *data, char **lines)
 {
 	int	exit_code;
@@ -187,6 +233,11 @@ static	int	get_texture(t_data *data, char **lines)
 	return (exit_code);
 }
 
+/**
+ * @brief Initialize the t_texture structures to 0 and NULL
+ *
+ * @param data	pointer to the main structure
+ */
 static void	init_texture(t_data *data)
 {
 	data->north.fd = 0;
@@ -199,6 +250,13 @@ static void	init_texture(t_data *data)
 	data->east.path = NULL;
 }
 
+/**
+ * @brief Dispatch the map's properties to the right functions to be stored,
+ * also check if the properties are valid
+ *
+ * @param data	pointer to the main structure
+ * @return int	EXIT_SUCCESS or EXIT_FAILURE
+ */
 static int	get_map_properties(t_data *data)
 {
 	int		i;
@@ -230,6 +288,11 @@ static int	get_map_properties(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Find the map's width and height and store them in the t_map structure
+ *
+ * @param data	pointer to the main structure
+ */
 static void	get_map_size(t_data *data)
 {
 	size_t	i;
@@ -247,6 +310,12 @@ static void	get_map_size(t_data *data)
 	}
 }
 
+/**
+ * @brief Check if the map has a valid size and store it in the t_map structure
+ *
+ * @param data	pointer to the main structure
+ * @return int	EXIT_SUCCESS or EXIT_FAILURE
+ */
 static int	get_map(t_data *data)
 {
 	size_t	i;
@@ -280,6 +349,12 @@ static int	get_map(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Check if the map has only valid characters and only one player
+ *
+ * @param data	pointer to the main structure
+ * @return int	EXIT_SUCCESS or EXIT_FAILURE
+ */
 static int	check_map(t_data *data)
 {
 	int		player;
