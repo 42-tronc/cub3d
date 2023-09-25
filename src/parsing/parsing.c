@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/25 13:35:36 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/25 15:29:37 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -383,6 +383,58 @@ static int	check_map(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+static int is_bordered_by_walls(t_data *data, size_t x, size_t y)
+{
+	int	x_offset;
+	int	y_offset;
+
+	if (x == 0 || x == data->map->width - 1
+		|| y == 0 || y == data->map->height - 1)
+		return (0);
+	x_offset = -1;
+	while (x_offset <= 1)
+	{
+		y_offset = -1;
+		while (y_offset <= 1)
+		{
+			printf("Checking walls %ld, %ld: `%c`\n", x + x_offset, y + y_offset, data->map->array[y + y_offset][x + x_offset]); // REMOVE
+			if (!data->map->array[y + y_offset][x + x_offset]
+				|| data->map->array[y + y_offset][x + x_offset] == ' ')
+				return (0);
+			y_offset++;
+		}
+		x_offset++;
+	}
+	return (1);
+}
+
+static int	check_map_walls(t_data *data)
+{
+	size_t	i;
+	size_t	j;
+	char	c;
+
+	i = 4;
+	while (data->map->array[i])
+	{
+		j = 0;
+		printf("\nChecking line %ld: `%s`\n", i, data->map->array[i]); // REMOVE
+		while (data->map->array[i][j])
+		{
+			c = data->map->array[i][j];
+			if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
+			{
+				printf("\nChecking around char %ld: `%c`\n", j, c); // REMOVE
+				if (!is_bordered_by_walls(data, j, i))
+					return (print_error(E_MAP_WALLS, data->map->array[i]), EXIT_FAILURE);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (EXIT_SUCCESS);
+}
+
 /**
  * @brief Parse and check the map file
  *
@@ -405,6 +457,8 @@ int	map_parsing(t_data *data, char *map)
 	if (get_map(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (check_map(data) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (check_map_walls(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	printf("\n\t\e[92;1m✅ Passed\e[0m\n"); // REMOVE
 	return (EXIT_SUCCESS);
