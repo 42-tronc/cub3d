@@ -6,11 +6,20 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:45:07 by croy              #+#    #+#             */
-/*   Updated: 2023/09/22 17:22:44 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/22 20:32:47 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	free_if_alloc(char *string)
+{
+	if (string)
+	{
+		free(string);
+		string = NULL;
+	}
+}
 
 void	free_tab(char **tab)
 {
@@ -20,18 +29,9 @@ void	free_tab(char **tab)
 	if (!tab)
 		return ;
 	while (tab[i])
-		free(tab[i++]);
+		free_if_alloc(tab[i++]);
 	free(tab);
 	tab = NULL;
-}
-
-void	free_if_alloc(char *string)
-{
-	if (string)
-	{
-		free(string);
-		string = NULL;
-	}
 }
 
 void	close_fd(int fd)
@@ -52,7 +52,10 @@ void	free_data(t_data *data)
 	close_fd(data->east.fd);
 	free_if_alloc(data->east.path);
 	close_fd(data->west.fd);
-	free_tab(data->map->array);
-	free(data->map);
+	if (data->map)
+	{
+		free_tab(data->map->array);
+		free(data->map);
+	}
 	free(data);
 }
