@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/25 15:48:02 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/25 15:55:42 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ static int	cleanup_file(t_data *data)
 	printf("\e[92;1mFile split:\n\e[0m"); // REMOVE
 	for (int i = 0; data->split_file[i]; i++) // REMOVE
 		printf("%s\n", data->split_file[i]); // REMOVE
-	printf("--------------------\n");
 	return (EXIT_SUCCESS);
 }
 
