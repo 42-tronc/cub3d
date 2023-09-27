@@ -6,7 +6,7 @@
 #    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/08/19 21:40:59 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/09/21 12:45:02 by croy             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,7 @@ DIR_MAIN := $(SRC_FOLDER)
 SRC_MAIN := cub3d.c
 
 DIR_UTILS := $(SRC_FOLDER)utils/
-SRC_UTILS := utils_error.c
+SRC_UTILS := utils_error.c utils_free.c
 
 DIR_PARSING := $(SRC_FOLDER)parsing/
 SCR_PARSING := parsing.c
@@ -125,7 +125,9 @@ $(LIBFT_NAME):
 $(MLX_NAME) :
 	@$(MAKE) -sC $(MLX_DIR)
 
-rsc: $(LIBFT_NAME) $(MLX_NAME)
+rsc:
+	@$(MAKE) -sC $(LIBFT_DIR)
+	@$(MAKE) -sC $(MLX_DIR)
 
 $(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
