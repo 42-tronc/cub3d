@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/25 15:55:42 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/09/27 11:43:01 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,10 +295,8 @@ static int	get_map_properties(t_data *data)
 static void	get_map_size(t_data *data)
 {
 	size_t	i;
-	size_t	map_width;
 
 	i = 6;
-	map_width = 0;
 	data->map->height = ft_arrlen(data->split_file + 6);
 	while (data->split_file[i])
 	{
