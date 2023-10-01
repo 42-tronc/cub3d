@@ -14,10 +14,10 @@
 
 int	exec_manager(char *map)
 {
-	int			i;
+	// int			i;
 	t_exec		exec;
 
-	i = 0;
+	// i = 0;
 	exec.map = ft_split(map, '\n');
 	if (!exec.map)
 	{
