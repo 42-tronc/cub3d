@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/09/09 12:38:11 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/10/17 16:26:36 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,9 +113,12 @@ SCR_EXEC := close_window.c \
 			refresh_window.c \
 			draw_minimap.c \
 			draw_player_minimap.c \
-			draw_sight.c\
+			rays.c\
 			rotation.c \
 			get_player_pos.c \
+			get_decimal.c \
+			get_hypotenuse.c \
+			dda.c \
 
 # -------------- RECIPES --------------
 all: rsc

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:04:52 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 14:34:42 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/07 10:21:05 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,22 @@ static void	get_player_orientation(t_exec *exec, char orientation)
 {
 	if (orientation == 'N')
 	{
-		exec->player_pos.dx = -2;
+		exec->player_pos.dx = -1;
 		exec->player_pos.dy = -0;
 	}
 	else if (orientation == 'S')
 	{
-		exec->player_pos.dx = 2;
+		exec->player_pos.dx = 1;
 		exec->player_pos.dy = 0;
 	}
 	else if (orientation == 'E')
 	{
 		exec->player_pos.dx = 0;
-		exec->player_pos.dy = 2;
+		exec->player_pos.dy = 1;
 	}
 	else if (orientation == 'W')
 	{
 		exec->player_pos.dx = 0;
-		exec->player_pos.dy = -2;
+		exec->player_pos.dy = -1;
 	}
 }

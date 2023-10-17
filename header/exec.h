@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 14:37:38 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:25:43 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,18 @@
 # define KEY_S	        115
 # define KEY_D	        100
 
-# define SIZE_MAP       125
+# define SIZE_MAP       150
 # define SIZE_FLOAT		0.15
 # define SIZE_CUT		4
+# define FOV			60
+# define N_RAYS			960
 # define HEIGHT         1080
 # define WIDTH          1920
 # define MAP_WALL		0x0f056b
 # define MAP_SPACE		0x919191
 # define MAP_PLAYER		0x00ff7f
 # define RED_HEX        0xff0000
+# define GREEN_HEX      0x00ff00
 # define MALLOC_ERR     "Error during a malloc.\n"
 # define PI				3.1415926535
 # define RAD			0.0174533
@@ -66,12 +69,20 @@ typedef struct s_vector_float
 	float				angle;
 }				t_vector_float;
 
+typedef struct s_ray
+{
+	float				hyp;
+	float				length;
+	float				height;
+}				t_ray;
+
 typedef struct s_exec
 {
 	void			*mlx_ptr;
 	void			*window;
 	char			**map;
 	t_data			minimap;
+	//t_data			sight;
 	t_vector_float	player_pos;
 }				t_exec;
 
@@ -81,20 +92,26 @@ int				init_mlx(t_exec *exec);
 int				close_window(t_exec *exec, int status);
 int				moves(int key_code, t_exec *exec);
 void			get_player_pos(t_exec *exec, char **map);
+float 			get_hypotenuse(t_exec *exec, t_vector_float rotation);
+
 
 // ========== Draw ==========
 void			draw_minimap(t_exec *exec);
 void			draw_player_minimap(t_data *minimap, float x, float y);
-void			draw_sight(t_exec *exec, float x, float y);
+void			rays(t_exec *exec, float x, float y);
 int				refresh_window(t_exec *exec);
 
 // ========== Rotation ==========
 void			left_rotation(t_exec *exec);
 void			right_rotation(t_exec *exec);
 
+// ========== DDA ==========
+void			dda(t_exec *exec);
+
 // ========== Utils ===========
 void			put_pixel(t_data *data, int x, int y, int color);
 void			free_map(char **map);
+float			get_decimal(float fl);
 
 // ========== Errors ==========
 void			display_error(char *str);

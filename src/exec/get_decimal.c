@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   get_decimal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/10/17 14:06:45 by lboulatr         ###   ########.fr       */
+/*   Created: 2023/10/05 14:02:15 by lboulatr          #+#    #+#             */
+/*   Updated: 2023/10/05 14:04:34 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+float   get_decimal(float fl)
 {
-	(void) ac;
-	(void) av;
-	
-	printf("We're in boys\n");
-	
-	char		*map =  "1111111111111\n1000000000111\n11000E0000011\n1000111000011\n1000000000001\n1111111111111";
-	
-	if (exec_manager(map) != EXIT_SUCCESS)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+    float   decimal;
+
+    decimal = fl - (int)fl;
+    return (decimal);
 }

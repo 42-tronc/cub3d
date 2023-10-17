@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/10/17 14:06:45 by lboulatr         ###   ########.fr       */
+/*   Created: 2023/10/07 10:02:21 by lboulatr          #+#    #+#             */
+/*   Updated: 2023/10/17 16:01:41 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void dda(t_exec *exec)
 {
-	(void) ac;
-	(void) av;
-	
-	printf("We're in boys\n");
-	
-	char		*map =  "1111111111111\n1000000000111\n11000E0000011\n1000111000011\n1000000000001\n1111111111111";
-	
-	if (exec_manager(map) != EXIT_SUCCESS)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+    (void)exec;
 }
+

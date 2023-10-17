@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:43:05 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 13:03:20 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:10:10 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ int	moves(int key_code, t_exec *exec)
 
 static void	move_w(t_exec *exec)
 {
-	exec->player_pos.x += exec->player_pos.dx / (SIZE_MAP / 15);
-	exec->player_pos.y += exec->player_pos.dy / (SIZE_MAP / 15);
+	exec->player_pos.x += exec->player_pos.dx / (SIZE_MAP / 5);
+	exec->player_pos.y += exec->player_pos.dy / (SIZE_MAP / 5);
 }
 
 static void	move_s(t_exec *exec)
 {
-	exec->player_pos.x -= exec->player_pos.dx / (SIZE_MAP / 15);
-	exec->player_pos.y -= exec->player_pos.dy / (SIZE_MAP / 15);
+	exec->player_pos.x -= exec->player_pos.dx / (SIZE_MAP / 5);
+	exec->player_pos.y -= exec->player_pos.dy / (SIZE_MAP / 5);
 }
 
 static void	move_a(t_exec *exec)
