@@ -14,7 +14,7 @@
 
 void	print_error(int code, char *src)
 {
-	char	*error[10];
+	char	*error[11];
 
 	error[E_MALLOC] = "malloc failed to allocate a memory space";
 	error[E_MISSING] = "one map is required";
@@ -26,6 +26,7 @@ void	print_error(int code, char *src)
 	error[E_MAP_FMT] = "map's format is wrong";
 	error[E_MAP_PLYR] = "game is single player";
 	error[E_MAP_WALLS] = "map is not surrounded by walls";
+	error[E_TXT_MISS] = "a texture is missing";
 	if (src && ft_strlen(src))
 		printf(RED BOLD"Error: %s%s in %s%s\n", NO_BOLD, error[code], src, RESET);
 	else
