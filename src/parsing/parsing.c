@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/10/22 18:36:37 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/22 18:57:15 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -457,6 +457,44 @@ static int	check_map_walls(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+static int	is_column_empty(t_data *data, size_t x)
+{
+	size_t	y;
+
+	y = 0;
+	while (data->map->array[y])
+	{
+		if (data->map->array[y][x] && data->map->array[y][x] != ' ')
+		{ // REMOVE
+			// printf("Found `%c` at (%ld, %ld), column %ld\n", data->map->array[y][x], x, y, x); // REMOVE
+			return (0);
+		} // REMOVE
+		y++;
+	}
+	return (1);
+}
+
+static int	check_map_vert_island(t_data *data)
+{
+	size_t	x;
+	size_t	y;
+
+	y = 0;
+	printf("\n\e[92;1mMap vertical islands:\e[0m\n"); // REMOVE
+	while (data->map->array[y])
+	{
+		x = 0;
+		while (data->map->array[y][x])
+		{
+			if (data->map->array[y][x] == ' ' && is_column_empty(data, x))
+				return (print_error(E_MAP_ISLAND, data->map->array[y]), EXIT_FAILURE);
+			x++;
+		}
+		y++;
+	}
+	return (EXIT_SUCCESS);
+}
+
 static void translate_pos_to_deg(t_data *data, char pos)
 {
 	if (pos == 'N')
@@ -525,6 +563,8 @@ int	map_parsing(t_data *data, char *map)
 	if (get_map(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (check_map(data) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (check_map_vert_island(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (check_map_walls(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);

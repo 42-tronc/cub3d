@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 21:31:48 by croy              #+#    #+#             */
-/*   Updated: 2023/10/22 16:25:28 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/22 18:51:52 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_error(int code, char *src)
 {
-	char	*error[11];
+	char	*error[12];
 
 	error[E_MALLOC] = "malloc failed to allocate a memory space";
 	error[E_READ] = "read failed to read the file";
@@ -27,6 +27,7 @@ void	print_error(int code, char *src)
 	error[E_MAP_FMT] = "map's format is wrong";
 	error[E_MAP_PLYR] = "game is single player";
 	error[E_MAP_WALLS] = "map is not surrounded by walls";
+	error[E_MAP_ISLAND] = "map has an island";
 	if (src && ft_strlen(src))
 		printf(RED BOLD"Error: %s%s in %s%s\n", NO_BOLD, error[code], src, RESET);
 	else
