@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/27 11:43:01 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/22 18:58:52 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static char	*read_file(int fd)
 	while (char_read)
 	{
 		char_read = read(fd, buffer, BUFFER_SIZE);
+		if (char_read == -1)
+			return (print_error(E_READ, NULL), NULL);
 		// maybe protect if char_read < 0
 		buffer[char_read] = '\0';
 		if (!file)
@@ -137,7 +139,7 @@ static int	set_texture(t_texture *texture, char *path)
 	texture->path = ft_strdup(path);
 	texture->fd = open(path, O_RDONLY);
 	if (texture->fd == -1)
-		return (perror(RED "Error" RESET), EXIT_FAILURE);
+		return (print_error(E_TXT_MISS, path), EXIT_FAILURE);
 	// printf("\e[92;1mTexture: \e[0m%s\n", texture->path); // REMOVE
 	// printf("\e[92;1mTexture fd: \e[0m%d\n", texture->fd); // REMOVE
 	return (EXIT_SUCCESS);
@@ -300,11 +302,31 @@ static void	get_map_size(t_data *data)
 	data->map->height = ft_arrlen(data->split_file + 6);
 	while (data->split_file[i])
 	{
-		printf("Checking line: `%s`\n", data->split_file[i]); // REMOVE
+		// printf("Checking line: `%s`\n", data->split_file[i]); // REMOVE
 		if (ft_strlen(data->split_file[i]) > data->map->width)
 			data->map->width = ft_strlen(data->split_file[i]);
 		i++;
 	}
+}
+
+/**
+ * @brief Trims the trailing character from a string
+ *
+ * @param str		string to trim
+ * @param c			trailing character to trim
+ * @return char*	string without trailing characters (set to '\0'7)
+ */
+static char *trim_trailing(char *str, char c)
+{
+	size_t	i;
+
+	i = ft_strlen(str) - 1;
+	while (str[i] == c)
+	{
+		str[i] = '\0';
+		i--;
+	}
+	return (str);
 }
 
 /**
@@ -334,12 +356,13 @@ static int	get_map(t_data *data)
 		data->map->array[i] = ft_strdup(data->split_file[i + 6]);
 		if (!data->map->array[i])
 			return (print_error(E_MALLOC, "get_map 3"), EXIT_FAILURE);
+		data->map->array[i] = trim_trailing(data->map->array[i], ' '); // EXPLAIN (trim trailing spaces in the map)
 		i++;
 	}
 
 	printf("\n\e[92;1mMap:\e[0m\n"); // REMOVE
 	for (int i = 0; data->map->array[i]; i++) // REMOVE
-		printf("%s\n", data->map->array[i]); // REMOVE
+		printf("\e[43m%s\e[0m\n", data->map->array[i]); // REMOVE
 	printf("\n\e[92;1mMap size:\e[0m\n"); // REMOVE
 	printf("\e[93;1mheight: \e[22m%ld\e[0m\n", data->map->height); // REMOVE
 	printf("\e[93;1mwidth: \e[22m%ld\e[0m\n", data->map->width); // REMOVE
@@ -434,6 +457,44 @@ static int	check_map_walls(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+static int	is_column_empty(t_data *data, size_t x)
+{
+	size_t	y;
+
+	y = 0;
+	while (data->map->array[y])
+	{
+		if (data->map->array[y][x] && data->map->array[y][x] != ' ')
+		{ // REMOVE
+			// printf("Found `%c` at (%ld, %ld), column %ld\n", data->map->array[y][x], x, y, x); // REMOVE
+			return (0);
+		} // REMOVE
+		y++;
+	}
+	return (1);
+}
+
+static int	check_map_vert_island(t_data *data)
+{
+	size_t	x;
+	size_t	y;
+
+	y = 0;
+	printf("\n\e[92;1mMap vertical islands:\e[0m\n"); // REMOVE
+	while (data->map->array[y])
+	{
+		x = 0;
+		while (data->map->array[y][x])
+		{
+			if (data->map->array[y][x] == ' ' && is_column_empty(data, x))
+				return (print_error(E_MAP_ISLAND, data->map->array[y]), EXIT_FAILURE);
+			x++;
+		}
+		y++;
+	}
+	return (EXIT_SUCCESS);
+}
+
 static void translate_pos_to_deg(t_data *data, char pos)
 {
 	if (pos == 'N')
@@ -502,6 +563,8 @@ int	map_parsing(t_data *data, char *map)
 	if (get_map(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (check_map(data) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (check_map_vert_island(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (check_map_walls(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);

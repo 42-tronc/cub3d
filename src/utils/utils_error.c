@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 21:31:48 by croy              #+#    #+#             */
-/*   Updated: 2023/09/25 14:44:13 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/22 18:59:49 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	print_error(int code, char *src)
 {
-	char	*error[10];
+	char	*error[13];
 
 	error[E_MALLOC] = "malloc failed to allocate a memory space";
+	error[E_READ] = "read failed to read the file";
 	error[E_MISSING] = "one map is required";
 	error[E_EXT] = "file doesn't have the right extension";
 	error[E_PROP_FMT] = "a property has the wrong format";
@@ -26,6 +27,8 @@ void	print_error(int code, char *src)
 	error[E_MAP_FMT] = "map's format is wrong";
 	error[E_MAP_PLYR] = "game is single player";
 	error[E_MAP_WALLS] = "map is not surrounded by walls";
+	error[E_MAP_ISLAND] = "map has an island";
+	error[E_TXT_MISS] = "a texture is missing";
 	if (src && ft_strlen(src))
 		printf(RED BOLD"Error: %s%s in %s%s\n", NO_BOLD, error[code], src, RESET);
 	else
