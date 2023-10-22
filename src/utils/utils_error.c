@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 21:31:48 by croy              #+#    #+#             */
-/*   Updated: 2023/09/25 14:44:13 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/22 16:25:28 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	print_error(int code, char *src)
 {
-	char	*error[10];
+	char	*error[11];
 
 	error[E_MALLOC] = "malloc failed to allocate a memory space";
+	error[E_READ] = "read failed to read the file";
 	error[E_MISSING] = "one map is required";
 	error[E_EXT] = "file doesn't have the right extension";
 	error[E_PROP_FMT] = "a property has the wrong format";

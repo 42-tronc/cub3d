@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/09/27 11:43:01 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/22 16:27:51 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static char	*read_file(int fd)
 	while (char_read)
 	{
 		char_read = read(fd, buffer, BUFFER_SIZE);
+		if (char_read == -1)
+			return (print_error(E_READ, NULL), NULL);
 		// maybe protect if char_read < 0
 		buffer[char_read] = '\0';
 		if (!file)
