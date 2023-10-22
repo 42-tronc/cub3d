@@ -139,7 +139,7 @@ static int	set_texture(t_texture *texture, char *path)
 	texture->path = ft_strdup(path);
 	texture->fd = open(path, O_RDONLY);
 	if (texture->fd == -1)
-		return (perror(RED "Error" RESET), EXIT_FAILURE);
+		return (print_error(E_TXT_MISS, path), EXIT_FAILURE);
 	// printf("\e[92;1mTexture: \e[0m%s\n", texture->path); // REMOVE
 	// printf("\e[92;1mTexture fd: \e[0m%d\n", texture->fd); // REMOVE
 	return (EXIT_SUCCESS);
