@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/10/22 18:57:15 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/22 18:58:52 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,7 +302,7 @@ static void	get_map_size(t_data *data)
 	data->map->height = ft_arrlen(data->split_file + 6);
 	while (data->split_file[i])
 	{
-		printf("Checking line: `%s`\n", data->split_file[i]); // REMOVE
+		// printf("Checking line: `%s`\n", data->split_file[i]); // REMOVE
 		if (ft_strlen(data->split_file[i]) > data->map->width)
 			data->map->width = ft_strlen(data->split_file[i]);
 		i++;
