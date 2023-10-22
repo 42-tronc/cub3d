@@ -6,7 +6,7 @@
 #    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/09/21 12:45:02 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/10/22 18:33:14 by croy             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -150,6 +150,12 @@ re: fclean
 
 debug: CFLAGS += $(FSANITIZE)
 debug: fclean $(NAME)
+
+valgrind: VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes
+valgrind: test
+
+test: all
+	$(VALGRIND) ./$(NAME) maps/test.cub
 
 norm :
 	norminette ./src ./header ./libft | grep -v OK
