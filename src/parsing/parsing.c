@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/10/22 18:29:29 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/22 18:36:37 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,6 +310,26 @@ static void	get_map_size(t_data *data)
 }
 
 /**
+ * @brief Trims the trailing character from a string
+ *
+ * @param str		string to trim
+ * @param c			trailing character to trim
+ * @return char*	string without trailing characters (set to '\0'7)
+ */
+static char *trim_trailing(char *str, char c)
+{
+	size_t	i;
+
+	i = ft_strlen(str) - 1;
+	while (str[i] == c)
+	{
+		str[i] = '\0';
+		i--;
+	}
+	return (str);
+}
+
+/**
  * @brief Check if the map has a valid size and store it in the t_map structure
  *
  * @param data	pointer to the main structure
@@ -336,6 +356,7 @@ static int	get_map(t_data *data)
 		data->map->array[i] = ft_strdup(data->split_file[i + 6]);
 		if (!data->map->array[i])
 			return (print_error(E_MALLOC, "get_map 3"), EXIT_FAILURE);
+		data->map->array[i] = trim_trailing(data->map->array[i], ' '); // EXPLAIN (trim trailing spaces in the map)
 		i++;
 	}
 
