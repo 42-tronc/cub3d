@@ -78,4 +78,7 @@ void	close_fd(int fd);
 void	free_data(t_data *data);
 int		map_parsing(t_data *data, char *map);
 
+// parsing.c
+int	map_parsing(t_data *data, char *map);
+
 #endif
