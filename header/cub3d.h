@@ -48,6 +48,7 @@ typedef enum e_error_code {
 	E_MAP_WALLS,
 	E_MAP_ISLAND,
 	E_TXT_MISS,
+	E_MLX_INIT,
 }	t_error_code;
 
 # define NORTH	0

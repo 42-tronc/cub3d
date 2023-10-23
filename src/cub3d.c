@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 08:55:13 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 09:21:16 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	main(int ac, char **av)
 
 	exit_code = EXIT_SUCCESS;
 	if (ac != 2)
-		return (print_error(E_MISSING, NULL), EXIT_FAILURE);
+		return (print_perr(E_MISSING, NULL), EXIT_FAILURE);
 	data = ft_calloc(1, sizeof(t_data));
 	if (!data)
-		return (print_error(E_MALLOC, "main"), EXIT_FAILURE);
+		return (print_perr(E_MALLOC, "main"), EXIT_FAILURE);
 	if (map_parsing(data, av[1]))
 		exit_code = EXIT_FAILURE;
 	// if (exec_manager(data->map->array) != EXIT_SUCCESS)
