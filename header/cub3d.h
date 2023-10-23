@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 08:24:43 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 08:45:38 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # include <stdlib.h> // for malloc, free, exit
 # include <string.h> // for strerror
 # include <unistd.h> // for close, read, write
+# include <math.h>
+# include "exec.h"
+# include "struct.h"
 
 // ========= @defines =========
 # define RED		"\e[31m"
@@ -92,6 +95,7 @@ int	map_parsing(t_data *data, char *map);
 
 // utils_error.c
 void	print_error(int code, char *src);
+void	close_fd(void);
 
 // utils_free.c
 void	free_tab(char **tab);
