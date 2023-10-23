@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 13:33:56 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:59:49 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,14 @@ typedef enum e_error_code {
 	E_MAP_PLYR,
 	E_MAP_WALLS,
 	E_MAP_ISLAND,
-	E_TXT_MISS,
+	E_TXT_MISS
+}	t_error_code;
+
+typedef enum e_error_exec_code {
 	E_MLX_INIT,
 	E_WIN_INIT,
-	E_MINIMAP,
-}	t_error_code;
+	E_MINIMAP
+}	t_error_exec_code;
 
 # define NORTH	0
 # define EAST	90
@@ -73,5 +76,6 @@ void	free_if_alloc(char *string);
 void	free_array(char **tab);
 void	close_fd(int fd);
 void	free_data(t_data *data);
+int		map_parsing(t_data *data, char *map);
 
 #endif
