@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:39:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 14:04:40 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:16:24 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	init_mlx(t_exec *exec)
 		display_error("during minimap init.\n");
 		return (FAILURE);
 	}
-	get_player_pos(exec, exec->map);
+	init_player(exec, exec->map);
 	return (SUCCESS);
 }
 

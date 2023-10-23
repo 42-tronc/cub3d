@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:43:05 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/16 13:10:10 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:59:01 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,50 +30,33 @@ int	moves(int key_code, t_exec *exec)
 	else if (key_code == KEY_D)
 		move_d(exec);
 	else if (key_code == LEFT_ARROW)
-		left_rotation(exec);
+		rotation(exec, key_code);
 	else if (key_code == RIGHT_ARROW)
-		right_rotation(exec);
+		rotation(exec, key_code);
 	return (SUCCESS);
 }
 
 static void	move_w(t_exec *exec)
 {
-	exec->player_pos.x += exec->player_pos.dx / (SIZE_MAP / 5);
-	exec->player_pos.y += exec->player_pos.dy / (SIZE_MAP / 5);
+	exec->player_pos.x += exec->player_pos.dx / (SIZE_WALL / 10);
+	exec->player_pos.y += exec->player_pos.dy / (SIZE_WALL / 10);
 }
 
 static void	move_s(t_exec *exec)
-{
-	exec->player_pos.x -= exec->player_pos.dx / (SIZE_MAP / 5);
-	exec->player_pos.y -= exec->player_pos.dy / (SIZE_MAP / 5);
+{	
+	exec->player_pos.x -= exec->player_pos.dx / (SIZE_WALL / 10);
+	exec->player_pos.y -= exec->player_pos.dy / (SIZE_WALL / 10);
 }
 
 static void	move_a(t_exec *exec)
 {
-	double		angle;
-	double		side_angle;
-	double		move_x;
-	double		move_y;
-
-	angle = atan2(exec->player_pos.dy, exec->player_pos.dx);
-	side_angle = angle + (PI / 2);
-	move_x = SIZE_FLOAT * cos(side_angle);
-	move_y = SIZE_FLOAT * sin(side_angle);
-	exec->player_pos.x += move_x / (SIZE_MAP / 30);
-	exec->player_pos.y += move_y / (SIZE_MAP / 30);
+	exec->player_pos.x -= cos(exec->player_pos.angle + (PI / 2));
+	exec->player_pos.y -= sin(exec->player_pos.angle + (PI / 2));
 }
 
 static void	move_d(t_exec *exec)
 {
-	double		angle;
-	double		side_angle;
-	double		move_x;
-	double		move_y;
-
-	angle = atan2(exec->player_pos.dy, exec->player_pos.dx);
-	side_angle = angle + (PI / 2);
-	move_x = SIZE_FLOAT * cos(side_angle);
-	move_y = SIZE_FLOAT * sin(side_angle);
-	exec->player_pos.x -= move_x / (SIZE_MAP / 30);
-	exec->player_pos.y -= move_y / (SIZE_MAP / 30);
+	exec->player_pos.x += cos(exec->player_pos.angle + (PI / 2));
+	exec->player_pos.y += sin(exec->player_pos.angle + (PI / 2));
 }
+

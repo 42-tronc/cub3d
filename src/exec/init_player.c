@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_player_pos.c                                   :+:      :+:    :+:   */
+/*   init_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:04:52 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/07 10:21:05 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:14:36 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	get_player_orientation(t_exec *exec, char orientation);
+static float get_angle(char orientation);
 
-void	get_player_pos(t_exec *exec, char **map)
+void	init_player(t_exec *exec, char **map)
 {
 	int		i;
 	int		j;
@@ -28,10 +28,14 @@ void	get_player_pos(t_exec *exec, char **map)
 		{
 			if (ft_strchr("NSEW", map[i][j]))
 			{
+				exec->nswe = map[i][j];
 				exec->player_pos.x = (float)i;
 				exec->player_pos.y = (float)j;
-				exec->player_pos.angle = PI;
-				get_player_orientation(exec, map[i][j]);
+				exec->player_pos.angle = get_angle(map[i][j]);
+				exec->player_pos.dx = cos(exec->player_pos.angle);
+				exec->player_pos.dy = sin(exec->player_pos.angle);
+				// exec->player_pos.x = (exec->player_pos.x * BLOCK) + (BLOCK / 2);
+				// exec->player_pos.y = (exec->player_pos.y * BLOCK) + (BLOCK / 2);
 				return ;
 			}
 			j++;
@@ -40,26 +44,15 @@ void	get_player_pos(t_exec *exec, char **map)
 	}
 }
 
-static void	get_player_orientation(t_exec *exec, char orientation)
+static float get_angle(char orientation)
 {
 	if (orientation == 'N')
-	{
-		exec->player_pos.dx = -1;
-		exec->player_pos.dy = -0;
-	}
+		return (PI / 2);
 	else if (orientation == 'S')
-	{
-		exec->player_pos.dx = 1;
-		exec->player_pos.dy = 0;
-	}
+		return ((3 * PI) / 2);
 	else if (orientation == 'E')
-	{
-		exec->player_pos.dx = 0;
-		exec->player_pos.dy = 1;
-	}
+		return (PI * 2);
 	else if (orientation == 'W')
-	{
-		exec->player_pos.dx = 0;
-		exec->player_pos.dy = -1;
-	}
+		return (PI);
+	return (0);
 }

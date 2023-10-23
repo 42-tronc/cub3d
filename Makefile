@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/17 16:26:36 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/10/23 09:29:19 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,8 +79,9 @@ USER := $(shell whoami)
 
 # --------- PROJECT VARIABLES ---------
 NAME := cub3D
-HEADER := header/cub3d.h \
+HEADER := 	header/cub3d.h \
 			header/exec.h \
+			header/struct.h \
 
 MLX_DIR := minilibx/
 MLX_NAME := $(MLX_DIR)libexec.a
@@ -98,27 +99,33 @@ DIR_UTILS := $(SRC_FOLDER)utils/
 SRC_UTILS := utils_error.c \
 				close_fd.c \
 				free_map.c \
+				free_utils.c \
 
 DIR_PARSING := $(SRC_FOLDER)parsing/
 SCR_PARSING := parsing.c
 
 DIR_EXEC := $(SRC_FOLDER)exec/
-SCR_EXEC := close_window.c \
-			exec_error.c \
-			exec_manager.c \
-			exec_free.c \
+SCR_EXEC := exec_manager.c \
+			\
+			close_window.c \
+			\
 			init_mlx.c \
-			moves.c \
-			put_pixel.c \
+			init_player.c \
+			init_ray.c \
+			\
 			refresh_window.c \
 			draw_minimap.c \
 			draw_player_minimap.c \
-			rays.c\
+			draw_walls.c \
+			put_pixel.c \
+			\
+			raycasting.c \
+			raycasting_2.c\
 			rotation.c \
-			get_player_pos.c \
-			get_decimal.c \
+			moves.c \
+			ft_dda.c \
+			\
 			get_hypotenuse.c \
-			dda.c \
 
 # -------------- RECIPES --------------
 all: rsc

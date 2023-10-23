@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/08/23 08:15:32 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/21 10:00:25 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <unistd.h> // for close, read, write
 # include <math.h>
 # include "exec.h"
+# include "struct.h"
 
 // ========= @defines =========
 # define RED		"\e[31m"

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:56:47 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 14:29:30 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/21 15:48:21 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ static void	draw_squares(t_data *minimap, int color, int x, int y)
 
 	i = x * SIZE_MAP;
 	j = y * SIZE_MAP;
-	while (i < (x * SIZE_MAP) + SIZE_MAP - 1.5)
+	while (i < (x * SIZE_MAP) + SIZE_MAP - 1)
 	{
 		j = y * SIZE_MAP;
-		while (j < (y * SIZE_MAP) + SIZE_MAP - 1.5)
+		while (j < (y * SIZE_MAP) + SIZE_MAP - 1)
 		{
 			put_pixel(minimap, j, i, color);
 			j++;
