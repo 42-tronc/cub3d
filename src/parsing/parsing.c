@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 15:25:03 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:20:45 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -319,9 +319,9 @@ static void	get_map_size(t_data *data)
 static char *trim_trailing(char *str, char c)
 {
 	size_t	i;
-
+	
 	i = ft_strlen(str) - 1;
-	while (str[i] == c)
+	while (str[i] == c && i > 0)
 	{
 		str[i] = '\0';
 		i--;
@@ -462,11 +462,12 @@ static int	is_column_empty(t_data *data, size_t x)
 	size_t	y;
 
 	y = 0;
-	while (data->map->array[y])
+	while (data->map->array[y] && ft_strlen(data->map->array[y]) >= x)
 	{
+		printf("CHAR ='%c'\n", data->map->array[y][x]);
 		if (data->map->array[y][x] && data->map->array[y][x] != ' ')
 		{ // REMOVE
-			// printf("Found `%c` at (%ld, %ld), column %ld\n", data->map->array[y][x], x, y, x); // REMOVE
+			printf("Found `%c` at (%ld, %ld), column %ld\n\n", data->map->array[y][x], x, y, x); // REMOVE
 			return (0);
 		} // REMOVE
 		y++;
@@ -486,6 +487,7 @@ static int	check_map_vert_island(t_data *data)
 		x = 0;
 		while (data->map->array[y][x])
 		{
+			printf("checking `%c` at (%ld, %ld), column %ld checking under\n", data->map->array[y][x], x, y, x); // REMOVE
 			if (data->map->array[y][x] == ' ' && is_column_empty(data, x))
 				return (print_perr(E_MAP_ISLAND, data->map->array[y]), EXIT_FAILURE);
 			x++;
@@ -558,9 +560,9 @@ int	map_parsing(t_data *data, char *map)
 		return (EXIT_FAILURE);
 	if (cleanup_file(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (get_map_properties(data) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
 	if (get_map(data) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (get_map_properties(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (check_map(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
