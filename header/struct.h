@@ -72,16 +72,16 @@ typedef struct s_mlx_data
 	int				endian;
 }	t_mlx_data;
 
-typedef struct s_exec
-{
-    char                nswe;
-	char				**map;
-	void				*mlx_ptr;
-	void				*window;
+// typedef struct s_exec
+// {
+//     char                nswe;
+// 	char				**map;
+// 	void				*mlx_ptr;
+// 	void				*window;
 
-	t_mlx_data			minimap;
-	t_player    		player_pos;
-}				t_exec;
+// 	t_mlx_data			minimap;
+// 	t_player    		player_pos;
+// }				t_exec;
 
 typedef struct s_texture
 {
@@ -107,7 +107,12 @@ typedef struct s_data
 	unsigned int	floor;
 	unsigned int	ceiling;
 	t_map			*map;
-	t_player		*player;
+	// t_player		*player; // to change
+	char			nswe;
+	void			*mlx_ptr;
+	void			*window;
+	t_mlx_data		minimap;
+	t_player		player_pos;
 }	t_data;
 
 
