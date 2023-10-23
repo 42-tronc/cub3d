@@ -24,17 +24,17 @@ float get_hypotenuse2(t_ray *ray)
     return (hyp);
 }
 
-float get_hypotenuse(t_exec *exec, t_vector_float rotation)
+float get_hypotenuse(t_data *data, t_vector_float rotation)
 {
     t_vector_float  ray;
     t_vector_float  tmp;
     float           hyp;
-    
+
     hyp = 0;
-    ray.x = exec->player_pos.x * SIZE_WALL;
-    ray.y = exec->player_pos.y * SIZE_WALL;
+    ray.x = data->player_pos.x * SIZE_WALL;
+    ray.y = data->player_pos.y * SIZE_WALL;
     tmp.x = fabsf(ray.x - rotation.x);
     tmp.y = fabsf(ray.y - rotation.y);
     hyp = sqrtf(powf(tmp.x, 2) + powf(tmp.y, 2));
-    return (hyp);    
+    return (hyp);
 }

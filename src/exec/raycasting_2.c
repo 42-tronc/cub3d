@@ -12,10 +12,10 @@
 
 #include "cub3d.h"
 
-static void		draw_rays(t_exec *exec, t_vector_float *rot, float angle);
+static void		draw_rays(t_data *data, t_vector_float *rot, float angle);
 static float	center_player(float fl);
 
-void	raycasting_2(t_exec *exec, float x, float y)
+void	raycasting_2(t_data *data, float x, float y)
 {
 	int 				count = N_RAYS;
 	float				total_angle = ((2 * PI / N_RAYS) * N_RAYS) / FOV;
@@ -27,19 +27,19 @@ void	raycasting_2(t_exec *exec, float x, float y)
 		angle = ((2 * PI / N_RAYS) * -count) / FOV;
 		rot.x = (x * SIZE_WALL) + center_player(x);
 		rot.y = (y * SIZE_WALL) + center_player(y);
-		while (exec->map[(int)(rot.x / SIZE_WALL)][(int)(rot.y / SIZE_WALL)] != '1')
-			draw_rays(exec, &rot, angle);
+		while (data->map->array[(int)(rot.x / SIZE_WALL)][(int)(rot.y / SIZE_WALL)] != '1')
+			draw_rays(data, &rot, angle);
 		count--;
-		//draw_walls(exec, rot, count);
+		//draw_walls(data, rot, count);
 	}
 }
 
-static void		draw_rays(t_exec *exec, t_vector_float *rot, float angle)
+static void		draw_rays(t_data *data, t_vector_float *rot, float angle)
 {
-	rot->x += exec->player_pos.dx * cos(angle) - exec->player_pos.dy * sin(angle);
-	rot->y += exec->player_pos.dx * sin(angle) + exec->player_pos.dy * cos(angle);
+	rot->x += data->player_pos.dx * cos(angle) - data->player_pos.dy * sin(angle);
+	rot->y += data->player_pos.dx * sin(angle) + data->player_pos.dy * cos(angle);
 
-	//put_pixel(&exec->minimap, rot->y, rot->x, RED_HEX);
+	//put_pixel(&data->minimap, rot->y, rot->x, RED_HEX);
 }
 
 static float	center_player(float fl)

@@ -12,37 +12,37 @@
 
 #include "exec.h"
 
-static void error_refresh_window(t_exec *exec, int status);
+static void error_refresh_window(t_data *data, int status);
 
-int	refresh_window(t_exec *exec)
+int	refresh_window(t_data *data)
 {
-	mlx_destroy_image(exec->mlx_ptr, exec->minimap.img);
-	exec->minimap.img = mlx_new_image(exec->mlx_ptr, WIDTH, HEIGHT);
-	if (!exec->minimap.img)
-		error_refresh_window(exec, IMG_ERR);
-	exec->minimap.addr = mlx_get_data_addr(exec->minimap.img, \
-			&exec->minimap.bits_per_pixel, &exec->minimap.line_length, \
-				&exec->minimap.endian);
-	if (!exec->minimap.addr)
-		error_refresh_window(exec, 0);
-	//raycasting_2(exec, exec->player_pos.x, exec->player_pos.y);
-	raycasting(exec);
-	draw_minimap(exec);
-	draw_player_minimap(&exec->minimap, exec->player_pos.x, exec->player_pos.y);
-	mlx_put_image_to_window(exec->mlx_ptr, exec->window, \
-			exec->minimap.img, 0, 0);
+	mlx_destroy_image(data->mlx_ptr, data->minimap.img);
+	data->minimap.img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+	if (!data->minimap.img)
+		error_refresh_window(data, IMG_ERR);
+	data->minimap.addr = mlx_get_data_addr(data->minimap.img, \
+			&data->minimap.bits_per_pixel, &data->minimap.line_length, \
+				&data->minimap.endian);
+	if (!data->minimap.addr)
+		error_refresh_window(data, 0);
+	//raycasting_2(data, data->player_pos.x, data->player_pos.y);
+	raycasting(data);
+	draw_minimap(data);
+	draw_player_minimap(&data->minimap, data->player_pos.x, data->player_pos.y);
+	mlx_put_image_to_window(data->mlx_ptr, data->window, \
+			data->minimap.img, 0, 0);
 	return (SUCCESS);
 }
 
-static void error_refresh_window(t_exec *exec, int status)
+static void error_refresh_window(t_data *data, int status)
 {
-	free_map(exec->map);
-	mlx_clear_window(exec->mlx_ptr, exec->window);
-	mlx_destroy_window(exec->mlx_ptr, exec->window);
+	free_array(data->map->array);
+	mlx_clear_window(data->mlx_ptr, data->window);
+	mlx_destroy_window(data->mlx_ptr, data->window);
 	if (status != IMG_ERR)
-		mlx_destroy_image(exec->mlx_ptr, exec->minimap.img);
-	mlx_destroy_display(exec->mlx_ptr);
-	free(exec->mlx_ptr);
+		mlx_destroy_image(data->mlx_ptr, data->minimap.img);
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
 	close_fds();
 	exit(FAILURE);
 }

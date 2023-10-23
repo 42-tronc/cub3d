@@ -14,7 +14,7 @@
 
 static float get_angle(char orientation);
 
-void	init_player(t_exec *exec, char **map)
+void	init_player(t_data *data, char **map)
 {
 	int		i;
 	int		j;
@@ -28,14 +28,14 @@ void	init_player(t_exec *exec, char **map)
 		{
 			if (ft_strchr("NSEW", map[i][j]))
 			{
-				exec->nswe = map[i][j];
-				exec->player_pos.x = (float)i;
-				exec->player_pos.y = (float)j;
-				exec->player_pos.angle = get_angle(map[i][j]);
-				exec->player_pos.dx = cos(exec->player_pos.angle);
-				exec->player_pos.dy = sin(exec->player_pos.angle);
-				// exec->player_pos.x = (exec->player_pos.x * BLOCK) + (BLOCK / 2);
-				// exec->player_pos.y = (exec->player_pos.y * BLOCK) + (BLOCK / 2);
+				data->nswe = map[i][j];
+				data->player_pos.x = (float)i;
+				data->player_pos.y = (float)j;
+				data->player_pos.angle = get_angle(map[i][j]);
+				data->player_pos.dx = cos(data->player_pos.angle);
+				data->player_pos.dy = sin(data->player_pos.angle);
+				// data->player_pos.x = (data->player_pos.x * BLOCK) + (BLOCK / 2);
+				// data->player_pos.y = (data->player_pos.y * BLOCK) + (BLOCK / 2);
 				return ;
 			}
 			j++;

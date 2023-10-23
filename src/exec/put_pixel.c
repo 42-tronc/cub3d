@@ -12,13 +12,13 @@
 
 #include "exec.h"
 
-void	put_pixel(t_mlx_data *data, int x, int y, int color)
+void	put_pixel(t_mlx_data *mlx_data, int x, int y, int color)
 {
 	char	*dst;
 
 	if ((x <= 0 || x >= WIDTH) || (y <= 0 || y >= HEIGHT))
 		return ;
-	dst = data->addr + (y * data->line_length + x * \
-			(data->bits_per_pixel / 8));
+	dst = mlx_data->addr + (y * mlx_data->line_length + x * \
+			(mlx_data->bits_per_pixel / 8));
 	*(unsigned int *) dst = color;
 }

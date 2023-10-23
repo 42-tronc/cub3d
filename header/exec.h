@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 09:02:24 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 09:27:17 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,40 +61,38 @@
 
 
 // ========== Exec ==========
-int				exec_manager(char *map);
-int				close_window(t_exec *exec, int status);
-float 			get_hypotenuse(t_exec *exec, t_vector_float rotation);
+int				exec_manager(t_data *data);
+int				close_window(t_data *data, int status);
+float 			get_hypotenuse(t_data *data, t_vector_float rotation);
 float           get_hypotenuse2(t_ray *ray);
 
 
 // ========== Init ==========
-int				init_mlx(t_exec *exec);
-void			init_player(t_exec *exec, char **map);
-void            init_ray_struct(t_exec *exec, t_ray *ray, float dir_x, float dir_y);
+int				init_mlx(t_data *data);
+void			init_player(t_data *data, char **map);
+void            init_ray_struct(t_data *data, t_ray *ray, float dir_x, float dir_y);
 
 
 // ========== Draw ==========
-void			draw_minimap(t_exec *exec);
+void			draw_minimap(t_data *data);
 void			draw_player_minimap(t_mlx_data *minimap, float x, float y);
-void            draw_walls(t_exec *exec, int count, t_ray ray);
-int				refresh_window(t_exec *exec);
+void            draw_walls(t_data *data, int count, t_ray ray);
+int				refresh_window(t_data *data);
 
 // ========== Moves ==========
-int				moves(int key_code, t_exec *exec);
-void			rotation(t_exec *exec, int key);
+int				moves(int key_code, t_data *data);
+void			rotation(t_data *data, int key);
 
 
 // ========== Raycasting ==========
-void			raycasting(t_exec *exec);
-void			raycasting_2(t_exec *exec, float x, float y);
+void			raycasting(t_data *data);
+void			raycasting_2(t_data *data, float x, float y);
 
 // ========== Utils ===========
 void			put_pixel(t_mlx_data *data, int x, int y, int color);
-void			free_map(char **map);
 
 // ========== Errors ==========
-void			display_error(char *str);
-void			free_mlx(t_exec *exec);
-void			free_window(t_exec *exec);
+void			free_mlx(t_data *data);
+void			free_window(t_data *data);
 
 #endif

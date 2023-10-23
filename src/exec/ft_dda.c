@@ -12,22 +12,22 @@
 
 #include "cub3d.h"
 
-static int is_wall(t_exec *exec, t_ray *ray);
+static int is_wall(t_data *data, t_ray *ray);
 static void get_side(t_ray *ray);
 
-void    ft_dda(t_exec *exec, t_ray *ray, t_vector_float direction)
+void    ft_dda(t_data *data, t_ray *ray, t_vector_float direction)
 {
-    while (is_wall(exec, ray) == FAILURE)
+    while (is_wall(data, ray) == FAILURE)
     {
         get_side(ray);
-        get_ray_length(exec, ray);
+        get_ray_length(data, ray);
     }
 }
 
-static int is_wall(t_exec *exec, t_ray *ray)
+static int is_wall(t_data *data, t_ray *ray)
 {
-    if (exec->map[ray->map_pos.x][ray->map_pos.y] && \
-            exec->map[ray->map_pos.x][ray->map_pos.y] != '1')
+    if (data->map->array[ray->map_pos.x][ray->map_pos.y] && \
+            data->map->array[ray->map_pos.x][ray->map_pos.y] != '1')
         return (SUCCESS);
     return (FAILURE);
 }
@@ -35,7 +35,7 @@ static int is_wall(t_exec *exec, t_ray *ray)
 static void get_side(t_ray *ray)
 {
     if (ray->dist_to_wall.x < ray->dist_to_wall.y)
-    {  
+    {
         ray->dist_to_wall.x += ray->delta.x;
         ray->map_pos.x += ray->step.x;
         if (ray->step.x == 1)
@@ -54,10 +54,10 @@ static void get_side(t_ray *ray)
     }
 }
 
-static void get_ray_length(t_exec *exec, t_ray *ray)
+static void get_ray_length(t_data *data, t_ray *ray)
 {
-    
-    
+
+
 }
 
 	if (ray->side == EAST || ray->side == WEST)

@@ -12,14 +12,14 @@
 
 #include "exec.h"
 
-int	close_window(t_exec *exec, int status)
+int	close_window(t_data *data, int status)
 {
-	free_map(exec->map);
-	mlx_clear_window(exec->mlx_ptr, exec->window);
-	mlx_destroy_window(exec->mlx_ptr, exec->window);
-	mlx_destroy_image(exec->mlx_ptr, exec->minimap.img);
-	mlx_destroy_display(exec->mlx_ptr);
-	free(exec->mlx_ptr);
+	free_array(data->map->array);
+	mlx_clear_window(data->mlx_ptr, data->window);
+	mlx_destroy_window(data->mlx_ptr, data->window);
+	mlx_destroy_image(data->mlx_ptr, data->minimap.img);
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
 	close_fds();
 	if (status == SUCCESS)
 		exit(EXIT_SUCCESS);

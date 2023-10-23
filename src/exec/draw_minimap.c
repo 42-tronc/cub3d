@@ -12,32 +12,32 @@
 
 #include "cub3d.h"
 
-static void	launcher_minimap(t_exec *exec);
+static void	launcher_minimap(t_data *data);
 static void	draw_squares(t_mlx_data *minimap, int color, int x, int y);
 
-void	draw_minimap(t_exec *exec)
+void	draw_minimap(t_data *data)
 {
-	launcher_minimap(exec);
-	mlx_put_image_to_window(exec->mlx_ptr, exec->window, \
-			exec->minimap.img, 0, 0);
+	launcher_minimap(data);
+	mlx_put_image_to_window(data->mlx_ptr, data->window, \
+			data->minimap.img, 0, 0);
 }
 
-static void	launcher_minimap(t_exec *exec)
+static void	launcher_minimap(t_data *data)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	while (exec->map[x])
+	while (data->map->array[x])
 	{
 		y = 0;
-		while (exec->map[x][y])
+		while (data->map->array[x][y])
 		{
-			if (exec->map[x][y] == '1')
-				draw_squares(&exec->minimap, MAP_WALL, x, y);
-			else if (ft_strchr("NSWE0", exec->map[x][y]))
-				draw_squares(&exec->minimap, MAP_SPACE, x, y);
+			if (data->map->array[x][y] == '1')
+				draw_squares(&data->minimap, MAP_WALL, x, y);
+			else if (ft_strchr("NSWE0", data->map->array[x][y]))
+				draw_squares(&data->minimap, MAP_SPACE, x, y);
 			y++;
 		}
 		x++;
