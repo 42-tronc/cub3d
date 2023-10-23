@@ -58,8 +58,8 @@ typedef enum e_error_code {
 
 //	===== @functions =====
 // exec_free.c
-void	free_mlx(t_exec *exec);
-void	free_window(t_exec *exec);
+void	free_mlx(t_data *data);
+void	free_window(t_data *data);
 void	close_fds(void);
 
 // utils_error.c
@@ -71,5 +71,8 @@ void	free_if_alloc(char *string);
 void	free_array(char **tab);
 void	close_fd(int fd);
 void	free_data(t_data *data);
+
+// parsing.c
+int	map_parsing(t_data *data, char *map);
 
 #endif
