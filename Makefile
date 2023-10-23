@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/23 09:29:19 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/10/23 10:42:38 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,7 @@ SRC_UTILS := utils_error.c \
 				close_fd.c \
 				free_map.c \
 				free_utils.c \
+				utils_free.c \
 
 DIR_PARSING := $(SRC_FOLDER)parsing/
 SCR_PARSING := parsing.c
@@ -155,7 +156,9 @@ $(LIBFT_NAME):
 $(MLX_NAME) :
 	@$(MAKE) -sC $(MLX_DIR)
 
-rsc: $(LIBFT_NAME) $(MLX_NAME)
+rsc:
+	@$(MAKE) -sC $(LIBFT_DIR)
+	@$(MAKE) -sC $(MLX_DIR)
 
 $(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
@@ -178,6 +181,12 @@ re: fclean
 
 debug: CFLAGS += $(FSANITIZE)
 debug: fclean $(NAME)
+
+valgrind: VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes
+valgrind: test
+
+test: all
+	$(VALGRIND) ./$(NAME) maps/test.cub
 
 norm :
 	norminette ./src ./header ./libft | grep -v OK

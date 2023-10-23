@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:59 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 10:40:54 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 int	main(int ac, char **av)
 {
-	(void) ac;
-	(void) av;
-	
-	printf("We're in boys\n");
-	
-	char		*map =  "1111111111111\n1000000000111\n11000N0000011\n1000111000011\n1000000000001\n1111111111111";
-	
+	int		exit_code;
+	t_data	*data;
+
+	exit_code = EXIT_SUCCESS;
+	if (ac != 2)
+		return (print_error(E_MISSING, NULL), EXIT_FAILURE);
+	data = ft_calloc(1, sizeof(t_data));
+	if (!data)
+		return (print_error(E_MALLOC, "main"), EXIT_FAILURE);
+	if (map_parsing(data, av[1]))
+		exit_code = EXIT_FAILURE;
 	if (exec_manager(map) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	free_data(data);
+	return (exit_code);
 }
