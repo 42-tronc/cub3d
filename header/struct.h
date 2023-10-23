@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 09:59:44 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 08:59:48 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 08:54:09 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,6 @@ typedef struct s_player
 	float				angle;
 }				t_player;
 
-typedef struct s_data
-{
-	void			*img;
-	char			*addr;
-	int				bits_per_pixel;
-	int				line_length;
-	int				endian;
-}				t_data;
-
 typedef enum s_cardinal_pts
 {
 	NORTH,
@@ -72,15 +63,57 @@ typedef struct s_ray
     t_cardinal_pts      cardinal;
 }				t_ray;
 
-typedef struct s_exec
+typedef struct s_mlx_data
 {
-    char                nswe;
-	char				**map;
-	void				*mlx_ptr;
-	void				*window;
-	
-	t_data				minimap;
-	t_player    		player_pos;
-}				t_exec;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}	t_mlx_data;
+
+// typedef struct s_exec
+// {
+//     char                nswe;
+// 	char				**map;
+// 	void				*mlx_ptr;
+// 	void				*window;
+
+// 	t_mlx_data			minimap;
+// 	t_player    		player_pos;
+// }				t_exec;
+
+typedef struct s_texture
+{
+	int		fd;
+	char	*path;
+}	t_texture;
+
+typedef struct s_map
+{
+	char	**array;
+	size_t	width;
+	size_t	height;
+}	t_map;
+
+typedef struct s_data
+{
+	char			*file;
+	char			**split_file;
+	t_texture		north;
+	t_texture		south;
+	t_texture		west;
+	t_texture		east;
+	unsigned int	floor;
+	unsigned int	ceiling;
+	t_map			*map;
+	// t_player		*player; // to change
+	char			nswe;
+	void			*mlx_ptr;
+	void			*window;
+	t_mlx_data		minimap;
+	t_player		player_pos;
+}	t_data;
+
 
 #endif

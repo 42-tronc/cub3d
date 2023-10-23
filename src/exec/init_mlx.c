@@ -3,57 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:39:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/20 11:16:24 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 09:27:06 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
-static int	init_minimap(t_exec *exec);
+static int	init_minimap(t_data *data);
 
-int	init_mlx(t_exec *exec)
+int	init_mlx(t_data *data)
 {
-	exec->mlx_ptr = mlx_init();
-	if (!exec->mlx_ptr)
+	data->mlx_ptr = mlx_init();
+	if (!data->mlx_ptr)
 	{
-		free_map(exec->map);
-		display_error("during Minilib init.\n");
+		free_array(data->map->array);
+		print_eerr(E_MLX_INIT, "init_mlx");
 		return (FAILURE);
 	}
-	exec->window = mlx_new_window(exec->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
-	if (!exec->window)
+	data->window = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
+	if (!data->window)
 	{
-		free_map(exec->map);
-		free_mlx(exec);
-		display_error("during window init.\n");
+		free_array(data->map->array);
+		free_mlx(data);
+		print_eerr(E_MLX_INIT, "init_mlx in window init");
 		return (FAILURE);
 	}
-	if (init_minimap(exec) != SUCCESS)
+	if (init_minimap(data) != SUCCESS)
 	{
-		free_map(exec->map);
-		free_window(exec);
-		free_mlx(exec);
-		display_error("during minimap init.\n");
+		free_array(data->map->array);
+		free_window(data);
+		free_mlx(data);
+		print_eerr(E_MLX_INIT, "init_mlx in minimap init");
 		return (FAILURE);
 	}
-	init_player(exec, exec->map);
+	init_player(data, data->map->array);
 	return (SUCCESS);
 }
 
-static int	init_minimap(t_exec *exec)
+static int	init_minimap(t_data *data)
 {
-	exec->minimap.img = mlx_new_image(exec->mlx_ptr, WIDTH, HEIGHT);
-	if (!exec->minimap.img)
+	data->minimap.img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+	if (!data->minimap.img)
 		return (FAILURE);
-	exec->minimap.addr = mlx_get_data_addr(exec->minimap.img, \
-			&exec->minimap.bits_per_pixel, &exec->minimap.line_length, \
-				&exec->minimap.endian);
-	if (!exec->minimap.addr)
+	data->minimap.addr = mlx_get_data_addr(data->minimap.img, \
+			&data->minimap.bits_per_pixel, &data->minimap.line_length, \
+				&data->minimap.endian);
+	if (!data->minimap.addr)
 	{
-		mlx_destroy_image(exec->mlx_ptr, exec->minimap.img);
+		mlx_destroy_image(data->mlx_ptr, data->minimap.img);
 		return (FAILURE);
 	}
 	return (SUCCESS);

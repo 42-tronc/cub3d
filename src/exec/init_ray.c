@@ -12,24 +12,24 @@
 
 #include "cub3d.h"
 
-static void get_ray_step_x(t_exec *exec, t_ray *ray, float dir_x);
-static void get_ray_step_y(t_exec *exec, t_ray *ray, float dir_y);
+static void get_ray_step_x(t_data *data, t_ray *ray, float dir_x);
+static void get_ray_step_y(t_data *data, t_ray *ray, float dir_y);
 
-void init_ray_struct(t_exec *exec, t_ray *ray, float dir_x, float dir_y)
-{	
+void init_ray_struct(t_data *data, t_ray *ray, float dir_x, float dir_y)
+{
 	ray->delta.x = fabs(1.0f / dir_x);
 	ray->delta.y = fabs(1.0f / dir_y);
-	get_ray_step_x(exec, ray, dir_x);
-	get_ray_step_y(exec, ray, dir_y);
-	ray->map_pos.x = (int)exec->player_pos.x;
-	ray->map_pos.y = (int)exec->player_pos.y;
+	get_ray_step_x(data, ray, dir_x);
+	get_ray_step_y(data, ray, dir_y);
+	ray->map_pos.x = (int)data->player_pos.x;
+	ray->map_pos.y = (int)data->player_pos.y;
 }
 
-static void get_ray_step_x(t_exec *exec, t_ray *ray, float dir_x)
+static void get_ray_step_x(t_data *data, t_ray *ray, float dir_x)
 {
 	float		player_pos;
 
-	player_pos = exec->player_pos.x;	
+	player_pos = data->player_pos.x;
 	if (dir_x < 0)
 	{
 		ray->step.x = -1;
@@ -45,11 +45,11 @@ static void get_ray_step_x(t_exec *exec, t_ray *ray, float dir_x)
 
 }
 
-static void get_ray_step_y(t_exec *exec, t_ray *ray, float dir_y)
+static void get_ray_step_y(t_data *data, t_ray *ray, float dir_y)
 {
 	float		player_pos;
 
-	player_pos = exec->player_pos.y;
+	player_pos = data->player_pos.y;
 	if (dir_y < 0)
 	{
 		ray->step.y = -1;

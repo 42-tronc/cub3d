@@ -12,51 +12,50 @@
 
 #include "exec.h"
 
-static void	move_w(t_exec *exec);
-static void	move_a(t_exec *exec);
-static void	move_s(t_exec *exec);
-static void	move_d(t_exec *exec);
+static void	move_w(t_data *data);
+static void	move_a(t_data *data);
+static void	move_s(t_data *data);
+static void	move_d(t_data *data);
 
-int	moves(int key_code, t_exec *exec)
+int	moves(int key_code, t_data *data)
 {
 	if (key_code == KEY_ESC)
-		close_window(exec, SUCCESS);
+		close_window(data, SUCCESS);
 	else if (key_code == KEY_W)
-		move_w(exec);
+		move_w(data);
 	else if (key_code == KEY_A)
-		move_a(exec);
+		move_a(data);
 	else if (key_code == KEY_S)
-		move_s(exec);
+		move_s(data);
 	else if (key_code == KEY_D)
-		move_d(exec);
+		move_d(data);
 	else if (key_code == LEFT_ARROW)
-		rotation(exec, key_code);
+		rotation(data, key_code);
 	else if (key_code == RIGHT_ARROW)
-		rotation(exec, key_code);
+		rotation(data, key_code);
 	return (SUCCESS);
 }
 
-static void	move_w(t_exec *exec)
+static void	move_w(t_data *data)
 {
-	exec->player_pos.x += exec->player_pos.dx / (SIZE_WALL / 10);
-	exec->player_pos.y += exec->player_pos.dy / (SIZE_WALL / 10);
+	data->player_pos.x += data->player_pos.dx / (SIZE_WALL / 10);
+	data->player_pos.y += data->player_pos.dy / (SIZE_WALL / 10);
 }
 
-static void	move_s(t_exec *exec)
-{	
-	exec->player_pos.x -= exec->player_pos.dx / (SIZE_WALL / 10);
-	exec->player_pos.y -= exec->player_pos.dy / (SIZE_WALL / 10);
-}
-
-static void	move_a(t_exec *exec)
+static void	move_s(t_data *data)
 {
-	exec->player_pos.x -= cos(exec->player_pos.angle + (PI / 2));
-	exec->player_pos.y -= sin(exec->player_pos.angle + (PI / 2));
+	data->player_pos.x -= data->player_pos.dx / (SIZE_WALL / 10);
+	data->player_pos.y -= data->player_pos.dy / (SIZE_WALL / 10);
 }
 
-static void	move_d(t_exec *exec)
+static void	move_a(t_data *data)
 {
-	exec->player_pos.x += cos(exec->player_pos.angle + (PI / 2));
-	exec->player_pos.y += sin(exec->player_pos.angle + (PI / 2));
+	data->player_pos.x -= cos(data->player_pos.angle + (PI / 2));
+	data->player_pos.y -= sin(data->player_pos.angle + (PI / 2));
 }
 
+static void	move_d(t_data *data)
+{
+	data->player_pos.x += cos(data->player_pos.angle + (PI / 2));
+	data->player_pos.y += sin(data->player_pos.angle + (PI / 2));
+}

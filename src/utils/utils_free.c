@@ -21,7 +21,7 @@ void	free_if_alloc(char *string)
 	}
 }
 
-void	free_tab(char **tab)
+void	free_array(char **tab)
 {
 	size_t	i;
 
@@ -43,7 +43,7 @@ void	close_fd(int fd)
 void	free_data(t_data *data)
 {
 	free_if_alloc(data->file);
-	free_tab(data->split_file);
+	free_array(data->split_file);
 	free_if_alloc(data->north.path);
 	close_fd(data->north.fd);
 	free_if_alloc(data->south.path);
@@ -54,10 +54,10 @@ void	free_data(t_data *data)
 	close_fd(data->west.fd);
 	if (data->map)
 	{
-		free_tab(data->map->array);
+		free_array(data->map->array);
 		free(data->map);
 	}
-	if (data->player)
-		free(data->player);
+	// if (data->player) // FIXME
+	// 	free(data->player); // FIXME
 	free(data);
 }
