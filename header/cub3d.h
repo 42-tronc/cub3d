@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 08:45:38 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 08:58:05 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,40 +33,6 @@
 # define RESET		"\e[0m"
 # define BOLD		"\e[1m"
 # define NO_BOLD	"\e[22m"
-
-typedef struct s_texture
-{
-	int		fd;
-	char	*path;
-}	t_texture;
-
-typedef struct s_map
-{
-	char	**array;
-	size_t	width;
-	size_t	height;
-}	t_map;
-
-typedef struct s_player
-{
-	double	x;
-	double	y;
-	double	rotation;
-}	t_player;
-
-typedef struct s_data
-{
-	char			*file;
-	char			**split_file;
-	t_texture		north;
-	t_texture		south;
-	t_texture		west;
-	t_texture		east;
-	unsigned int	floor;
-	unsigned int	ceiling;
-	t_map			*map;
-	t_player		*player;
-}	t_data;
 
 typedef enum e_error_code {
 	E_MALLOC,
@@ -95,7 +61,7 @@ int	map_parsing(t_data *data, char *map);
 
 // utils_error.c
 void	print_error(int code, char *src);
-void	close_fd(void);
+void	close_fds(void);
 
 // utils_free.c
 void	free_tab(char **tab);

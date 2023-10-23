@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/10/22 18:58:52 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 08:58:19 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -495,17 +495,17 @@ static int	check_map_vert_island(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
-static void translate_pos_to_deg(t_data *data, char pos)
-{
-	if (pos == 'N')
-		data->player->rotation = NORTH;
-	else if (pos == 'E')
-		data->player->rotation = EAST;
-	else if (pos == 'S')
-		data->player->rotation = SOUTH;
-	else if (pos == 'W')
-		data->player->rotation = WEST;
-}
+// static void translate_pos_to_deg(t_data *data, char pos)
+// {
+// 	if (pos == 'N')
+// 		data->player->angle = NORTH;
+// 	else if (pos == 'E')
+// 		data->player->angle = EAST;
+// 	else if (pos == 'S')
+// 		data->player->angle = SOUTH;
+// 	else if (pos == 'W')
+// 		data->player->angle = WEST;
+// }
 
 static int get_player_pos(t_data *data)
 {
@@ -525,13 +525,13 @@ static int get_player_pos(t_data *data)
 			c = data->map->array[i][j];
 			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
-				translate_pos_to_deg(data, c);
+				// translate_pos_to_deg(data, c);
 				data->player->x = j;
 				data->player->y = i;
 				printf("\n\e[92;1mPlayer position:\e[0m\n"); // REMOVE
 				printf("\e[93;1mx: \e[22m%.2f\e[0m\n", data->player->x); // REMOVE
 				printf("\e[93;1my: \e[22m%.2f\e[0m\n", data->player->y); // REMOVE
-				printf("\e[93;1mrotation: \e[22m%.2f\e[0m\n", data->player->rotation); // REMOVE
+				printf("\e[93;1mrotation: \e[22m%.2f\e[0m\n", data->player->angle); // REMOVE
 				return (EXIT_SUCCESS);
 			}
 			j++;

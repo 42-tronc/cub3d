@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   close_fd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:58:49 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/09/09 12:18:33 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 08:58:05 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	close_fd(void)
+void	close_fds(void)
 {
 	int		i;
 

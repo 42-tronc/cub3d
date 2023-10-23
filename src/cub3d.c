@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 10:40:54 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 08:55:13 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	main(int ac, char **av)
 		return (print_error(E_MALLOC, "main"), EXIT_FAILURE);
 	if (map_parsing(data, av[1]))
 		exit_code = EXIT_FAILURE;
-	if (exec_manager(map) != EXIT_SUCCESS)
-		return (EXIT_FAILURE);
+	// if (exec_manager(data->map->array) != EXIT_SUCCESS)
+	// 	return (EXIT_FAILURE);
 	free_data(data);
 	return (exit_code);
 }

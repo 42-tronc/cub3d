@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 09:11:47 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 09:02:24 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void            init_ray_struct(t_exec *exec, t_ray *ray, float dir_x, float dir
 
 // ========== Draw ==========
 void			draw_minimap(t_exec *exec);
-void			draw_player_minimap(t_data *minimap, float x, float y);
+void			draw_player_minimap(t_mlx_data *minimap, float x, float y);
 void            draw_walls(t_exec *exec, int count, t_ray ray);
 int				refresh_window(t_exec *exec);
 
@@ -89,7 +89,7 @@ void			raycasting(t_exec *exec);
 void			raycasting_2(t_exec *exec, float x, float y);
 
 // ========== Utils ===========
-void			put_pixel(t_data *data, int x, int y, int color);
+void			put_pixel(t_mlx_data *data, int x, int y, int color);
 void			free_map(char **map);
 
 // ========== Errors ==========

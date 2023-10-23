@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:16:24 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/21 14:54:31 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 09:04:16 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 // 	(void)count;
 // }
 
-void    draw_walls(t_exec *exec, int count, t_ray ray)
+/* void    draw_walls(t_exec *exec, int count, t_ray ray)
 {
 	ray.wall_height = WALL_H / ray.wall_dist;
 
 	int i = 0;
-	
+
 	if (ray.wall_height < -200000)
 		return ;
 	while (i < 500 - (ray.wall_height / 2))
@@ -42,4 +42,4 @@ void    draw_walls(t_exec *exec, int count, t_ray ray)
 		put_pixel(&exec->minimap, abs(count), i, GREY_HEX);
 		i++;
 	}
-}
+} */

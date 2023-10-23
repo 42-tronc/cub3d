@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:56:47 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/21 15:48:21 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 09:01:51 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static void	launcher_minimap(t_exec *exec);
-static void	draw_squares(t_data *minimap, int color, int x, int y);
+static void	draw_squares(t_mlx_data *minimap, int color, int x, int y);
 
 void	draw_minimap(t_exec *exec)
 {
@@ -44,7 +44,7 @@ static void	launcher_minimap(t_exec *exec)
 	}
 }
 
-static void	draw_squares(t_data *minimap, int color, int x, int y)
+static void	draw_squares(t_mlx_data *minimap, int color, int x, int y)
 {
 	int	i;
 	int	j;
