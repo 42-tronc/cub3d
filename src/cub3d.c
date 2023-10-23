@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 16:29:22 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:59:40 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int    main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	int			exit_code;
 	t_data		data;
@@ -22,7 +22,7 @@ int    main(int ac, char **av)
 		return (print_perr(E_MISSING, NULL), EXIT_FAILURE);
 	if (map_parsing(&data, av[1]))
 		exit_code = EXIT_FAILURE;
-	if (exec_manager(&data) != SUCCESS)
+	if (!exit_code && exec_manager(&data) != SUCCESS)
 		exit_code = EXIT_FAILURE;
 	free_data(&data);
 	return (exit_code);
