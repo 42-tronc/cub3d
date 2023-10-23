@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:45:07 by croy              #+#    #+#             */
-/*   Updated: 2023/09/25 15:42:15 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 15:40:33 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	free_data(t_data *data)
 	close_fd(data->east.fd);
 	free_if_alloc(data->east.path);
 	close_fd(data->west.fd);
+	close_fds();
 	if (data->map)
 	{
 		free_array(data->map->array);
@@ -59,5 +60,4 @@ void	free_data(t_data *data)
 	}
 	// if (data->player) // FIXME
 	// 	free(data->player); // FIXME
-	free(data);
 }

@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/23 10:42:38 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/10/23 14:11:02 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,10 +97,8 @@ SRC_MAIN := cub3d.c
 
 DIR_UTILS := $(SRC_FOLDER)utils/
 SRC_UTILS := utils_error.c \
-				close_fd.c \
-				free_map.c \
-				free_utils.c \
 				utils_free.c \
+				exec_free.c \
 
 DIR_PARSING := $(SRC_FOLDER)parsing/
 SCR_PARSING := parsing.c
@@ -126,7 +124,6 @@ SCR_EXEC := exec_manager.c \
 			moves.c \
 			ft_dda.c \
 			\
-			get_hypotenuse.c \
 
 # -------------- RECIPES --------------
 all: rsc

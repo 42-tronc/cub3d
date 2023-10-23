@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 09:59:44 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 08:54:09 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 13:48:49 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_ray
     t_vector_int        map_pos;
 
     t_cardinal_pts      cardinal;
+
+	float				length;
 }				t_ray;
 
 typedef struct s_mlx_data

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:39:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 09:27:06 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 13:34:38 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	init_mlx(t_data *data)
 	if (!data->mlx_ptr)
 	{
 		free_array(data->map->array);
-		print_eerr(E_MLX_INIT, "init_mlx");
+		print_exec_err(E_MLX_INIT, "in init_mlx");
 		return (FAILURE);
 	}
 	data->window = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
@@ -28,7 +28,7 @@ int	init_mlx(t_data *data)
 	{
 		free_array(data->map->array);
 		free_mlx(data);
-		print_eerr(E_MLX_INIT, "init_mlx in window init");
+		print_exec_err(E_MLX_INIT, "in init_mlx");
 		return (FAILURE);
 	}
 	if (init_minimap(data) != SUCCESS)
@@ -36,7 +36,7 @@ int	init_mlx(t_data *data)
 		free_array(data->map->array);
 		free_window(data);
 		free_mlx(data);
-		print_eerr(E_MLX_INIT, "init_mlx in minimap init");
+		print_exec_err(E_MLX_INIT, "in init_mlx");
 		return (FAILURE);
 	}
 	init_player(data, data->map->array);

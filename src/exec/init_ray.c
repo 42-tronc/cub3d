@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 10:51:24 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 09:26:58 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:48:59 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void init_ray_struct(t_data *data, t_ray *ray, float dir_x, float dir_y)
 	get_ray_step_y(data, ray, dir_y);
 	ray->map_pos.x = (int)data->player_pos.x;
 	ray->map_pos.y = (int)data->player_pos.y;
+	ray->length = 0.0f;
 }
 
 static void get_ray_step_x(t_data *data, t_ray *ray, float dir_x)

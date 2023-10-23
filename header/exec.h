@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 09:27:17 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 14:05:22 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 # define SUCCESS	    EXIT_SUCCESS
 # define FAILURE	    EXIT_FAILURE
-# define MALLOC_ERR     "Error during a malloc.\n"
 # define IMG_ERR        1
 
 // ===== Define Keys =====
@@ -62,10 +61,8 @@
 
 // ========== Exec ==========
 int				exec_manager(t_data *data);
+void            ft_dda(t_data *data, t_ray *ray, t_vector_float direction);
 int				close_window(t_data *data, int status);
-float 			get_hypotenuse(t_data *data, t_vector_float rotation);
-float           get_hypotenuse2(t_ray *ray);
-
 
 // ========== Init ==========
 int				init_mlx(t_data *data);
