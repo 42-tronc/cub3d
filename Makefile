@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
+#    By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/23 14:11:02 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/10/23 14:36:21 by thmeyer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,8 +83,8 @@ HEADER := 	header/cub3d.h \
 			header/exec.h \
 			header/struct.h \
 
-MLX_DIR := minilibx/
-MLX_NAME := $(MLX_DIR)libexec.a
+MLX_DIR := mlx_linux/
+MLX_NAME := $(MLX_DIR)libmlx_Linux.a
 MLX_FLAGS := -lm -lz -lXext -lX11 -I${MLX_DIR}
 
 SRC_FOLDER := src/

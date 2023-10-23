@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thmeyer <thmeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 13:59:49 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:35:32 by thmeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 // ========= @includes =========
-# include "../minilibx/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include "libft.h"
 
 # include <errno.h>  // for perror
