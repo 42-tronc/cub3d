@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/22 18:59:21 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 08:24:43 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef enum e_error_code {
 	E_MAP_FMT,
 	E_MAP_PLYR,
 	E_MAP_WALLS,
-	E_MAP_ISLAND
+	E_MAP_ISLAND,
 	E_TXT_MISS,
 }	t_error_code;
 
