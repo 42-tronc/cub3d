@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 09:27:36 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 13:33:56 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef enum e_error_code {
 	E_MAP_ISLAND,
 	E_TXT_MISS,
 	E_MLX_INIT,
+	E_WIN_INIT,
+	E_MINIMAP,
 }	t_error_code;
 
 # define NORTH	0
@@ -58,13 +60,13 @@ typedef enum e_error_code {
 
 //	===== @functions =====
 // exec_free.c
-void	free_mlx(t_exec *exec);
-void	free_window(t_exec *exec);
+void	free_mlx(t_data *data);
+void	free_window(t_data *data);
 void	close_fds(void);
 
 // utils_error.c
 void	print_perr(int code, char *src);
-void	print_eerr(int code, char *src);
+void	print_exec_err(int code, char *src);
 
 // utils_free.c
 void	free_if_alloc(char *string);

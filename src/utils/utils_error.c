@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 21:31:48 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 09:27:40 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 13:35:03 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ void	print_perr(int code, char *src)
 		printf(RED BOLD"Error\n%s%s%s\n", NO_BOLD, error[code], RESET);
 }
 
-void	print_eerr(int code, char *src)
+void	print_exec_err(int code, char *src)
 {
-	char	*error[1];
+	char	*error[3];
 
-	error[E_MLX_INIT] = "mlx couldnt init";
+	error[E_MLX_INIT] = "error during mlx init";
+	error[E_WIN_INIT] = "error during window init";
+	error[E_MINIMAP] = "error during minimap init";
 	if (src && ft_strlen(src))
 		printf(RED BOLD"Error\n%s%s in %s%s\n", NO_BOLD, error[code], src, RESET);
 	else
