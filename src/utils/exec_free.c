@@ -12,16 +12,16 @@
 
 #include "exec.h"
 
-void	free_mlx(t_exec *exec)
+void	free_mlx(t_data *data)
 {
-	mlx_destroy_display(exec->mlx_ptr);
-	free(exec->mlx_ptr);
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
 }
 
-void	free_window(t_exec *exec)
+void	free_window(t_data *data)
 {
-	mlx_clear_window(exec->mlx_ptr, exec->window);
-	mlx_destroy_window(exec->mlx_ptr, exec->window);
+	mlx_clear_window(data->mlx_ptr, data->window);
+	mlx_destroy_window(data->mlx_ptr, data->window);
 }
 
 void	close_fds(void)
