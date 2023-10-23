@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 16:20:45 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:20:18 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -464,10 +464,9 @@ static int	is_column_empty(t_data *data, size_t x)
 	y = 0;
 	while (data->map->array[y] && ft_strlen(data->map->array[y]) >= x)
 	{
-		printf("CHAR ='%c'\n", data->map->array[y][x]);
 		if (data->map->array[y][x] && data->map->array[y][x] != ' ')
 		{ // REMOVE
-			printf("Found `%c` at (%ld, %ld), column %ld\n\n", data->map->array[y][x], x, y, x); // REMOVE
+			// printf("Found `%c` at (%ld, %ld), column %ld\n\n", data->map->array[y][x], x, y, x); // REMOVE
 			return (0);
 		} // REMOVE
 		y++;
@@ -487,7 +486,7 @@ static int	check_map_vert_island(t_data *data)
 		x = 0;
 		while (data->map->array[y][x])
 		{
-			printf("checking `%c` at (%ld, %ld), column %ld checking under\n", data->map->array[y][x], x, y, x); // REMOVE
+			// printf("checking `%c` at (%ld, %ld), column %ld checking under\n", data->map->array[y][x], x, y, x); // REMOVE
 			if (data->map->array[y][x] == ' ' && is_column_empty(data, x))
 				return (print_perr(E_MAP_ISLAND, data->map->array[y]), EXIT_FAILURE);
 			x++;

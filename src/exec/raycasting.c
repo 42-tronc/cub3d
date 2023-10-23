@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:28:28 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 14:02:43 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:48:43 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	raycasting(t_data *data)
 		ft_dda(data, &ray, direction);
 		// check_wall(data, &ray);
 		// draw_lines(data, &ray, i);
-		draw_walls(data, i, ray);
+		// draw_walls(data, i, ray);
 		i++;
 		angle += (RAD * (40.00 / (WIDTH)));
 	}
