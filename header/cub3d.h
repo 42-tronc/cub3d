@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 08:58:05 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 09:27:36 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,19 @@ typedef enum e_error_code {
 # define WEST	270
 
 //	===== @functions =====
-// parsing.c
-int	map_parsing(t_data *data, char *map);
-
-// utils_error.c
-void	print_error(int code, char *src);
+// exec_free.c
+void	free_mlx(t_exec *exec);
+void	free_window(t_exec *exec);
 void	close_fds(void);
 
+// utils_error.c
+void	print_perr(int code, char *src);
+void	print_eerr(int code, char *src);
+
 // utils_free.c
-void	free_tab(char **tab);
 void	free_if_alloc(char *string);
+void	free_array(char **tab);
+void	close_fd(int fd);
 void	free_data(t_data *data);
 
 #endif
