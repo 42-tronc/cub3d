@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
+#    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/23 14:11:02 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/10/24 11:12:06 by croy             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -182,8 +182,9 @@ debug: fclean $(NAME)
 valgrind: VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes
 valgrind: test
 
+ARG = maps/test.cub
 test: all
-	$(VALGRIND) ./$(NAME) maps/test.cub
+	$(VALGRIND) ./$(NAME) $(ARG)
 
 norm :
 	norminette ./src ./header ./libft | grep -v OK
