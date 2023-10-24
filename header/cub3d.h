@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 13:11:24 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/24 14:31:54 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # include "exec.h"
 
 // ========= @defines =========
+# define SUCCESS	EXIT_SUCCESS
+# define FAILURE	EXIT_FAILURE
 # define RED		"\e[31m"
 # define WHITE		"\e[37m"
 # define RESET		"\e[0m"
@@ -57,11 +59,6 @@ typedef enum e_error_exec_code {
 	E_MINIMAP
 }	t_error_exec_code;
 
-# define NORTH	0
-# define EAST	90
-# define SOUTH	180
-# define WEST	270
-
 //	===== @functions =====
 // exec_free.c
 void	free_mlx(t_data *data);
@@ -80,6 +77,6 @@ void	free_data(t_data *data);
 int		map_parsing(t_data *data, char *map);
 
 // parsing.c
-int	map_parsing(t_data *data, char *map);
+int		map_parsing(t_data *data, char *map);
 
 #endif

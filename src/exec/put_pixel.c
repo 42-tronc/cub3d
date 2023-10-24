@@ -6,11 +6,11 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:53:26 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 09:00:14 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/24 14:30:35 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exec.h"
+#include "cub3d.h"
 
 void	put_pixel(t_mlx_data *mlx_data, int x, int y, int color)
 {

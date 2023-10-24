@@ -6,11 +6,11 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:05:16 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 08:58:05 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/24 14:30:35 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exec.h"
+#include "cub3d.h"
 
 static void error_refresh_window(t_data *data, int status);
 

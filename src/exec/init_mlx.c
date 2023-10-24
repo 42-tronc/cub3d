@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:39:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 13:34:38 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:30:35 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exec.h"
+#include "cub3d.h"
 
 static int	init_minimap(t_data *data);
 

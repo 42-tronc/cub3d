@@ -6,11 +6,11 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:37:26 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 09:26:21 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/24 14:30:35 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exec.h"
+#include "cub3d.h"
 
 int	exec_manager(t_data *data)
 {
