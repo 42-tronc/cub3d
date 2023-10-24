@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:05:16 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 14:37:09 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/24 14:54:29 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,12 @@ int	refresh_window(t_data *data)
 
 static void error_refresh_window(t_data *data, int status)
 {
-	free_array(data->map->array);
 	mlx_clear_window(data->mlx_ptr, data->window);
 	mlx_destroy_window(data->mlx_ptr, data->window);
 	if (status != IMG_ERR)
 		mlx_destroy_image(data->mlx_ptr, data->minimap.img);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
-	close_fds();
+	free_data(data);
 	exit(FAILURE);
 }
