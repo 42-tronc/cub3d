@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
+#    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/23 14:11:02 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/10/24 14:35:58 by croy             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,8 +80,9 @@ USER := $(shell whoami)
 # --------- PROJECT VARIABLES ---------
 NAME := cub3D
 HEADER := 	header/cub3d.h \
-			header/exec.h \
 			header/struct.h \
+			header/parsing.h \
+			header/exec.h
 
 MLX_DIR := minilibx/
 MLX_NAME := $(MLX_DIR)libexec.a
@@ -96,12 +97,12 @@ DIR_MAIN := $(SRC_FOLDER)
 SRC_MAIN := cub3d.c
 
 DIR_UTILS := $(SRC_FOLDER)utils/
-SRC_UTILS := utils_error.c \
-				utils_free.c \
+SRC_UTILS := utils_error.c utils_free.c \
 				exec_free.c \
 
 DIR_PARSING := $(SRC_FOLDER)parsing/
-SCR_PARSING := parsing.c
+SCR_PARSING := check_islands.c check_map.c parse_file.c parse_map.c \
+	parse_properties.c parsing.c
 
 DIR_EXEC := $(SRC_FOLDER)exec/
 SCR_EXEC := exec_manager.c \
@@ -119,7 +120,6 @@ SCR_EXEC := exec_manager.c \
 			put_pixel.c \
 			\
 			raycasting.c \
-			raycasting_2.c\
 			rotation.c \
 			moves.c \
 			ft_dda.c \
@@ -182,8 +182,9 @@ debug: fclean $(NAME)
 valgrind: VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes
 valgrind: test
 
+ARG = maps/test.cub
 test: all
-	$(VALGRIND) ./$(NAME) maps/test.cub
+	$(VALGRIND) ./$(NAME) $(ARG)
 
 norm :
 	norminette ./src ./header ./libft | grep -v OK
