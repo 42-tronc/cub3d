@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
+#    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/24 11:12:06 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/10/24 14:16:19 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,7 +119,6 @@ SCR_EXEC := exec_manager.c \
 			put_pixel.c \
 			\
 			raycasting.c \
-			raycasting_2.c\
 			rotation.c \
 			moves.c \
 			ft_dda.c \

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 13:25:13 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:16:23 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void			rotation(t_data *data, int key);
 
 // ========== Raycasting ==========
 void			raycasting(t_data *data);
-void			raycasting_2(t_data *data, float x, float y);
 
 // ========== Utils ===========
 void			put_pixel(t_mlx_data *data, int x, int y, int color);
