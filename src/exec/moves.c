@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:43:05 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/20 17:59:01 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 09:26:38 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ static void	move_s(t_data *data)
 
 static void	move_a(t_data *data)
 {
-	data->player_pos.x -= cos(data->player_pos.angle + (PI / 2));
-	data->player_pos.y -= sin(data->player_pos.angle + (PI / 2));
+	data->player_pos.x -= (cos(data->player_pos.angle + (PI / 2)) / 10);
+	data->player_pos.y -= (sin(data->player_pos.angle + (PI / 2)) / 10);
 }
 
 static void	move_d(t_data *data)
 {
-	data->player_pos.x += cos(data->player_pos.angle + (PI / 2));
-	data->player_pos.y += sin(data->player_pos.angle + (PI / 2));
+	data->player_pos.x += (cos(data->player_pos.angle + (PI / 2)) / 10);
+	data->player_pos.y += (sin(data->player_pos.angle + (PI / 2)) / 10);
 }

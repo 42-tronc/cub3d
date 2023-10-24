@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:49:49 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/20 13:26:07 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 09:29:50 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ static void	right_rotation(t_data *data);
 
 void	rotation(t_data *data, int key)
 {
+	// WARNING
 	if (key == LEFT_ARROW)
-		left_rotation(data);
-	else if (key == RIGHT_ARROW)
 		right_rotation(data);
+	else if (key == RIGHT_ARROW)
+		left_rotation(data);
 	data->player_pos.dx = cos(data->player_pos.angle);
 	data->player_pos.dy = sin(data->player_pos.angle);
 }
