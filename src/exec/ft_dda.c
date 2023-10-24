@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:29:21 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 09:21:59 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:21:29 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void    ft_dda(t_data *data, t_ray *ray, t_vector_float direction)
 	(void)direction;
 	while (is_wall(data, ray) == SUCCESS)
 	{
+		// printf("data->player_pos.x = %f\n", data->player_pos.x);
+		// printf("data->player_pos.y = %f\n", data->player_pos.y);
 		get_side(ray);
 		get_ray_length(ray);
 	}

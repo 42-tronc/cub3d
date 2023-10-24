@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 14:05:22 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:40:42 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define SIZE_WALL		125
 # define SIZE_CUT		4
 # define FOV			30
+# define TOL			0.005
 # define HEIGHT         1080
 # define WIDTH          1920
 # define FOCAL			0.50
