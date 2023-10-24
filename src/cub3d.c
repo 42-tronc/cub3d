@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 14:57:54 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 16:29:22 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:57:56 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int    main(int ac, char **av)
 		return (print_perr(E_MISSING, NULL), EXIT_FAILURE);
 	if (map_parsing(&data, av[1]))
 		exit_code = EXIT_FAILURE;
-	if (exec_manager(&data) != SUCCESS)
+	if (!exit_code && exec_manager(&data))
 		exit_code = EXIT_FAILURE;
 	free_data(&data);
 	return (exit_code);
