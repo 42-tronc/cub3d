@@ -34,8 +34,6 @@ void	init_player(t_data *data, char **map)
 				data->player_pos.angle = get_angle(map[i][j]);
 				data->player_pos.dx = cos(data->player_pos.angle);
 				data->player_pos.dy = sin(data->player_pos.angle);
-				// data->player_pos.x = (data->player_pos.x * BLOCK) + (BLOCK / 2);
-				// data->player_pos.y = (data->player_pos.y * BLOCK) + (BLOCK / 2);
 				return ;
 			}
 			j++;

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 15:25:05 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:33:48 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,10 @@
 # define SIZE_MAP       20
 # define SIZE_WALL		125
 # define SIZE_CUT		4
-# define FOV			30
 # define TOL			0.025
 # define HEIGHT         1080
 # define WIDTH          1920
-# define FOCAL			0.50
 # define WALL_H			1000
-# define N_RAYS			1920
 
 // ===== Maths define =====
 # define PI				3.1415926535
