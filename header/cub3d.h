@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 13:59:49 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:11:24 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 # include <string.h> // for strerror
 # include <unistd.h> // for close, read, write
 # include <math.h>
-# include "exec.h"
 # include "struct.h"
+# include "parsing.h"
+# include "exec.h"
 
 // ========= @defines =========
 # define RED		"\e[31m"

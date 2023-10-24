@@ -6,7 +6,7 @@
 #    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/24 11:12:06 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/10/24 14:19:06 by croy             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,8 @@ SRC_UTILS := utils_error.c \
 				exec_free.c \
 
 DIR_PARSING := $(SRC_FOLDER)parsing/
-SCR_PARSING := parsing.c
+SCR_PARSING := check_islands.c check_map.c parse_file.c parse_map.c \
+	parse_properties.c parsing.c
 
 DIR_EXEC := $(SRC_FOLDER)exec/
 SCR_EXEC := exec_manager.c \
