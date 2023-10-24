@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:16:24 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 10:47:52 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:48:24 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,22 @@ void    draw_walls(t_data *data, int count, t_ray ray)
 	wall_height = WALL_H / ray.length;
 	if (wall_height < -200000)
 		return ;
-	while (i < 540 - (wall_height / 2))
+	while (i < (HEIGHT / 2) - (wall_height / 2))
 	{
 		put_pixel(&data->minimap, abs(count), i, BLUE_HEX);
 		i++;
 	}
-	while (i < 540 + (wall_height / 2))
+	while (i < (HEIGHT / 2) + (wall_height / 2))
 	{
-		put_pixel(&data->minimap, abs(count), i, GREEN_HEX);
+		if (ray.cardinal == NORTH)
+			put_pixel(&data->minimap, abs(count), i, S_BROWN);
+		if (ray.cardinal == SOUTH)
+			put_pixel(&data->minimap, abs(count), i, N_RED);
+		if (ray.cardinal == WEST)
+			put_pixel(&data->minimap, abs(count), i, E_GREEN);
+		if (ray.cardinal == EAST)
+			put_pixel(&data->minimap, abs(count), i, W_WHITE);
+
 		i++;
 	}
 	while (i < HEIGHT)

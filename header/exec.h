@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 10:58:08 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:25:13 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define HEIGHT         1080
 # define WIDTH          1920
 # define FOCAL			0.50
-# define WALL_H			500
+# define WALL_H			1000
 # define N_RAYS			1920
 
 // ===== Maths define =====
@@ -53,16 +53,19 @@
 # define MAP_WALL		0x0f056b
 # define MAP_SPACE		0x919191
 # define MAP_PLAYER		0x00ff7f
-# define RED_HEX        0xff0000
 # define GREEN_HEX      0x7CFC00
 # define BLUE_HEX       0x87CEEB
 # define YELLOW_HEX     0xffff00
 # define GREY_HEX		0x7f7f7f
+# define N_RED	        0xff0000
+# define S_BROWN		0xb07922
+# define E_GREEN		0x2d9c18
+# define W_WHITE		0xf0ede5
 
 
 // ========== Exec ==========
 int				exec_manager(t_data *data);
-void            ft_dda(t_data *data, t_ray *ray, t_vector_float direction);
+void            ft_dda(t_data *data, t_ray *ray);
 int				close_window(t_data *data, int status);
 
 // ========== Init ==========

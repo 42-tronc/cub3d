@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:43:05 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 10:57:39 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:28:35 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,22 +74,6 @@ static void	move_a(t_data *data)
 
 	tmp.x = data->player_pos.x;
 	tmp.y = data->player_pos.y;
-	tmp.x -= (cos(data->player_pos.angle + (PI / 2)) / 10);
-	tmp.y -= (sin(data->player_pos.angle + (PI / 2)) / 10);
-	if (data->map->array[(int)(tmp.x + TOL)][(int)(tmp.y + TOL)] == '1')
-		return ;
-	if (data->map->array[(int)(tmp.x - TOL)][(int)(tmp.y - TOL)] == '1')
-		return ;
-	data->player_pos.x -= (cos(data->player_pos.angle + (PI / 2)) / 10);
-	data->player_pos.y -= (sin(data->player_pos.angle + (PI / 2)) / 10);
-}
-
-static void	move_d(t_data *data)
-{
-	t_vector_float		tmp;
-
-	tmp.x = data->player_pos.x;
-	tmp.y = data->player_pos.y;
 	tmp.x += (cos(data->player_pos.angle + (PI / 2)) / 10);
 	tmp.y += (sin(data->player_pos.angle + (PI / 2)) / 10);
 	if (data->map->array[(int)(tmp.x + TOL)][(int)(tmp.y + TOL)] == '1')
@@ -98,4 +82,20 @@ static void	move_d(t_data *data)
 		return ;
 	data->player_pos.x += (cos(data->player_pos.angle + (PI / 2)) / 10);
 	data->player_pos.y += (sin(data->player_pos.angle + (PI / 2)) / 10);
+}
+
+static void	move_d(t_data *data)
+{
+	t_vector_float		tmp;
+
+	tmp.x = data->player_pos.x;
+	tmp.y = data->player_pos.y;
+	tmp.x -= (cos(data->player_pos.angle + (PI / 2)) / 10);
+	tmp.y -= (sin(data->player_pos.angle + (PI / 2)) / 10);
+	if (data->map->array[(int)(tmp.x + TOL)][(int)(tmp.y + TOL)] == '1')
+		return ;
+	if (data->map->array[(int)(tmp.x - TOL)][(int)(tmp.y - TOL)] == '1')
+		return ;
+	data->player_pos.x -= (cos(data->player_pos.angle + (PI / 2)) / 10);
+	data->player_pos.y -= (sin(data->player_pos.angle + (PI / 2)) / 10);
 }

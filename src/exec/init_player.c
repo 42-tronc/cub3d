@@ -47,12 +47,12 @@ void	init_player(t_data *data, char **map)
 static float get_angle(char orientation)
 {
 	if (orientation == 'N')
-		return (PI / 2);
-	else if (orientation == 'S')
 		return ((3 * PI) / 2);
+	else if (orientation == 'S')
+		return (PI / 2);
 	else if (orientation == 'E')
-		return (PI * 2);
-	else if (orientation == 'W')
 		return (PI);
+	else if (orientation == 'W')
+		return (PI * 2);
 	return (0);
 }
