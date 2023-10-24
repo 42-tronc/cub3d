@@ -6,7 +6,7 @@
 #    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/24 14:19:06 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/10/24 14:31:25 by croy             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,8 +80,9 @@ USER := $(shell whoami)
 # --------- PROJECT VARIABLES ---------
 NAME := cub3D
 HEADER := 	header/cub3d.h \
-			header/exec.h \
 			header/struct.h \
+			header/parsing.h \
+			header/exec.h
 
 MLX_DIR := minilibx/
 MLX_NAME := $(MLX_DIR)libexec.a
@@ -96,8 +97,7 @@ DIR_MAIN := $(SRC_FOLDER)
 SRC_MAIN := cub3d.c
 
 DIR_UTILS := $(SRC_FOLDER)utils/
-SRC_UTILS := utils_error.c \
-				utils_free.c \
+SRC_UTILS := utils_error.c utils_free.c \
 				exec_free.c \
 
 DIR_PARSING := $(SRC_FOLDER)parsing/
