@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 14:31:54 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/24 14:36:18 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ typedef enum e_error_code {
 typedef enum e_error_exec_code {
 	E_MLX_INIT,
 	E_WIN_INIT,
-	E_MINIMAP
+	E_MINIMAP,
+	E_IMG,
+	E_ADDR
 }	t_error_exec_code;
 
 //	===== @functions =====

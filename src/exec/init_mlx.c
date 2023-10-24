@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:39:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 14:30:35 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/24 14:36:31 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,18 @@ int	init_mlx(t_data *data)
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 	{
-		free_array(data->map->array);
 		print_exec_err(E_MLX_INIT, "in init_mlx");
 		return (FAILURE);
 	}
 	data->window = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
 	if (!data->window)
 	{
-		free_array(data->map->array);
 		free_mlx(data);
 		print_exec_err(E_MLX_INIT, "in init_mlx");
 		return (FAILURE);
 	}
 	if (init_minimap(data) != SUCCESS)
 	{
-		free_array(data->map->array);
 		free_window(data);
 		free_mlx(data);
 		print_exec_err(E_MLX_INIT, "in init_mlx");

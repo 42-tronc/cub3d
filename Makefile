@@ -6,7 +6,7 @@
 #    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/24 14:31:25 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/10/24 14:35:58 by croy             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,7 +120,6 @@ SCR_EXEC := exec_manager.c \
 			put_pixel.c \
 			\
 			raycasting.c \
-			raycasting_2.c\
 			rotation.c \
 			moves.c \
 			ft_dda.c \

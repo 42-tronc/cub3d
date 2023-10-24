@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:49:49 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/20 13:26:07 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:22:22 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	right_rotation(t_data *data);
 
 void	rotation(t_data *data, int key)
 {
+	// WARNING
 	if (key == LEFT_ARROW)
 		left_rotation(data);
 	else if (key == RIGHT_ARROW)
