@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:50:53 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 14:21:11 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/24 14:31:59 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,5 @@ int	get_map(t_data *data);
 
 // parse_properties.c
 int	get_map_properties(t_data *data);
-
-// parsing.c
-int	map_parsing(t_data *data, char *map);
 
 #endif
