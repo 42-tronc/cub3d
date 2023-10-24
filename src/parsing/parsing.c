@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 08:54:10 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:08:21 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -319,7 +319,7 @@ static void	get_map_size(t_data *data)
 static char *trim_trailing(char *str, char c)
 {
 	size_t	i;
-	
+
 	i = ft_strlen(str) - 1;
 	while (str[i] == c && i > 0)
 	{
@@ -543,6 +543,23 @@ static int	check_map_vert_island(t_data *data)
 // 	return (EXIT_FAILURE);
 // }
 
+static void	init_vars(t_data *data)
+{
+	data->file = NULL;
+	data->split_file = NULL;
+	data->north.path = NULL;
+	data->north.fd = 0;
+	data->south.path = NULL;
+	data->south.fd = 0;
+	data->west.path = NULL;
+	data->west.fd = 0;
+	data->east.path = NULL;
+	data->east.fd = 0;
+	data->map = NULL;
+	// data->floor = 0;
+	// data->ceiling = 0;
+}
+
 /**
  * @brief Parse and check the map file
  *
@@ -554,6 +571,7 @@ int	map_parsing(t_data *data, char *map)
 {
 	(void) data;
 	// printf("map: %s\n", map);
+	init_vars(data);
 	if (check_extension(map, ".cub") == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (check_file(data, map) == EXIT_FAILURE)
