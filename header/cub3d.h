@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 13:59:49 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/24 08:46:21 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ typedef enum e_error_code {
 typedef enum e_error_exec_code {
 	E_MLX_INIT,
 	E_WIN_INIT,
-	E_MINIMAP
+	E_MINIMAP,
+	E_IMG,
+	E_ADDR
 }	t_error_exec_code;
 
 # define NORTH	0
