@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:28:28 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 15:34:06 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 08:39:48 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	raycasting(t_data *data)
 {
-	int					i;
+	int					w;
 	float				angle;
 	t_ray				ray;
 	t_vector_float		direction;
 
-	i = WIDTH;
+	w = WIDTH;
 	angle = data->player_pos.angle - (20.0 * RAD);
-	while (i >= 0)
+	while (w >= 0)
 	{
 		direction.x = cos(angle);
 		direction.y = sin(angle);
 		init_ray_struct(data, &ray, direction.x, direction.y);
 		ft_dda(data, &ray);
-		draw_walls(data, i, ray);
+		draw_walls(data, &ray, w);
 		angle += (RAD * (40.00 / (WIDTH)));
-		i--;
+		w--;
 	}
 }

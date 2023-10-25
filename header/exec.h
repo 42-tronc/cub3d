@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 15:33:48 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:35:38 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void            init_ray_struct(t_data *data, t_ray *ray, float dir_x, float dir
 // ========== Draw ==========
 void			draw_minimap(t_data *data);
 void			draw_player_minimap(t_mlx_data *minimap, float x, float y);
-void            draw_walls(t_data *data, int count, t_ray ray);
+void    		draw_walls(t_data *data, t_ray *ray, int width);
 int				refresh_window(t_data *data);
 
 // ========== Moves ==========
