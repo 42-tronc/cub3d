@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:04:06 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 10:24:36 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:25:47 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,4 @@ static int	check_textures_is_init(t_data *data)
 		return (FAILURE);
 	}
 	return (SUCCESS);
-}
-
-void	clear_textures(t_data *data)
-{
-	if (data->north.img)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->north.img);
-		data->north.img = NULL;
-	}
-	if (data->south.img)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->south.img);
-		data->south.img = NULL;
-	}
-	if (data->west.img)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->west.img);
-		data->west.img = NULL;
-	}
-	if (data->east.img)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->east.img);
-		data->east.img = NULL;
-	}
 }

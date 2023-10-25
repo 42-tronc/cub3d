@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:45:07 by croy              #+#    #+#             */
-/*   Updated: 2023/10/23 17:07:00 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/25 10:25:54 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,29 @@ void	free_data(t_data *data)
 	{
 		free_array(data->map->array);
 		free(data->map);
+	}
+}
+
+void	clear_textures(t_data *data)
+{
+	if (data->north.img)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->north.img);
+		data->north.img = NULL;
+	}
+	if (data->south.img)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->south.img);
+		data->south.img = NULL;
+	}
+	if (data->west.img)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->west.img);
+		data->west.img = NULL;
+	}
+	if (data->east.img)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->east.img);
+		data->east.img = NULL;
 	}
 }
