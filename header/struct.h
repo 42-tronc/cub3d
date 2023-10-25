@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 09:59:44 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/23 13:48:49 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:45:37 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,13 @@ typedef struct s_texture
 {
 	int		fd;
 	char	*path;
+	void	*img;
+	char	*addr;
+	int		height;
+	int		width;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }	t_texture;
 
 typedef struct s_map
@@ -115,6 +122,8 @@ typedef struct s_data
 	void			*window;
 	t_mlx_data		minimap;
 	t_player		player_pos;
+
+	int				pix;
 }	t_data;
 
 

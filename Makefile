@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
+#    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/24 14:35:58 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/10/25 10:51:08 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,6 +112,7 @@ SCR_EXEC := exec_manager.c \
 			init_mlx.c \
 			init_player.c \
 			init_ray.c \
+			init_textures.c \
 			\
 			refresh_window.c \
 			draw_minimap.c \
@@ -124,6 +125,7 @@ SCR_EXEC := exec_manager.c \
 			moves.c \
 			ft_dda.c \
 			\
+			textures_utils.c \
 
 # -------------- RECIPES --------------
 all:		make_libft make_mlx $(OBJ_DIR) $(NAME)

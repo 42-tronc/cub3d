@@ -29,13 +29,11 @@ void	init_player(t_data *data, char **map)
 			if (ft_strchr("NSEW", map[i][j]))
 			{
 				data->nswe = map[i][j];
-				data->player_pos.x = (float)i;
-				data->player_pos.y = (float)j;
+				data->player_pos.x = (float)i + 0.4f;
+				data->player_pos.y = (float)j + 0.4f;
 				data->player_pos.angle = get_angle(map[i][j]);
 				data->player_pos.dx = cos(data->player_pos.angle);
 				data->player_pos.dy = sin(data->player_pos.angle);
-				// data->player_pos.x = (data->player_pos.x * BLOCK) + (BLOCK / 2);
-				// data->player_pos.y = (data->player_pos.y * BLOCK) + (BLOCK / 2);
 				return ;
 			}
 			j++;
@@ -47,12 +45,12 @@ void	init_player(t_data *data, char **map)
 static float get_angle(char orientation)
 {
 	if (orientation == 'N')
-		return ((3 * PI) / 2);
-	else if (orientation == 'S')
-		return (PI / 2);
-	else if (orientation == 'E')
 		return (PI);
-	else if (orientation == 'W')
+	else if (orientation == 'S')
 		return (PI * 2);
+	else if (orientation == 'E')
+		return (PI / 2);
+	else if (orientation == 'W')
+		return ((3 * PI) / 2);
 	return (0);
 }

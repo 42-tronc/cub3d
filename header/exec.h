@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 14:16:23 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:10:15 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,11 @@
 # define SIZE_MAP       20
 # define SIZE_WALL		125
 # define SIZE_CUT		4
-# define FOV			30
 # define TOL			0.025
+# define MIN_LEN_RAY	0.0886
 # define HEIGHT         1080
 # define WIDTH          1920
-# define FOCAL			0.50
-# define WALL_H			1000
-# define N_RAYS			1920
+# define WALL_H			1100
 
 // ===== Maths define =====
 # define PI				3.1415926535
@@ -70,14 +68,14 @@ int				close_window(t_data *data, int status);
 
 // ========== Init ==========
 int				init_mlx(t_data *data);
+int				init_textures(t_data *data);
 void			init_player(t_data *data, char **map);
 void            init_ray_struct(t_data *data, t_ray *ray, float dir_x, float dir_y);
-
 
 // ========== Draw ==========
 void			draw_minimap(t_data *data);
 void			draw_player_minimap(t_mlx_data *minimap, float x, float y);
-void            draw_walls(t_data *data, int count, t_ray ray);
+void    		draw_walls(t_data *data, t_ray *ray, int width);
 int				refresh_window(t_data *data);
 
 // ========== Moves ==========
@@ -90,6 +88,8 @@ void			raycasting(t_data *data);
 
 // ========== Utils ===========
 void			put_pixel(t_mlx_data *data, int x, int y, int color);
+void			clear_textures(t_data *data);
+int				check_textures_is_init(t_data *data, int status);
 
 // ========== Errors ==========
 void			free_mlx(t_data *data);
