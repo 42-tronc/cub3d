@@ -6,16 +6,16 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:49:05 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 10:49:47 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:20:00 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_textures_is_init(t_data *data)
+int	check_textures_is_init(t_data *data, int status)
 {
 	if (!data->north.img || !data->south.img || \
-		!data->west.img || !data->east.img)
+		!data->west.img || !data->east.img || status == FAILURE)
 	{
 		print_exec_err(E_TEXTURES, "check_textures_is_init");
 		close_window(data, FAILURE);

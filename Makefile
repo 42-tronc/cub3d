@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/25 10:05:49 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/10/25 10:51:08 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -125,6 +125,7 @@ SCR_EXEC := exec_manager.c \
 			moves.c \
 			ft_dda.c \
 			\
+			textures_utils.c \
 
 # -------------- RECIPES --------------
 all: rsc

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 10:49:31 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:10:15 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void			raycasting(t_data *data);
 // ========== Utils ===========
 void			put_pixel(t_mlx_data *data, int x, int y, int color);
 void			clear_textures(t_data *data);
-int				check_textures_is_init(t_data *data)
+int				check_textures_is_init(t_data *data, int status);
 
 // ========== Errors ==========
 void			free_mlx(t_data *data);
