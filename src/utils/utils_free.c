@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:45:07 by croy              #+#    #+#             */
-/*   Updated: 2023/09/25 15:42:15 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/23 17:07:00 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,13 @@ void	free_data(t_data *data)
 	free_if_alloc(data->south.path);
 	close_fd(data->south.fd);
 	free_if_alloc(data->west.path);
-	close_fd(data->east.fd);
-	free_if_alloc(data->east.path);
 	close_fd(data->west.fd);
+	free_if_alloc(data->east.path);
+	close_fd(data->east.fd);
+	close_fds();
 	if (data->map)
 	{
 		free_array(data->map->array);
 		free(data->map);
 	}
-	// if (data->player) // FIXME
-	// 	free(data->player); // FIXME
-	free(data);
 }
