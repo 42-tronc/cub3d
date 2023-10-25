@@ -128,25 +128,13 @@ SCR_EXEC := exec_manager.c \
 			textures_utils.c \
 
 # -------------- RECIPES --------------
-all:		make_libft make_mlx $(OBJ_DIR) $(NAME)
-
-make_libft:
-			$(MAKE) -C $(LIBFT_DIR)
-
-make_mlx:
-			@$(MAKE) -C $(MLX_DIR)
-
-$(LIBFT_NAME):
-			$(MAKE) make_libft
-
-$(MLX_NAME):
-			@$(MAKE) make_mlx
-
+all: rsc
+	make $(NAME)
 
 $(NAME): $(LIBFT_NAME) $(MLX_NAME) $(OBJ)
 	@echo -e "\n$(BOLD)Hello $(FG_ORANGE)$(USER)$(RESET)"
 	$(AR) $(ARFLAGS) $(LIBFT_NAME) $(MLX_NAME) $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(LIBFT_NAME) $(MLX_NAME) $(MLX_FLAGS)
+	$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) $(LIBFT_NAME) $(MLX_NAME)
 	@echo -e "$(BG_LIGHT_GREEN)Compiled:\t$(RESET) $(FG_WHITE)$(UNDERLINE)$(NAME)$(RESET) has been created."
 
 $(OBJ_DIR)%.o : $(DIR_MAIN)%.c $(HEADER) | $(OBJ_DIR)
@@ -196,9 +184,8 @@ debug: fclean $(NAME)
 valgrind: VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes
 valgrind: test
 
-ARG = maps/test.cub
 test: all
-	$(VALGRIND) ./$(NAME) $(ARG)
+	$(VALGRIND) ./$(NAME) maps/test.cub
 
 norm :
 	norminette ./src ./header ./libft | grep -v OK
