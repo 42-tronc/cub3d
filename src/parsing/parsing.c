@@ -15,52 +15,6 @@
 // #pragma GCC diagnostic ignored "-Wunused-variable"
 //#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 
-// static void translate_pos_to_deg(t_data *data, char pos)
-// {
-// 	if (pos == 'N')
-// 		data->player->angle = NORTH;
-// 	else if (pos == 'E')
-// 		data->player->angle = EAST;
-// 	else if (pos == 'S')
-// 		data->player->angle = SOUTH;
-// 	else if (pos == 'W')
-// 		data->player->angle = WEST;
-// }
-
-// static int get_player_pos(t_data *data)
-// {
-// 	size_t	i;
-// 	size_t	j;
-// 	char	c;
-
-// 	i = 0;
-// 	data->player_pos = ft_calloc(1, sizeof(t_player));
-// 	if (!data->player)
-// 		return (print_perr(E_MALLOC, "get_player_pos"), EXIT_FAILURE);
-// 	while (data->map->array[i])
-// 	{
-// 		j = 0;
-// 		while (data->map->array[i][j])
-// 		{
-// 			c = data->map->array[i][j];
-// 			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-// 			{
-// 				// translate_pos_to_deg(data, c);
-// 				data->player->x = j;
-// 				data->player->y = i;
-// 				printf("\n\e[92;1mPlayer position:\e[0m\n"); // REMOVE
-// 				printf("\e[93;1mx: \e[22m%.2f\e[0m\n", data->player->x); // REMOVE
-// 				printf("\e[93;1my: \e[22m%.2f\e[0m\n", data->player->y); // REMOVE
-// 				printf("\e[93;1mrotation: \e[22m%.2f\e[0m\n", data->player->angle); // REMOVE
-// 				return (EXIT_SUCCESS);
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (EXIT_FAILURE);
-// }
-
 static void	init_vars(t_data *data)
 {
 	data->file = NULL;
@@ -78,8 +32,8 @@ static void	init_vars(t_data *data)
 	data->east.fd = 0;
 	data->east.img = NULL;
 	data->map = NULL;
-	// data->floor = 0;
-	// data->ceiling = 0;
+	data->floor = 0;
+	data->ceiling = 0;
 }
 
 /**
@@ -92,7 +46,6 @@ static void	init_vars(t_data *data)
 int	map_parsing(t_data *data, char *map)
 {
 	(void) data;
-	// printf("map: %s\n", map);
 	init_vars(data);
 	if (check_extension(map, ".cub") == EXIT_FAILURE)
 		return (EXIT_FAILURE);
@@ -110,8 +63,6 @@ int	map_parsing(t_data *data, char *map)
 		return (EXIT_FAILURE);
 	if (check_map_walls(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	// if (get_player_pos(data) == EXIT_FAILURE)
-	// 	return (EXIT_FAILURE);
 	printf("\n\t\e[92;1m✅ Passed\e[0m\n"); // REMOVE
 	return (EXIT_SUCCESS);
 }

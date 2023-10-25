@@ -27,8 +27,6 @@ static int	set_texture(t_texture *texture, char *path)
 	texture->fd = open(path, O_RDONLY);
 	if (texture->fd == -1)
 		return (print_perr(E_TXT_MISS, path), EXIT_FAILURE);
-	// printf("\e[92;1mTexture: \e[0m%s\n", texture->path); // REMOVE
-	// printf("\e[92;1mTexture fd: \e[0m%d\n", texture->fd); // REMOVE
 	return (EXIT_SUCCESS);
 }
 
@@ -110,9 +108,9 @@ static	int	get_texture(t_data *data, char **lines)
 	else if (!ft_strcmp(lines[0], "EA"))
 		exit_code = set_texture(&data->east, lines[1]);
 	else if (!ft_strcmp(lines[0], "F"))
-		exit_code = set_color(&data->floor, lines[1]); // IMPLEMENT
+		exit_code = set_color(&data->floor, lines[1]);
 	else if (!ft_strcmp(lines[0], "C"))
-		exit_code = set_color(&data->ceiling, lines[1]); // IMPLEMENT
+		exit_code = set_color(&data->ceiling, lines[1]);
 	else
 	{
 		exit_code = EXIT_FAILURE;
@@ -134,13 +132,11 @@ int	get_map_properties(t_data *data)
 	char	**lines;
 
 	i = 0;
-	// init_texture(data);
 	while (data->split_file && i < 6)
 	{
 		lines = ft_split(data->split_file[i], ' ');
 		if (!lines)
 			return (print_perr(E_MALLOC, "get_map_properties"), EXIT_FAILURE);
-		// printf("\e[93;1m`%s`\t`%s`\e[0m\n", lines[0], lines[1]); // REMOVE
 		if (ft_arrlen(lines) != 2 || ft_isdigit(lines[0][0]))
 			return (print_perr(E_PROP_FMT, lines[0]), free_array(lines), EXIT_FAILURE);
 		if (get_texture(data, lines) == EXIT_FAILURE)

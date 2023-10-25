@@ -60,7 +60,6 @@ static int is_bordered_by_walls(t_data *data, size_t x, size_t y)
 		y_offset = -1;
 		while (y_offset <= 1)
 		{
-			// printf("Checking walls %ld, %ld: `%c`\n", x + x_offset, y + y_offset, data->map->array[y + y_offset][x + x_offset]); // REMOVE
 			if (!data->map->array[y + y_offset][x + x_offset]
 				|| data->map->array[y + y_offset][x + x_offset] == ' ')
 				return (0);
@@ -81,13 +80,11 @@ int	check_map_walls(t_data *data)
 	while (data->map->array[i])
 	{
 		j = 0;
-		// printf("\nChecking line %ld: `%s`\n", i, data->map->array[i]); // REMOVE
 		while (data->map->array[i][j])
 		{
 			c = data->map->array[i][j];
 			if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
-				// printf("\nChecking around char %ld: `%c`\n", j, c); // REMOVE
 				if (!is_bordered_by_walls(data, j, i))
 					return (print_perr(E_MAP_WALLS, data->map->array[i]), EXIT_FAILURE);
 			}
