@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 11:10:15 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:07:50 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int				close_window(t_data *data, int status);
 
 // ========== Init ==========
 int				init_mlx(t_data *data);
-int				init_all_textures(t_data *data);
+int				init_textures(t_data *data);
 void			init_player(t_data *data, char **map);
 void            init_ray_struct(t_data *data, t_ray *ray, float dir_x, float dir_y);
 
