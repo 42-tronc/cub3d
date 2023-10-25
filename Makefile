@@ -84,8 +84,8 @@ HEADER := 	header/cub3d.h \
 			header/parsing.h \
 			header/exec.h
 
-MLX_DIR := minilibx/
-MLX_NAME := $(MLX_DIR)libexec.a
+MLX_DIR := mlx_linux/
+MLX_NAME := $(MLX_DIR)libmlx_Linux.a
 MLX_FLAGS := -lm -lz -lXext -lX11 -I${MLX_DIR}
 
 SRC_FOLDER := src/
@@ -184,9 +184,8 @@ debug: fclean $(NAME)
 valgrind: VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes
 valgrind: test
 
-ARG = maps/test.cub
 test: all
-	$(VALGRIND) ./$(NAME) $(ARG)
+	$(VALGRIND) ./$(NAME) maps/test.cub
 
 norm :
 	norminette ./src ./header ./libft | grep -v OK

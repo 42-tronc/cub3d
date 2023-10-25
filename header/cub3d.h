@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 // ========= @includes =========
-# include "../minilibx/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include "libft.h"
 
 # include <errno.h>  // for perror

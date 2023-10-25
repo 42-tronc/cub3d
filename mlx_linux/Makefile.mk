@@ -1,4 +1,3 @@
-INC=/usr/include
 ##
 ## Makefile for MiniLibX in /home/boulon/work/c/raytraceur/minilibx
 ## 
@@ -12,6 +11,7 @@ INC=/usr/include
 ## Please use configure script
 
 
+INC	=%%%%
 
 UNAME = $(shell uname)
 CC	= gcc
@@ -19,7 +19,7 @@ ifeq ($(UNAME),FreeBSD)
 	CC = clang
 endif
 
-NAME		= libexec.a
+NAME		= libmlx.a
 NAME_UNAME	= libmlx_$(UNAME).a
 
 SRC	= mlx_init.c mlx_new_window.c mlx_pixel_put.c mlx_loop.c \
