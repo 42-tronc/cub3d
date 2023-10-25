@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:16:24 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 14:13:39 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:31:20 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_walls(t_data *data, t_ray *ray, int width)
 	wall_height = WALL_H / ray->length;
 	while (i < (HEIGHT / 2) - (wall_height / 2))
 	{
-		put_pixel(&data->minimap, abs(width), i, BLUE_HEX);
+		put_pixel(&data->minimap, abs(width), i, data->ceiling);
 		i++;
 	}
 	while (i < (HEIGHT / 2) + (wall_height / 2))
@@ -35,7 +35,7 @@ void	draw_walls(t_data *data, t_ray *ray, int width)
 	}
 	while (i < HEIGHT)
 	{
-		put_pixel(&data->minimap, abs(width), i, GREY_HEX);
+		put_pixel(&data->minimap, abs(width), i, data->floor);
 		i++;
 	}
 }
@@ -45,7 +45,7 @@ static void	get_textures(t_data *data, t_ray *ray, int count, int i)
 	if (ray->cardinal == NORTH)
 		put_pixel(&data->minimap, abs(count), i, W_WHITE);
 	if (ray->cardinal == SOUTH)
-		put_pixel(&data->minimap, abs(count), i, E_GREEN);
+		put_pixel(&data->minimap, abs(count), i, 0xEE82EE);
 	if (ray->cardinal == WEST)
 		put_pixel(&data->minimap, abs(count), i, S_BROWN);
 	if (ray->cardinal == EAST)

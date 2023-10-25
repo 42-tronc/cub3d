@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:05:16 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 14:13:13 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:38:17 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	refresh_window(t_data *data)
 
 static void	error_refresh_window(t_data *data, int status)
 {
+	clear_textures(data);
 	mlx_clear_window(data->mlx_ptr, data->window);
 	mlx_destroy_window(data->mlx_ptr, data->window);
 	if (status != IMG_ERR)
