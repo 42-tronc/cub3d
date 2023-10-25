@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/25 10:51:08 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/10/25 15:56:21 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,6 +118,7 @@ SCR_EXEC := exec_manager.c \
 			draw_minimap.c \
 			draw_player_minimap.c \
 			draw_walls.c \
+			draw_textures.c \
 			put_pixel.c \
 			\
 			raycasting.c \

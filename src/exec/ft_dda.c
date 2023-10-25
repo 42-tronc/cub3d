@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:29:21 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 14:13:00 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:22:37 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ static void	get_side(t_ray *ray)
 		ray->dist_to_wall.x += ray->delta.x;
 		ray->map_pos.x += ray->step.x;
 		if (ray->step.x == 1)
-			ray->cardinal = EAST;
-		else
 			ray->cardinal = WEST;
+		else
+			ray->cardinal = EAST;
 	}
 	else
 	{
 		ray->dist_to_wall.y += ray->delta.y;
 		ray->map_pos.y += ray->step.y;
 		if (ray->step.y == 1)
-			ray->cardinal = NORTH;
-		else
 			ray->cardinal = SOUTH;
+		else
+			ray->cardinal = NORTH;
 	}
 }
 
