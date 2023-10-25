@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:17:46 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 14:17:54 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/25 18:26:13 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int	check_map_vert_island(t_data *data)
 		}
 		y++;
 	}
+	printf("\e[93;1mNo vertical islands found\e[0m\n"); // REMOVE
 	return (EXIT_SUCCESS);
 }
