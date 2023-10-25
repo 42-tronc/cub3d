@@ -184,8 +184,9 @@ debug: fclean $(NAME)
 valgrind: VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes
 valgrind: test
 
+MAP := maps/test.cub
 test: all
-	$(VALGRIND) ./$(NAME) maps/test.cub
+	$(VALGRIND) ./$(NAME) $(MAP)
 
 norm :
 	norminette ./src ./header ./libft | grep -v OK
