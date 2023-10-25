@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:37:26 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 14:30:35 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/25 10:03:45 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	exec_manager(t_data *data)
 {
 	if (init_mlx(data) != SUCCESS)
+		return (FAILURE);
+	if (init_textures(data) != SUCCESS)
 		return (FAILURE);
 	mlx_loop_hook(data->mlx_ptr, refresh_window, data);
 	mlx_hook(data->window, 2, 1L << 0, moves, data);

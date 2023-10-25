@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 09:35:38 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:22:07 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@
 # define SIZE_WALL		125
 # define SIZE_CUT		4
 # define TOL			0.025
+# define MIN_LEN_RAY	0.0886
 # define HEIGHT         1080
 # define WIDTH          1920
-# define WALL_H			1000
+# define WALL_H			1100
 
 // ===== Maths define =====
 # define PI				3.1415926535
@@ -67,9 +68,9 @@ int				close_window(t_data *data, int status);
 
 // ========== Init ==========
 int				init_mlx(t_data *data);
+int				init_textures(t_data *data);
 void			init_player(t_data *data, char **map);
 void            init_ray_struct(t_data *data, t_ray *ray, float dir_x, float dir_y);
-
 
 // ========== Draw ==========
 void			draw_minimap(t_data *data);
@@ -87,6 +88,7 @@ void			raycasting(t_data *data);
 
 // ========== Utils ===========
 void			put_pixel(t_mlx_data *data, int x, int y, int color);
+void			clear_textures(t_data *data);
 
 // ========== Errors ==========
 void			free_mlx(t_data *data);

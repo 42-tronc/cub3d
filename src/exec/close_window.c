@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:41:53 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 14:54:59 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/25 10:24:17 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	close_window(t_data *data, int status)
 {
+	clear_textures(data);
 	mlx_clear_window(data->mlx_ptr, data->window);
 	mlx_destroy_window(data->mlx_ptr, data->window);
 	mlx_destroy_image(data->mlx_ptr, data->minimap.img);

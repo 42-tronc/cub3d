@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 21:31:48 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 08:46:10 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:16:02 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ void	print_perr(int code, char *src)
 
 void	print_exec_err(int code, char *src)
 {
-	char	*error[5];
+	char	*error[6];
 
 	error[E_MLX_INIT] = "error during mlx init";
 	error[E_WIN_INIT] = "error during window init";
 	error[E_MINIMAP] = "error during minimap init";
 	error[E_IMG] = "error during new image creation";
 	error[E_ADDR] = "error during new data address creation";
+	error[E_TEXTURES] = "error during init of the textures";
 	if (src && ft_strlen(src))
 		printf(RED BOLD"Error\n%s%s in %s%s\n", NO_BOLD, error[code], src, RESET);
 	else
