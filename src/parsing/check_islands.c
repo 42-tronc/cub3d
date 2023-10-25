@@ -51,3 +51,43 @@ int	check_map_vert_island(t_data *data)
 	printf("\e[93;1mNo vertical islands found\e[0m\n"); // REMOVE
 	return (EXIT_SUCCESS);
 }
+
+int	check_map_hori_island(t_data *data, char *path)
+{
+	(void) data;
+	int		fd;
+	char	*line;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		perror(RED "Error" RESET);
+		return (EXIT_FAILURE);
+	}
+
+	printf("\n\e[92;1mMap horizontal islands:\e[0m\n"); // REMOVE
+	printf("\e[93;1mFile fd: \e[0m%d\n", fd); // REMOVE
+	line = get_next_line(fd);
+	if (!line)
+	{
+		printf("\e[93;1mNo line found\e[0m\n"); // REMOVE
+		return (FAILURE);
+	}
+	// 	// return (print_perr(E_MAP_ISLAND, data->map->array[data->map->height - 1]), EXIT_FAILURE);
+	// while (line && ft_strncmp(line, data->map->array[0], ft_strlen(data->map->array[0])))
+	while (line)
+	{
+		printf("Line: `%s`\n", line); // REMOVE
+		free(line);
+		line = get_next_line(fd);
+	}
+	if (line)
+	{
+		printf("\e[94;1mFound first line of map\e[0m\n"); // REMOVE
+		// line = get_next_line(fd);
+	}
+	printf("\e[93;1mNo more lines found\e[0m\n"); // REMOVE
+	free(line);
+	close(fd);
+	return (FAILURE);
+}

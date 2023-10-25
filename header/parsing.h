@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:50:53 by croy              #+#    #+#             */
-/*   Updated: 2023/10/25 14:18:31 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:30:53 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,26 @@
 
 //	===== @functions =====
 // check_islands.c
-int		check_map_vert_island(t_data *data);
+int	check_map_vert_island(t_data *data);
+int	check_map_hori_island(t_data *data, char *path);
 
 // check_map.c
-int		check_map(t_data *data);
-int		check_map_walls(t_data *data);
+int	check_map(t_data *data);
+int	check_map_walls(t_data *data);
 
 // parse_file.c
-int		check_extension(char *path, char *ext);
+int	check_extension(char *path, char *ext);
 char	*read_file(int fd);
-int		check_file(t_data *data, char *path);
-int		cleanup_file(t_data *data);
+int	check_file(t_data *data, char *path);
+int	cleanup_file(t_data *data);
 
 // parse_map.c
-int		get_map(t_data *data);
+int	get_map(t_data *data);
 
 // parse_properties.c
-int		get_map_properties(t_data *data);
+int	get_map_properties(t_data *data);
+
+// parsing.c
+int	map_parsing(t_data *data, char *map);
 
 #endif

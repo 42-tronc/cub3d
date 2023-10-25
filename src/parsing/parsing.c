@@ -59,9 +59,11 @@ int	map_parsing(t_data *data, char *map)
 		return (EXIT_FAILURE);
 	if (check_map(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
+	if (check_map_walls(data) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	if (check_map_vert_island(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (check_map_walls(data) == EXIT_FAILURE)
+	if (check_map_hori_island(data, map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	printf("\n\t\e[92;1m✅ Passed\e[0m\n"); // REMOVE
 	return (EXIT_SUCCESS);
