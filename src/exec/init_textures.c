@@ -12,92 +12,37 @@
 
 #include "cub3d.h"
 
-static int	north_texture(t_data *data);
-static int	south_texture(t_data *data);
-static int	west_texture(t_data *data);
-static int	east_texture(t_data *data);
+static int init_texture(t_data *data, t_texture *texture);
 
-int	init_textures(t_data *data)
+int	init_all_textures(t_data *data)
 {
 	int		status;
 
 	status = SUCCESS;
-	if (north_texture(data) != SUCCESS)
+	if (init_texture(data, &data->north) != SUCCESS)
 		status = FAILURE;
-	if (south_texture(data) != SUCCESS)
+	if (init_texture(data, &data->south) != SUCCESS)
 		status = FAILURE;
-	if (west_texture(data) != SUCCESS)
+	if (init_texture(data, &data->west) != SUCCESS)
 		status = FAILURE;
-	if (east_texture(data) != SUCCESS)
+	if (init_texture(data, &data->east) != SUCCESS)
 		status = FAILURE;
 	if (check_textures_is_init(data, status) != SUCCESS)
 		return (FAILURE);
 	return (SUCCESS);
 }
 
-static int	north_texture(t_data *data)
+static int init_texture(t_data *data, t_texture *texture)
 {
-	data->north.img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
-	if (!data->north.img)
+	texture->img = mlx_new_image(data->mlx_ptr, texture->width, texture->height);
+	if (!texture)
 		return (SUCCESS);
-	data->north.addr = mlx_get_data_addr(data->north.img, \
-			&data->north.bits_per_pixel, &data->north.line_length, \
-				&data->north.endian);
-	if (!data->north.addr)
+	texture->addr = mlx_get_data_addr(texture->img, &texture->bits_per_pixel, \
+		&texture->line_length, &texture->endian);
+	if (!texture->addr)
 	{
-		mlx_destroy_image(data->mlx_ptr, data->north.img);
-		data->north.img = NULL;
-		return (FAILURE);
-	}
-	return (SUCCESS);
-}
-
-static int	south_texture(t_data *data)
-{
-	data->south.img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
-	if (!data->south.img)
-		return (SUCCESS);
-	data->south.addr = mlx_get_data_addr(data->south.img, \
-			&data->south.bits_per_pixel, &data->south.line_length, \
-				&data->south.endian);
-	if (!data->south.addr)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->south.img);
-		data->south.img = NULL;
-		return (FAILURE);
-	}
-	return (SUCCESS);
-}
-
-static int	west_texture(t_data *data)
-{
-	data->west.img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
-	if (!data->west.img)
-		return (SUCCESS);
-	data->west.addr = mlx_get_data_addr(data->west.img, \
-			&data->west.bits_per_pixel, &data->west.line_length, \
-				&data->west.endian);
-	if (!data->west.addr)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->west.img);
-		data->west.img = NULL;
-		return (FAILURE);
-	}
-	return (SUCCESS);
-}
-
-static int	east_texture(t_data *data)
-{
-	data->east.img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
-	if (!data->east.img)
-		return (SUCCESS);
-	data->east.addr = mlx_get_data_addr(data->east.img, \
-			&data->east.bits_per_pixel, &data->east.line_length, \
-				&data->east.endian);
-	if (!data->east.addr)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->east.img);
-		data->east.img = NULL;
+		mlx_destroy_image(data->mlx_ptr, texture->img);
+		texture->img = NULL;
 		return (FAILURE);
 	}
 	return (SUCCESS);

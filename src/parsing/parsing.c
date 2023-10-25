@@ -67,12 +67,16 @@ static void	init_vars(t_data *data)
 	data->split_file = NULL;
 	data->north.path = NULL;
 	data->north.fd = 0;
+	data->north.img = NULL;
 	data->south.path = NULL;
 	data->south.fd = 0;
+	data->south.img = NULL;
 	data->west.path = NULL;
 	data->west.fd = 0;
+	data->west.img = NULL;
 	data->east.path = NULL;
 	data->east.fd = 0;
+	data->east.img = NULL;
 	data->map = NULL;
 	// data->floor = 0;
 	// data->ceiling = 0;

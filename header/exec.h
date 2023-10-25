@@ -68,7 +68,7 @@ int				close_window(t_data *data, int status);
 
 // ========== Init ==========
 int				init_mlx(t_data *data);
-int				init_textures(t_data *data);
+int				init_all_textures(t_data *data);
 void			init_player(t_data *data, char **map);
 void            init_ray_struct(t_data *data, t_ray *ray, float dir_x, float dir_y);
 

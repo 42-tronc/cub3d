@@ -16,7 +16,7 @@ int	exec_manager(t_data *data)
 {
 	if (init_mlx(data) != SUCCESS)
 		return (FAILURE);
-	if (init_textures(data) != SUCCESS)
+	if (init_all_textures(data) != SUCCESS)
 		return (FAILURE);
 	mlx_loop_hook(data->mlx_ptr, refresh_window, data);
 	mlx_hook(data->window, 2, 1L << 0, moves, data);
