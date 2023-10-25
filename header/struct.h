@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 09:59:44 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 18:16:00 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:45:37 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ typedef struct s_texture
 	char	*addr;
 	int		height;
 	int		width;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }	t_texture;
 
 typedef struct s_map
