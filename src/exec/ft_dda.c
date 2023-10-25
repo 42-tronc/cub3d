@@ -6,17 +6,17 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:29:21 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 08:35:43 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:13:00 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void get_side(t_ray *ray);
-static void get_ray_length(t_ray *ray);
-static int is_wall(t_data *data, t_ray *ray);
+static void	get_side(t_ray *ray);
+static void	get_ray_length(t_ray *ray);
+static int	is_wall(t_data *data, t_ray *ray);
 
-void    ft_dda(t_data *data, t_ray *ray)
+void	ft_dda(t_data *data, t_ray *ray)
 {
 	while (is_wall(data, ray) == SUCCESS)
 	{
@@ -25,7 +25,7 @@ void    ft_dda(t_data *data, t_ray *ray)
 	}
 }
 
-static void get_side(t_ray *ray)
+static void	get_side(t_ray *ray)
 {
 	if (ray->dist_to_wall.x < ray->dist_to_wall.y)
 	{
@@ -47,7 +47,7 @@ static void get_side(t_ray *ray)
 	}
 }
 
-static void get_ray_length(t_ray *ray)
+static void	get_ray_length(t_ray *ray)
 {
 	if (ray->cardinal == EAST || ray->cardinal == WEST)
 		ray->length = ray->dist_to_wall.x - ray->delta.x;
@@ -55,7 +55,7 @@ static void get_ray_length(t_ray *ray)
 		ray->length = ray->dist_to_wall.y - ray->delta.y;
 }
 
-static int is_wall(t_data *data, t_ray *ray)
+static int	is_wall(t_data *data, t_ray *ray)
 {
 	if (data->map->array[ray->map_pos.x][ray->map_pos.y] && \
 			data->map->array[ray->map_pos.x][ray->map_pos.y] != '1')

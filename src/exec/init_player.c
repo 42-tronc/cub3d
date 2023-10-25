@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-static float get_angle(char orientation);
+static float	get_angle(char orientation);
 
 void	init_player(t_data *data, char **map)
 {
@@ -42,7 +42,7 @@ void	init_player(t_data *data, char **map)
 	}
 }
 
-static float get_angle(char orientation)
+static float	get_angle(char orientation)
 {
 	if (orientation == 'N')
 		return (PI);

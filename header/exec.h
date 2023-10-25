@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 14:07:50 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:16:17 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,28 +60,27 @@
 # define E_GREEN		0x2d9c18
 # define W_WHITE		0xf0ede5
 
-
 // ========== Exec ==========
 int				exec_manager(t_data *data);
-void            ft_dda(t_data *data, t_ray *ray);
+void			ft_dda(t_data *data, t_ray *ray);
 int				close_window(t_data *data, int status);
 
 // ========== Init ==========
 int				init_mlx(t_data *data);
 int				init_textures(t_data *data);
 void			init_player(t_data *data, char **map);
-void            init_ray_struct(t_data *data, t_ray *ray, float dir_x, float dir_y);
+void			init_ray_struct(t_data *data, t_ray *ray, \
+					float dir_x, float dir_y);
 
 // ========== Draw ==========
 void			draw_minimap(t_data *data);
 void			draw_player_minimap(t_mlx_data *minimap, float x, float y);
-void    		draw_walls(t_data *data, t_ray *ray, int width);
+void			draw_walls(t_data *data, t_ray *ray, int width);
 int				refresh_window(t_data *data);
 
 // ========== Moves ==========
 int				moves(int key_code, t_data *data);
 void			rotation(t_data *data, int key);
-
 
 // ========== Raycasting ==========
 void			raycasting(t_data *data);

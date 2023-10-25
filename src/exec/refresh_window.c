@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   refresh_window.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:05:16 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/24 14:54:29 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/25 14:13:13 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void error_refresh_window(t_data *data, int status);
+static void	error_refresh_window(t_data *data, int status);
 
 int	refresh_window(t_data *data)
 {
@@ -39,7 +39,7 @@ int	refresh_window(t_data *data)
 	return (SUCCESS);
 }
 
-static void error_refresh_window(t_data *data, int status)
+static void	error_refresh_window(t_data *data, int status)
 {
 	mlx_clear_window(data->mlx_ptr, data->window);
 	mlx_destroy_window(data->mlx_ptr, data->window);

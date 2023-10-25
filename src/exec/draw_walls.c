@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:16:24 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 10:43:12 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:13:39 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	get_textures(t_data *data, t_ray *ray, int count, int i);
 
-void    draw_walls(t_data *data, t_ray *ray, int width)
+void	draw_walls(t_data *data, t_ray *ray, int width)
 {
 	int			i;
 	float		wall_height;
-	
+
 	i = 0;
 	if (ray->length <= 0)
 		ray->length = MIN_LEN_RAY;
