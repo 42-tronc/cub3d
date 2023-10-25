@@ -126,13 +126,25 @@ SCR_EXEC := exec_manager.c \
 			\
 
 # -------------- RECIPES --------------
-all: rsc
-	make $(NAME)
+all:		make_libft make_mlx $(OBJ_DIR) $(NAME)
+
+make_libft:
+			$(MAKE) -C $(LIBFT_DIR)
+
+make_mlx:	
+			@$(MAKE) -C $(MLX_DIR)
+
+$(LIBFT_NAME):
+			$(MAKE) make_libft
+
+$(MLX_NAME):	
+			@$(MAKE) make_mlx
+
 
 $(NAME): $(LIBFT_NAME) $(MLX_NAME) $(OBJ)
 	@echo -e "\n$(BOLD)Hello $(FG_ORANGE)$(USER)$(RESET)"
 	$(AR) $(ARFLAGS) $(LIBFT_NAME) $(MLX_NAME) $(OBJ)
-	$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) $(LIBFT_NAME) $(MLX_NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(LIBFT_NAME) $(MLX_NAME) $(MLX_FLAGS) 
 	@echo -e "$(BG_LIGHT_GREEN)Compiled:\t$(RESET) $(FG_WHITE)$(UNDERLINE)$(NAME)$(RESET) has been created."
 
 $(OBJ_DIR)%.o : $(DIR_MAIN)%.c $(HEADER) | $(OBJ_DIR)
