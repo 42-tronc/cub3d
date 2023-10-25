@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+         #
+#    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:54 by croy              #+#    #+#              #
-#    Updated: 2023/10/24 14:35:58 by croy             ###   ########lyon.fr    #
+#    Updated: 2023/10/25 10:51:08 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,8 +84,8 @@ HEADER := 	header/cub3d.h \
 			header/parsing.h \
 			header/exec.h
 
-MLX_DIR := minilibx/
-MLX_NAME := $(MLX_DIR)libexec.a
+MLX_DIR := mlx_linux/
+MLX_NAME := $(MLX_DIR)libmlx_Linux.a
 MLX_FLAGS := -lm -lz -lXext -lX11 -I${MLX_DIR}
 
 SRC_FOLDER := src/
@@ -112,6 +112,7 @@ SCR_EXEC := exec_manager.c \
 			init_mlx.c \
 			init_player.c \
 			init_ray.c \
+			init_textures.c \
 			\
 			refresh_window.c \
 			draw_minimap.c \
@@ -124,6 +125,7 @@ SCR_EXEC := exec_manager.c \
 			moves.c \
 			ft_dda.c \
 			\
+			textures_utils.c \
 
 # -------------- RECIPES --------------
 all: rsc
@@ -182,9 +184,8 @@ debug: fclean $(NAME)
 valgrind: VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes
 valgrind: test
 
-ARG = maps/test.cub
 test: all
-	$(VALGRIND) ./$(NAME) $(ARG)
+	$(VALGRIND) ./$(NAME) maps/test.cub
 
 norm :
 	norminette ./src ./header ./libft | grep -v OK

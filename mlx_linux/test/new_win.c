@@ -1,7 +1,7 @@
 
 
 
-#include "exec.h"
+#include "mlx.h"
 
 
 void *mlx;
