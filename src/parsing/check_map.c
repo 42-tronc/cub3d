@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:13:31 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 13:12:32 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:33:30 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_map(t_data *data)
 			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 				player++;
 			else if (c != ' ' && c != '0' && c != '1')
-				return (print_perr(E_MAP_FMT, data->map->array[i]), EXIT_FAILURE);
+				return (print_perr(E_MAP_FMT, data->map->array[i]), FAILURE);
 			j++;
 		}
 		i++;
@@ -46,7 +46,7 @@ int	check_map(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
-static int is_bordered_by_walls(t_data *data, size_t x, size_t y)
+static int	is_bordered_by_walls(t_data *data, size_t x, size_t y)
 {
 	int	x_offset;
 	int	y_offset;
@@ -86,7 +86,10 @@ int	check_map_walls(t_data *data)
 			if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
 				if (!is_bordered_by_walls(data, j, i))
-					return (print_perr(E_MAP_WALLS, data->map->array[i]), EXIT_FAILURE);
+				{
+					print_perr(E_MAP_WALLS, data->map->array[i]);
+					return (EXIT_FAILURE);
+				}
 			}
 			j++;
 		}
