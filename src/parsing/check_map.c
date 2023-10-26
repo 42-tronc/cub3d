@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:13:31 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 13:33:30 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 15:44:56 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,28 +72,28 @@ static int	is_bordered_by_walls(t_data *data, size_t x, size_t y)
 
 int	check_map_walls(t_data *data)
 {
-	size_t	i;
-	size_t	j;
+	size_t	y;
+	size_t	x;
 	char	c;
 
-	i = 4;
-	while (data->map->array[i])
+	y = 0;
+	while (data->map->array[y])
 	{
-		j = 0;
-		while (data->map->array[i][j])
+		x = 0;
+		while (data->map->array[y][x])
 		{
-			c = data->map->array[i][j];
+			c = data->map->array[y][x];
 			if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
-				if (!is_bordered_by_walls(data, j, i))
+				if (!is_bordered_by_walls(data, x, y))
 				{
-					print_perr(E_MAP_WALLS, data->map->array[i]);
+					print_perr(E_MAP_WALLS, data->map->array[y]);
 					return (EXIT_FAILURE);
 				}
 			}
-			j++;
+			x++;
 		}
-		i++;
+		y++;
 	}
 	return (EXIT_SUCCESS);
 }
