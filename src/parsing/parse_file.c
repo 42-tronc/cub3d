@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:51:42 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 13:12:32 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:27:37 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ int	check_file(t_data *data, char *path)
 	{
 		data->file = read_file(fd);
 		if (!data->file)
+		{
+			print_perr(E_MISSING, NULL);
 			return (close(fd), EXIT_FAILURE);
+		}
 	}
 	close(fd);
 	return (EXIT_SUCCESS);
