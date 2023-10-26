@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 21:31:48 by croy              #+#    #+#             */
-/*   Updated: 2023/10/25 10:16:02 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:47:02 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_perr(int code, char *src)
 
 	error[E_MALLOC] = "malloc failed to allocate a memory space";
 	error[E_READ] = "read failed to read the file";
-	error[E_MISSING] = "one map is required";
+	error[E_MISSING] = "file is missing";
 	error[E_EXT] = "file doesn't have the right extension";
 	error[E_PROP_FMT] = "a property has the wrong format";
 	error[E_PROP_DUP] = "a property is defined twice";
