@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:14:39 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 14:15:46 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:12:32 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static int	set_texture(t_texture *texture, char *path)
 	texture->fd = open(path, O_RDONLY);
 	if (texture->fd == -1)
 		return (print_perr(E_TXT_MISS, path), EXIT_FAILURE);
-	// printf("\e[92;1mTexture: \e[0m%s\n", texture->path); // REMOVE
-	// printf("\e[92;1mTexture fd: \e[0m%d\n", texture->fd); // REMOVE
 	return (EXIT_SUCCESS);
 }
 
@@ -81,11 +79,7 @@ static int	set_color(unsigned *color, char *input)
 		i++;
 	}
 	free_array(colors);
-	printf("\n\e[92;1mRGB: \e[0m%d, %d, %d\n", rgb[0], rgb[1], rgb[2]); // REMOVE
 	*color = rgb[0] << 16 | rgb[1] << 8 | rgb[2]; // THIS NEEDS TO BE CONVERTED TO REAL HEX
-	printf("\e[92;1mHEX: \e[0m%d\n", *color); // REMOVE
-	print_nbr(*color, "0123456789abcdef"); // REMOVE
-	printf("\n"); // REMOVE
 	return (EXIT_SUCCESS);
 }
 
@@ -110,9 +104,9 @@ static	int	get_texture(t_data *data, char **lines)
 	else if (!ft_strcmp(lines[0], "EA"))
 		exit_code = set_texture(&data->east, lines[1]);
 	else if (!ft_strcmp(lines[0], "F"))
-		exit_code = set_color(&data->floor, lines[1]); // IMPLEMENT
+		exit_code = set_color(&data->floor, lines[1]);
 	else if (!ft_strcmp(lines[0], "C"))
-		exit_code = set_color(&data->ceiling, lines[1]); // IMPLEMENT
+		exit_code = set_color(&data->ceiling, lines[1]);
 	else
 	{
 		exit_code = EXIT_FAILURE;
@@ -134,13 +128,11 @@ int	get_map_properties(t_data *data)
 	char	**lines;
 
 	i = 0;
-	// init_texture(data);
 	while (data->split_file && i < 6)
 	{
 		lines = ft_split(data->split_file[i], ' ');
 		if (!lines)
 			return (print_perr(E_MALLOC, "get_map_properties"), EXIT_FAILURE);
-		// printf("\e[93;1m`%s`\t`%s`\e[0m\n", lines[0], lines[1]); // REMOVE
 		if (ft_arrlen(lines) != 2 || ft_isdigit(lines[0][0]))
 			return (print_perr(E_PROP_FMT, lines[0]), free_array(lines), EXIT_FAILURE);
 		if (get_texture(data, lines) == EXIT_FAILURE)
@@ -148,13 +140,5 @@ int	get_map_properties(t_data *data)
 		free_array(lines);
 		i++;
 	}
-	printf("\n\e[92;1mTextures:\e[0m\n"); // REMOVE
-	printf("\e[93;1mnorth: \e[22m%s\e[0m\n", data->north.path); // REMOVE
-	printf("\e[93;1msouth: \e[22m%s\e[0m\n", data->south.path); // REMOVE
-	printf("\e[93;1mwest: \e[22m%s\e[0m\n", data->west.path); // REMOVE
-	printf("\e[93;1meast: \e[22m%s\e[0m\n", data->east.path); // REMOVE
-	printf("\n\e[92;1mColors:\e[0m\n"); // REMOVE
-	printf("\e[93;1mfloor: \e[22m%d\e[0m\n", data->floor); // REMOVE
-	printf("\e[93;1mceiling: \e[22m%d\e[0m\n", data->ceiling); // REMOVE
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 09:59:44 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 10:45:37 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/26 08:23:24 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 // ========== Vectors ==========
 typedef struct s_vector_int
 {
-    int				x;
-    int				y;
+	int				x;
+	int				y;
 }				t_vector_int;
 
 typedef struct s_vector_float
 {
-    float			x;
-    float			y;
+	float			x;
+	float			y;
 }				t_vector_float;
 
 typedef struct s_player
@@ -47,22 +47,23 @@ typedef enum s_cardinal_pts
 
 typedef struct s_draw
 {
-    int				start;
-    int				end;
-    int             height;
+	int				start;
+	int				end;
+	int				height;
 }				t_draw;
 
 typedef struct s_ray
 {
-    t_vector_float      delta;
-    t_vector_float      dist_to_wall;
+	t_vector_float		delta;
+	t_vector_float		dist_to_wall;
 
-    t_vector_int        step;
-    t_vector_int        map_pos;
+	t_vector_int		step;
+	t_vector_int		map_pos;
 
-    t_cardinal_pts      cardinal;
+	t_cardinal_pts		cardinal;
 
 	float				length;
+	float				collision;
 }				t_ray;
 
 typedef struct s_mlx_data
@@ -73,17 +74,6 @@ typedef struct s_mlx_data
 	int				line_length;
 	int				endian;
 }	t_mlx_data;
-
-// typedef struct s_exec
-// {
-//     char                nswe;
-// 	char				**map;
-// 	void				*mlx_ptr;
-// 	void				*window;
-
-// 	t_mlx_data			minimap;
-// 	t_player    		player_pos;
-// }				t_exec;
 
 typedef struct s_texture
 {
@@ -116,7 +106,6 @@ typedef struct s_data
 	unsigned int	floor;
 	unsigned int	ceiling;
 	t_map			*map;
-	// t_player		*player; // to change
 	char			nswe;
 	void			*mlx_ptr;
 	void			*window;
@@ -125,6 +114,5 @@ typedef struct s_data
 
 	int				pix;
 }	t_data;
-
 
 #endif

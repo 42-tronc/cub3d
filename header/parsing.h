@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:50:53 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 14:31:59 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/25 18:30:53 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 //	===== @functions =====
 // check_islands.c
 int	check_map_vert_island(t_data *data);
+int	check_map_hori_island(t_data *data, char *path);
 
 // check_map.c
 int	check_map(t_data *data);
@@ -34,5 +35,8 @@ int	get_map(t_data *data);
 
 // parse_properties.c
 int	get_map_properties(t_data *data);
+
+// parsing.c
+int	map_parsing(t_data *data, char *map);
 
 #endif

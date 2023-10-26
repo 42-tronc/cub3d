@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 14:37:32 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:12:32 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,67 +15,25 @@
 // #pragma GCC diagnostic ignored "-Wunused-variable"
 //#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 
-// static void translate_pos_to_deg(t_data *data, char pos)
-// {
-// 	if (pos == 'N')
-// 		data->player->angle = NORTH;
-// 	else if (pos == 'E')
-// 		data->player->angle = EAST;
-// 	else if (pos == 'S')
-// 		data->player->angle = SOUTH;
-// 	else if (pos == 'W')
-// 		data->player->angle = WEST;
-// }
-
-// static int get_player_pos(t_data *data)
-// {
-// 	size_t	i;
-// 	size_t	j;
-// 	char	c;
-
-// 	i = 0;
-// 	data->player_pos = ft_calloc(1, sizeof(t_player));
-// 	if (!data->player)
-// 		return (print_perr(E_MALLOC, "get_player_pos"), EXIT_FAILURE);
-// 	while (data->map->array[i])
-// 	{
-// 		j = 0;
-// 		while (data->map->array[i][j])
-// 		{
-// 			c = data->map->array[i][j];
-// 			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-// 			{
-// 				// translate_pos_to_deg(data, c);
-// 				data->player->x = j;
-// 				data->player->y = i;
-// 				printf("\n\e[92;1mPlayer position:\e[0m\n"); // REMOVE
-// 				printf("\e[93;1mx: \e[22m%.2f\e[0m\n", data->player->x); // REMOVE
-// 				printf("\e[93;1my: \e[22m%.2f\e[0m\n", data->player->y); // REMOVE
-// 				printf("\e[93;1mrotation: \e[22m%.2f\e[0m\n", data->player->angle); // REMOVE
-// 				return (EXIT_SUCCESS);
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (EXIT_FAILURE);
-// }
-
 static void	init_vars(t_data *data)
 {
 	data->file = NULL;
 	data->split_file = NULL;
 	data->north.path = NULL;
 	data->north.fd = 0;
+	data->north.img = NULL;
 	data->south.path = NULL;
 	data->south.fd = 0;
+	data->south.img = NULL;
 	data->west.path = NULL;
 	data->west.fd = 0;
+	data->west.img = NULL;
 	data->east.path = NULL;
 	data->east.fd = 0;
+	data->east.img = NULL;
 	data->map = NULL;
-	// data->floor = 0;
-	// data->ceiling = 0;
+	data->floor = 0;
+	data->ceiling = 0;
 }
 
 /**
@@ -88,7 +46,6 @@ static void	init_vars(t_data *data)
 int	map_parsing(t_data *data, char *map)
 {
 	(void) data;
-	// printf("map: %s\n", map);
 	init_vars(data);
 	if (check_extension(map, ".cub") == EXIT_FAILURE)
 		return (EXIT_FAILURE);
@@ -102,12 +59,11 @@ int	map_parsing(t_data *data, char *map)
 		return (EXIT_FAILURE);
 	if (check_map(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (check_map_vert_island(data) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
 	if (check_map_walls(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	// if (get_player_pos(data) == EXIT_FAILURE)
-	// 	return (EXIT_FAILURE);
-	printf("\n\t\e[92;1m✅ Passed\e[0m\n"); // REMOVE
+	if (check_map_vert_island(data) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (check_map_hori_island(data, map) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

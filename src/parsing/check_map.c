@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:13:31 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 14:17:24 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:12:32 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static int is_bordered_by_walls(t_data *data, size_t x, size_t y)
 		y_offset = -1;
 		while (y_offset <= 1)
 		{
-			// printf("Checking walls %ld, %ld: `%c`\n", x + x_offset, y + y_offset, data->map->array[y + y_offset][x + x_offset]); // REMOVE
 			if (!data->map->array[y + y_offset][x + x_offset]
 				|| data->map->array[y + y_offset][x + x_offset] == ' ')
 				return (0);
@@ -81,13 +80,11 @@ int	check_map_walls(t_data *data)
 	while (data->map->array[i])
 	{
 		j = 0;
-		// printf("\nChecking line %ld: `%s`\n", i, data->map->array[i]); // REMOVE
 		while (data->map->array[i][j])
 		{
 			c = data->map->array[i][j];
 			if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
-				// printf("\nChecking around char %ld: `%c`\n", j, c); // REMOVE
 				if (!is_bordered_by_walls(data, j, i))
 					return (print_perr(E_MAP_WALLS, data->map->array[i]), EXIT_FAILURE);
 			}
@@ -95,7 +92,5 @@ int	check_map_walls(t_data *data)
 		}
 		i++;
 	}
-	printf("\n\e[92;1mMap walls:\e[0m\n"); // REMOVE
-	printf("\e[93;1mMap is surrounded by walls\e[0m\n"); // REMOVE
 	return (EXIT_SUCCESS);
 }

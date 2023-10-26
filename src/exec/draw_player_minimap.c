@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 09:58:57 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 09:32:32 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:15:58 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,7 @@ void	draw_player_minimap(t_mlx_data *minimap, float x, float y)
 		p_position.x++;
 	}
 }
+
+// static void	draw_sight(t_mlx_data *minimap, float x, float y)
+// {
+// }
