@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:04:06 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 14:36:01 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:24:39 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	init_textures(t_data *data)
 
 static int	north_texture(t_data *data)
 {
-	data->north.img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+	data->north.img = mlx_xpm_file_to_image(data->mlx_ptr, \
+		data->north.path, &data->north.width, &data->north.height);
 	if (!data->north.img)
 		return (SUCCESS);
 	data->north.addr = mlx_get_data_addr(data->north.img, \
@@ -54,7 +55,8 @@ static int	north_texture(t_data *data)
 
 static int	south_texture(t_data *data)
 {
-	data->south.img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+	data->south.img = mlx_xpm_file_to_image(data->mlx_ptr, \
+		data->south.path, &data->south.width, &data->south.height);
 	if (!data->south.img)
 		return (SUCCESS);
 	data->south.addr = mlx_get_data_addr(data->south.img, \
@@ -71,7 +73,8 @@ static int	south_texture(t_data *data)
 
 static int	west_texture(t_data *data)
 {
-	data->west.img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+	data->west.img = mlx_xpm_file_to_image(data->mlx_ptr, \
+		data->west.path, &data->west.width, &data->west.height);
 	if (!data->west.img)
 		return (SUCCESS);
 	data->west.addr = mlx_get_data_addr(data->west.img, \
@@ -88,7 +91,8 @@ static int	west_texture(t_data *data)
 
 static int	east_texture(t_data *data)
 {
-	data->east.img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+	data->east.img = mlx_xpm_file_to_image(data->mlx_ptr, \
+		data->east.path, &data->east.width, &data->east.height);
 	if (!data->east.img)
 		return (SUCCESS);
 	data->east.addr = mlx_get_data_addr(data->east.img, \

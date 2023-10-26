@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 16:09:33 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:11:08 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@
 
 // ========== Exec ==========
 int				exec_manager(t_data *data);
-void			ft_dda(t_data *data, t_ray *ray);
+void			ft_dda(t_data *data, t_ray *ray, t_vector_float direction);
 int				close_window(t_data *data, int status);
 
 // ========== Init ==========
@@ -76,7 +76,7 @@ void			init_ray_struct(t_data *data, t_ray *ray, \
 void			draw_minimap(t_data *data);
 void			draw_player_minimap(t_mlx_data *minimap, float x, float y);
 void			draw_walls(t_data *data, t_ray *ray, int width);
-void			draw_textures(t_data *data, int count, int i);
+char	*draw_textures(t_data *data, t_ray *ray, int y);
 int				refresh_window(t_data *data);
 
 // ========== Moves ==========

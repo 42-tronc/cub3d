@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 09:59:44 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/25 14:17:53 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/26 08:23:24 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_ray
 	t_cardinal_pts		cardinal;
 
 	float				length;
+	float				collision;
 }				t_ray;
 
 typedef struct s_mlx_data
