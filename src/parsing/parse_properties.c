@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:14:39 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 14:15:46 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:12:32 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,7 @@ static int	set_color(unsigned *color, char *input)
 		i++;
 	}
 	free_array(colors);
-	printf("\n\e[92;1mRGB: \e[0m%d, %d, %d\n", rgb[0], rgb[1], rgb[2]); // REMOVE
 	*color = rgb[0] << 16 | rgb[1] << 8 | rgb[2]; // THIS NEEDS TO BE CONVERTED TO REAL HEX
-	printf("\e[92;1mHEX: \e[0m%d\n", *color); // REMOVE
-	print_nbr(*color, "0123456789abcdef"); // REMOVE
-	printf("\n"); // REMOVE
 	return (EXIT_SUCCESS);
 }
 
@@ -144,13 +140,5 @@ int	get_map_properties(t_data *data)
 		free_array(lines);
 		i++;
 	}
-	printf("\n\e[92;1mTextures:\e[0m\n"); // REMOVE
-	printf("\e[93;1mnorth: \e[22m%s\e[0m\n", data->north.path); // REMOVE
-	printf("\e[93;1msouth: \e[22m%s\e[0m\n", data->south.path); // REMOVE
-	printf("\e[93;1mwest: \e[22m%s\e[0m\n", data->west.path); // REMOVE
-	printf("\e[93;1meast: \e[22m%s\e[0m\n", data->east.path); // REMOVE
-	printf("\n\e[92;1mColors:\e[0m\n"); // REMOVE
-	printf("\e[93;1mfloor: \e[22m%d\e[0m\n", data->floor); // REMOVE
-	printf("\e[93;1mceiling: \e[22m%d\e[0m\n", data->ceiling); // REMOVE
 	return (EXIT_SUCCESS);
 }

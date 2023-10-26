@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:55:57 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 14:37:32 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:12:32 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,5 @@ int	map_parsing(t_data *data, char *map)
 		return (EXIT_FAILURE);
 	if (check_map_hori_island(data, map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	printf("\n\t\e[92;1m✅ Passed\e[0m\n"); // REMOVE
 	return (EXIT_SUCCESS);
 }

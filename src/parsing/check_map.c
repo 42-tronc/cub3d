@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:13:31 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 14:17:24 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:12:32 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,5 @@ int	check_map_walls(t_data *data)
 		}
 		i++;
 	}
-	printf("\n\e[92;1mMap walls:\e[0m\n"); // REMOVE
-	printf("\e[93;1mMap is surrounded by walls\e[0m\n"); // REMOVE
 	return (EXIT_SUCCESS);
 }

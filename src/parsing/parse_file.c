@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:51:42 by croy              #+#    #+#             */
-/*   Updated: 2023/10/24 14:11:39 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:12:32 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ int	check_extension(char *path, char *ext)
 		print_perr(E_EXT, file);
 		return (EXIT_FAILURE);
 	}
-	else // REMOVE
-		printf("\e[92;1mExtension: \e[0m%s\n", file); // REMOVE
-	printf("lwodajwhdawkdvawjhdvawd\n"); // REMOVE
 	return (EXIT_SUCCESS);
 }
 
@@ -93,14 +90,10 @@ int	check_file(t_data *data, char *path)
 		perror(RED "Error" RESET);
 		return (EXIT_FAILURE);
 	}
-	else // REMOVE
 	{
-		printf("\e[92;1mFile: \e[0m%s\n", path); // REMOVE
 		data->file = read_file(fd);
 		if (!data->file)
 			return (close(fd), EXIT_FAILURE);
-		else // REMOVE
-			printf("\e[92;1mFile content:\n\e[0m%s\n", data->file); // REMOVE
 	}
 	close(fd);
 	return (EXIT_SUCCESS);
@@ -117,8 +110,5 @@ int	cleanup_file(t_data *data)
 	data->split_file = ft_split(data->file, '\n');
 	if (!data->split_file)
 		return (print_perr(E_MALLOC, "cleanup_file"), EXIT_FAILURE);
-	printf("\e[92;1mFile split:\n\e[0m"); // REMOVE
-	for (int i = 0; data->split_file[i]; i++) // REMOVE
-		printf("%s\n", data->split_file[i]); // REMOVE
 	return (EXIT_SUCCESS);
 }
