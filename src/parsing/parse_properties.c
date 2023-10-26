@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:14:39 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 13:12:32 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:36:27 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	set_texture(t_texture *texture, char *path)
  * @param str	string to check
  * @return int	1 if the string only contains digits, 0 otherwise
  */
-static int ft_isonlydigit(char *str)
+static int	ft_isonlydigit(char *str)
 {
 	int	i;
 
@@ -57,7 +57,7 @@ static int ft_isonlydigit(char *str)
  * @param input	string containing the RGB values separated by commas
  * @return int	EXIT_SUCCESS or EXIT_FAILURE
  */
-static int	set_color(unsigned *color, char *input)
+static int	set_color(unsigned int *color, char *input)
 {
 	int		i;
 	int		rgb[3];
@@ -68,18 +68,18 @@ static int	set_color(unsigned *color, char *input)
 	if (!colors)
 		return (print_perr(E_MALLOC, "get_color"), EXIT_FAILURE);
 	if (ft_arrlen(colors) != 3)
-		return (print_perr(E_PROP_FMT, input), free_array(colors), EXIT_FAILURE);
+		return (print_perr(E_PROP_FMT, input), free_array(colors), FAILURE);
 	while (colors[i])
 	{
 		if (!ft_isonlydigit(colors[i]))
-			return (print_perr(E_PROP_FMT, input), free_array(colors), EXIT_FAILURE);
+			return (print_perr(E_PROP_FMT, input), free_array(colors), FAILURE);
 		rgb[i] = ft_atoi(colors[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)
-			return (print_perr(E_PROP_FMT, input), free_array(colors), EXIT_FAILURE);
+			return (print_perr(E_PROP_FMT, input), free_array(colors), FAILURE);
 		i++;
 	}
 	free_array(colors);
-	*color = rgb[0] << 16 | rgb[1] << 8 | rgb[2]; // THIS NEEDS TO BE CONVERTED TO REAL HEX
+	*color = rgb[0] << 16 | rgb[1] << 8 | rgb[2];
 	return (EXIT_SUCCESS);
 }
 
@@ -134,7 +134,11 @@ int	get_map_properties(t_data *data)
 		if (!lines)
 			return (print_perr(E_MALLOC, "get_map_properties"), EXIT_FAILURE);
 		if (ft_arrlen(lines) != 2 || ft_isdigit(lines[0][0]))
-			return (print_perr(E_PROP_FMT, lines[0]), free_array(lines), EXIT_FAILURE);
+		{
+			print_perr(E_PROP_FMT, lines[0]);
+			free_array(lines);
+			return (EXIT_FAILURE);
+		}
 		if (get_texture(data, lines) == EXIT_FAILURE)
 			return (free_array(lines), EXIT_FAILURE);
 		free_array(lines);
