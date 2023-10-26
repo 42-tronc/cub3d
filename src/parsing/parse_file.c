@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:51:42 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 13:12:32 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:33:40 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ char	*read_file(int fd)
 		char_read = read(fd, buffer, BUFFER_SIZE);
 		if (char_read == -1)
 			return (print_perr(E_READ, NULL), NULL);
-		// maybe protect if char_read < 0
 		buffer[char_read] = '\0';
 		if (!file)
 			file = ft_strdup(buffer);
@@ -93,7 +92,10 @@ int	check_file(t_data *data, char *path)
 	{
 		data->file = read_file(fd);
 		if (!data->file)
+		{
+			print_perr(E_MISSING, NULL);
 			return (close(fd), EXIT_FAILURE);
+		}
 	}
 	close(fd);
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 21:31:48 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 12:47:02 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:38:15 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void	print_perr(int code, char *src)
 	error[E_MAP_WALLS] = "map is not surrounded by walls";
 	error[E_MAP_ISLAND] = "map has an island";
 	error[E_TXT_MISS] = "a texture is missing";
+	printf(RED BOLD"Error%s\n", NO_BOLD);
 	if (src && ft_strlen(src))
-		printf(RED BOLD"Error\n%s%s in %s%s\n", NO_BOLD, error[code], src, RESET);
+		printf("%s in %s%s\n", error[code], src, RESET);
 	else
-		printf(RED BOLD"Error\n%s%s%s\n", NO_BOLD, error[code], RESET);
+		printf("%s%s\n", error[code], RESET);
 }
 
 void	print_exec_err(int code, char *src)
@@ -45,8 +46,9 @@ void	print_exec_err(int code, char *src)
 	error[E_IMG] = "error during new image creation";
 	error[E_ADDR] = "error during new data address creation";
 	error[E_TEXTURES] = "error during init of the textures";
+	printf(RED BOLD"Error%s\n", NO_BOLD);
 	if (src && ft_strlen(src))
-		printf(RED BOLD"Error\n%s%s in %s%s\n", NO_BOLD, error[code], src, RESET);
+		printf("%s in %s%s\n", error[code], src, RESET);
 	else
-		printf(RED BOLD"Error\n%s%s%s\n", NO_BOLD, error[code], RESET);
+		printf("%s%s\n", error[code], RESET);
 }

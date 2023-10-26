@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:17:46 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 13:12:57 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/26 13:46:20 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_map_vert_island(t_data *data)
 		while (data->map->array[y][x])
 		{
 			if (data->map->array[y][x] == ' ' && is_column_empty(data, x))
-				return (print_perr(E_MAP_ISLAND, data->map->array[y]), EXIT_FAILURE);
+				return (print_perr(E_MAP_ISLAND, data->map->array[y]), FAILURE);
 			x++;
 		}
 		y++;
@@ -62,6 +62,14 @@ static int	is_empty(char *line)
 	return (1);
 }
 
+static void	free_horizontal_island_check(int status, int fd, char *line)
+{
+	if (status == EXIT_FAILURE)
+		print_perr(E_MAP_ISLAND, NULL);
+	free(line);
+	close(fd);
+}
+
 int	check_map_hori_island(t_data *data, char *path)
 {
 	int		status;
@@ -74,22 +82,19 @@ int	check_map_hori_island(t_data *data, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (print_perr(E_MISSING, path), EXIT_FAILURE);
-
 	line = get_next_line(fd);
 	if (!line)
 		return (print_perr(E_MAP_MISS, NULL), EXIT_FAILURE);
 	while (line)
 	{
-		if (!ft_strncmp(line, data->map->array[0], ft_strlen(data->map->array[0])))
+		if (!ft_strncmp(line, data->map->array[0],
+				ft_strlen(data->map->array[0])))
 			found_map = 1;
 		if (found_map && is_empty(line))
 			status = EXIT_FAILURE;
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (status == EXIT_FAILURE)
-		return (print_perr(E_MAP_ISLAND, NULL), EXIT_FAILURE);
-	free(line);
-	close(fd);
+	free_horizontal_island_check(status, fd, line);
 	return (status);
 }
