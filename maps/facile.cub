@@ -1,0 +1,17 @@
+NO textures/checker_north.xpm
+SO textures/checker_south.xpm
+WE textures/checker_west.xpm
+EA textures/checker_east.xpm
+
+F 0,128,0
+C 135,206,250
+
+1111111111111
+1000000000001
+1000000000001
+1000000011011
+1000N00011011
+1000000010011
+1000000011011
+1000000000001
+1111111111111
