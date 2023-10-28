@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/28 11:24:21 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/28 13:11:35 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define MIN_LEN_RAY	0.0886
 # define HEIGHT         1080
 # define WIDTH          1920
-# define WALL_H			1100
+# define WALL_H			2000
 
 // ===== Maths define =====
 # define PI				3.1415926535
