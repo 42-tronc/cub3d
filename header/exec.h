@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/28 09:51:14 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/28 11:24:21 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@
 # include "cub3d.h"
 # include "struct.h"
 
-# define SUCCESS	    EXIT_SUCCESS
-# define FAILURE	    EXIT_FAILURE
-# define IMG_ERR        1
+# define SUCCESS		EXIT_SUCCESS
+# define FAILURE		EXIT_FAILURE
+# define IMG_ERR		1
 
 // ===== Define Keys =====
-# define KEY_ESC 	    65307
-# define LEFT_ARROW     65361
-# define RIGHT_ARROW    65363
-# define KEY_W 	        119
-# define KEY_A	        97
-# define KEY_S	        115
-# define KEY_D	        100
+# define KEY_ESC		65307
+# define LEFT_ARROW		65361
+# define RIGHT_ARROW	65363
+# define KEY_W			119
+# define KEY_A			97
+# define KEY_S			115
+# define KEY_D			100
 
 // ===== Game define =====
 # define BLOCK          20
@@ -70,7 +70,7 @@ void			init_ray_struct(t_data *data, t_ray *ray, \
 void			draw_minimap(t_data *data);
 void			draw_player_minimap(t_mlx_data *minimap, float x, float y);
 void			draw_walls(t_data *data, t_ray *ray, int width);
-char	*draw_textures(t_data *data, t_ray *ray, int y);
+char			*draw_textures(t_data *data, t_ray *ray, int y);
 int				refresh_window(t_data *data);
 
 // ========== Moves ==========
