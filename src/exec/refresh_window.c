@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 10:05:16 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/26 14:36:52 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:20:15 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	refresh_window(t_data *data)
 	}
 	raycasting(data);
 	draw_minimap(data);
-	draw_player_minimap(&data->minimap, data->player_pos.x, data->player_pos.y);
 	mlx_put_image_to_window(data->mlx_ptr, data->window, \
 			data->minimap.img, 0, 0);
 	return (SUCCESS);
