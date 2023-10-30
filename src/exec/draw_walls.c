@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:16:24 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/28 13:31:53 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:30:16 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ static void	get_textures(t_data *data, t_ray *ray, t_vector_int pos, int tex_y)
 	char	*dst;
 
 	dst = draw_textures(data, ray, tex_y);
+	if (!dst)
+	{
+		print_exec_err(E_PIXEL, "get_textures");
+		close_window(data, FAILURE);
+	}
 	put_pixel(&data->minimap, pos.y, pos.x, *(unsigned int *)dst);
 }
 
