@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 21:31:48 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 13:38:15 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/30 14:28:31 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	print_perr(int code, char *src)
 
 void	print_exec_err(int code, char *src)
 {
-	char	*error[6];
+	char	*error[7];
 
 	error[E_MLX_INIT] = "error during mlx init";
 	error[E_WIN_INIT] = "error during window init";
@@ -46,6 +46,7 @@ void	print_exec_err(int code, char *src)
 	error[E_IMG] = "error during new image creation";
 	error[E_ADDR] = "error during new data address creation";
 	error[E_TEXTURES] = "error during init of the textures";
+	error[E_PIXEL] = "error during pixel choice";
 	printf(RED BOLD"Error%s\n", NO_BOLD);
 	if (src && ft_strlen(src))
 		printf("%s in %s%s\n", error[code], src, RESET);

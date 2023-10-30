@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 15:01:34 by croy              #+#    #+#             */
-/*   Updated: 2023/10/25 10:15:33 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:29:10 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ typedef enum e_error_exec_code {
 	E_MINIMAP,
 	E_IMG,
 	E_ADDR,
-	E_TEXTURES
+	E_TEXTURES,
+	E_PIXEL
 }	t_error_exec_code;
 
 //	===== @functions =====
