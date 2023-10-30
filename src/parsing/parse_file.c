@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:51:42 by croy              #+#    #+#             */
-/*   Updated: 2023/10/30 16:15:11 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/30 16:06:04 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ char	*read_file(int fd)
 	int		char_read;
 	char	buffer[BUFFER_SIZE];
 	char	*file;
-	char	*tmp;
 
 	char_read = 1;
 	file = NULL;
@@ -66,13 +65,9 @@ char	*read_file(int fd)
 		if (!file)
 			file = ft_strdup(buffer);
 		else
-			tmp = ft_strjoin(file, buffer);
-		free_if_alloc(file);
+			file = ft_strjoin(file, buffer);
 		if (!file && char_read)
 			return (print_perr(E_MALLOC, "read_file"), NULL);
-		else
-			file = tmp;
-		free(tmp);
 	}
 	return (file);
 }
