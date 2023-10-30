@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:14:39 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 13:36:27 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/30 14:42:03 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	set_texture(t_texture *texture, char *path)
 	if (texture->fd > 0)
 		return (print_perr(E_PROP_DUP, path), EXIT_FAILURE);
 	texture->path = ft_strdup(path);
+	if (!texture->path)
+		return (print_perr(E_MALLOC, "set_texture"), EXIT_FAILURE);
 	texture->fd = open(path, O_RDONLY);
 	if (texture->fd == -1)
 		return (print_perr(E_TXT_MISS, path), EXIT_FAILURE);

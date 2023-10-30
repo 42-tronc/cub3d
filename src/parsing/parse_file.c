@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:51:42 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 14:47:49 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/30 16:06:04 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,15 @@ int	check_file(t_data *data, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
-		perror(RED "Error" RESET);
+		print_perr(E_MISSING, path);
 		return (EXIT_FAILURE);
 	}
 	{
 		data->file = read_file(fd);
 		if (!data->file)
 		{
-			print_perr(E_MISSING, NULL);
-			return (close(fd), EXIT_FAILURE);
+			close(fd);
+			return (EXIT_FAILURE);
 		}
 	}
 	close(fd);
