@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/30 13:24:21 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:49:43 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@
 # define KEY_D			100
 
 // ===== Game define =====
-# define BLOCK          20
-# define SIZE_MAP       20
+# define BLOCK			20
+# define SIZE_MAP		20
 # define PRINT_MAP		10
 # define SIZE_WALL		125
 # define SIZE_CUT		4
 # define EYE_SIGHT		540
 # define TOL			0.025
 # define MIN_LEN_RAY	0.0886
-# define HEIGHT         1080
-# define WIDTH          1920
+# define HEIGHT			1080
+# define WIDTH			1920
 # define WALL_H			1800
 
 // ===== Maths define =====
@@ -55,38 +55,39 @@
 # define MAP_PLAYER		0x00ff7f
 
 // ========== Exec ==========
-int				exec_manager(t_data *data);
-void			ft_dda(t_data *data, t_ray *ray, t_vector_float direction);
-int				close_window(t_data *data, int status);
+int		exec_manager(t_data *data);
+void	ft_dda(t_data *data, t_ray *ray, t_vector_float direction);
+int		close_window(t_data *data, int status);
 
 // ========== Init ==========
-int				init_mlx(t_data *data);
-int				init_textures(t_data *data);
-void			init_player(t_data *data, char **map);
-void			init_ray_struct(t_data *data, t_ray *ray, \
-					float dir_x, float dir_y);
+int		init_mlx(t_data *data);
+int		init_textures(t_data *data);
+void	init_player(t_data *data, char **map);
+void	init_ray_struct(t_data *data, t_ray *ray, \
+			float dir_x, float dir_y);
 
 // ========== Draw ==========
-void			draw_minimap(t_data *data);
-void			draw_player_minimap(t_mlx_data *minimap, float x, float y, int size_map);
-void			draw_walls(t_data *data, t_ray *ray, int width);
-char			*draw_textures(t_data *data, t_ray *ray, int y);
-int				refresh_window(t_data *data);
+void	draw_minimap(t_data *data);
+void	draw_player_minimap(t_mlx_data *minimap, \
+			float x, float y, int size_map);
+void	draw_walls(t_data *data, t_ray *ray, int width);
+char	*draw_textures(t_data *data, t_ray *ray, int y);
+int		refresh_window(t_data *data);
 
 // ========== Moves ==========
-int				moves(int key_code, t_data *data);
-void			rotation(t_data *data, int key);
+int		moves(int key_code, t_data *data);
+void	rotation(t_data *data, int key);
 
 // ========== Raycasting ==========
-void			raycasting(t_data *data);
+void	raycasting(t_data *data);
 
 // ========== Utils ===========
-void			put_pixel(t_mlx_data *data, int x, int y, int color);
-void			clear_textures(t_data *data);
-int				check_textures_is_init(t_data *data, int status);
+void	put_pixel(t_mlx_data *data, int x, int y, int color);
+void	clear_textures(t_data *data);
+int		check_textures_is_init(t_data *data, int status);
 
 // ========== Errors ==========
-void			free_mlx(t_data *data);
-void			free_window(t_data *data);
+void	free_mlx(t_data *data);
+void	free_window(t_data *data);
 
 #endif
