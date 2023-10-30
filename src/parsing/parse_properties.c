@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:14:39 by croy              #+#    #+#             */
-/*   Updated: 2023/10/30 14:42:03 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/30 17:19:15 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ static int	set_color(unsigned int *color, char *input)
 	char	**colors;
 
 	i = 0;
+	if (ft_countchar(input, ',') != 2)
+		return (print_perr(E_PROP_FMT, input), FAILURE);
 	colors = ft_split(input, ',');
 	if (!colors)
 		return (print_perr(E_MALLOC, "get_color"), EXIT_FAILURE);
