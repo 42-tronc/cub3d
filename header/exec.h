@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/26 15:24:17 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/30 09:45:44 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +33,26 @@
 # define KEY_D			100
 
 // ===== Game define =====
-# define BLOCK			20
-# define SIZE_MAP		20
+# define BLOCK          20
+# define SIZE_MAP       20
+# define PRINT_MAP		10
 # define SIZE_WALL		125
 # define SIZE_CUT		4
 # define EYE_SIGHT		540
 # define TOL			0.025
 # define MIN_LEN_RAY	0.0886
-# define HEIGHT			1080
-# define WIDTH			1920
-# define WALL_H			1500
+# define HEIGHT         1080
+# define WIDTH          1920
+# define WALL_H			1800
 
 // ===== Maths define =====
 # define PI				3.1415926535
 # define RAD			0.0174533
 
-// ===== Colors =====
+// ===== Colors minimap =====
 # define MAP_WALL		0x0f056b
 # define MAP_SPACE		0x919191
 # define MAP_PLAYER		0x00ff7f
-# define GREEN_HEX		0x7CFC00
-# define BLUE_HEX		0x87CEEB
-# define YELLOW_HEX		0xffff00
-# define GREY_HEX		0x7f7f7f
-# define N_RED			0xff0000
-# define S_BROWN		0xb07922
-# define E_GREEN		0x2d9c18
-# define W_WHITE		0xf0ede5
 
 // ========== Exec ==========
 int				exec_manager(t_data *data);

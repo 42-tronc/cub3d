@@ -6,20 +6,21 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:16:24 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/26 15:00:44 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/28 13:31:53 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	get_textures(t_data *data, t_ray *ray, int y, int x, int tex_y);
+static void	get_textures(t_data *data, t_ray *ray, t_vector_int pos, int tex_y);
 static void	draw_floor(t_data *data, int width, int i);
 
 void	draw_walls(t_data *data, t_ray *ray, int width)
 {
-	int			i;
-	int			tex_y;
-	float		wall_height;
+	int				i;
+	int				tex_y;
+	t_vector_int	pos;
+	float			wall_height;
 
 	i = 0;
 	tex_y = 0;
@@ -33,38 +34,21 @@ void	draw_walls(t_data *data, t_ray *ray, int width)
 	}
 	while (i < (HEIGHT / 2) + (wall_height / 2))
 	{
-		get_textures(data, ray, width, i, tex_y);
+		pos.x = i;
+		pos.y = width;
+		get_textures(data, ray, pos, tex_y);
 		tex_y++;
 		i++;
 	}
 	draw_floor(data, width, i);
 }
 
-static void	get_textures(t_data *data, t_ray *ray, int y, int x, int tex_y)
+static void	get_textures(t_data *data, t_ray *ray, t_vector_int pos, int tex_y)
 {
-	char *dst;
+	char	*dst;
 
-	dst = NULL;
-	if (ray->cardinal == NORTH)
-	{
-		dst = draw_textures(data, ray, tex_y);
-		put_pixel(&data->minimap, y, x, *(unsigned int *)dst);
-	}
-	if (ray->cardinal == SOUTH)
-	{
-		dst = draw_textures(data, ray, tex_y);
-		put_pixel(&data->minimap, y, x, *(unsigned int *)dst);
-	}
-	if (ray->cardinal == WEST)
-	{
-		dst = draw_textures(data, ray, tex_y);
-		put_pixel(&data->minimap, y, x, *(unsigned int *)dst);
-	}
-	if (ray->cardinal == EAST)
-	{
-		dst = draw_textures(data, ray, tex_y);
-		put_pixel(&data->minimap, y, x, *(unsigned int *)dst);
-	}
+	dst = draw_textures(data, ray, tex_y);
+	put_pixel(&data->minimap, pos.y, pos.x, *(unsigned int *)dst);
 }
 
 static void	draw_floor(t_data *data, int width, int i)
