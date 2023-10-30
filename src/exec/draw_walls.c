@@ -6,16 +6,18 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:16:24 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/30 14:30:16 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:38:13 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	get_textures(t_data *data, t_ray *ray, t_vector_int pos, int tex_y);
-static void	draw_floor(t_data *data, int width, int i);
+static void		get_textures(t_data *data, t_ray *ray, \
+					t_vector_int pos, int tex_y);
+static void		draw_floor(t_data *data, int width, int i);
+static float	get_fisheye_distance(t_data *data, float length, float angle);
 
-void	draw_walls(t_data *data, t_ray *ray, int width)
+void	draw_walls(t_data *data, t_ray *ray, int width, float angle)
 {
 	int				i;
 	int				tex_y;
@@ -26,6 +28,7 @@ void	draw_walls(t_data *data, t_ray *ray, int width)
 	tex_y = 0;
 	if (ray->length < MIN_LEN_RAY)
 		ray->length = MIN_LEN_RAY;
+	ray->length = get_fisheye_distance(data, ray->length, angle);
 	wall_height = WALL_H / ray->length;
 	while (i < (HEIGHT / 2) - (wall_height / 2))
 	{
@@ -63,4 +66,17 @@ static void	draw_floor(t_data *data, int width, int i)
 		put_pixel(&data->minimap, width, i, data->floor);
 		i++;
 	}
+}
+
+static float	get_fisheye_distance(t_data *data, float length, float angle)
+{
+	float	fish_eye_angle;
+
+	fish_eye_angle = angle - data->player_pos.angle;
+	if (fish_eye_angle >= 2.0 * PI)
+		fish_eye_angle -= 2.0 * PI;
+	if (fish_eye_angle <= 0.0)
+		fish_eye_angle = 0.0;
+	length = length * cos(fish_eye_angle);
+	return (length);
 }

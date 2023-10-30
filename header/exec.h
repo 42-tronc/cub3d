@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 07:34:12 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/30 13:49:43 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/30 15:28:25 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	init_ray_struct(t_data *data, t_ray *ray, \
 void	draw_minimap(t_data *data);
 void	draw_player_minimap(t_mlx_data *minimap, \
 			float x, float y, int size_map);
-void	draw_walls(t_data *data, t_ray *ray, int width);
+void	draw_walls(t_data *data, t_ray *ray, int width, float angle);
 char	*draw_textures(t_data *data, t_ray *ray, int y);
 int		refresh_window(t_data *data);
 
