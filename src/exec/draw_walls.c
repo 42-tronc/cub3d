@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:16:24 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/30 15:38:13 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:55:58 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	draw_walls(t_data *data, t_ray *ray, int width, float angle)
 	t_vector_int	pos;
 	float			wall_height;
 
+	(void)angle;
 	i = 0;
 	tex_y = 0;
 	if (ray->length < MIN_LEN_RAY)
@@ -73,10 +74,6 @@ static float	get_fisheye_distance(t_data *data, float length, float angle)
 	float	fish_eye_angle;
 
 	fish_eye_angle = angle - data->player_pos.angle;
-	if (fish_eye_angle >= 2.0 * PI)
-		fish_eye_angle -= 2.0 * PI;
-	if (fish_eye_angle <= 0.0)
-		fish_eye_angle = 0.0;
 	length = length * cos(fish_eye_angle);
 	return (length);
 }
