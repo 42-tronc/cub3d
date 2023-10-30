@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:55:36 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/10/28 15:24:03 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/10/30 08:45:43 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,7 @@ static char	*choose_pixel_textures(t_data *data, t_ray *ray, int y)
 		texture = data->south;
 	else if (ray->cardinal == EAST)
 		texture = data->north;
-
-		
-	t_x = 0.0f;
-	if ((ray->map_pos.x <= (int)data->player_pos.x))
-		t_x = abs(((int)t_x % 128) - 128);
-	else
-		t_x = (ray->collision - (int)ray->collision) * texture.width;
-
-
-	
+	t_x = (ray->collision - (int)ray->collision) * texture.width;
 	if (EYE_SIGHT - height / 2 < 0)
 		y = y - (EYE_SIGHT - height / 2);
 	y = y * (texture.height / height);
