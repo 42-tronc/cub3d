@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:13:31 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 15:44:56 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/31 10:21:21 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ static int	is_bordered_by_walls(t_data *data, size_t x, size_t y)
 		y_offset = -1;
 		while (y_offset <= 1)
 		{
+			if (x + x_offset > ft_strlen(data->map->array[y + y_offset])
+				|| x + x_offset < 0)
+				return (0);
 			if (!data->map->array[y + y_offset][x + x_offset]
 				|| data->map->array[y + y_offset][x + x_offset] == ' ')
 				return (0);

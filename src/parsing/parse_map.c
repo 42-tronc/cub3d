@@ -6,7 +6,7 @@
 /*   By: croy <croy@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:12:30 by croy              #+#    #+#             */
-/*   Updated: 2023/10/26 13:33:59 by croy             ###   ########lyon.fr   */
+/*   Updated: 2023/10/31 10:38:34 by croy             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	get_map(t_data *data)
 	size_t	i;
 
 	i = 0;
-	if (!data->split_file[6])
+	if (ft_arrlen(data->split_file) <= 6 || !data->split_file[6])
 		return (print_perr(E_MAP_MISS, NULL), EXIT_FAILURE);
 	data->map = ft_calloc(1, sizeof(t_map));
 	if (!data->map)
